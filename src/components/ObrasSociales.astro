@@ -1,0 +1,51 @@
+---
+/**
+ * Grilla de obras sociales. Cada celda muestra el logo oficial si lo tenemos,
+ * y si no el nombre en texto, en la misma caja y con el mismo peso.
+ * El asterisco de copago va arriba a la derecha, fuera del logo.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { obrasSociales } from '../data/contenido';
+
+const archivos = import.meta.glob<{ default: ImageMetadata }>('../assets/logos/*.png', {
+  eager: true,
+});
+const logos: Record<string, ImageMetadata> = Object.fromEntries(
+  Object.entries(archivos).map(([ruta, mod]) => [
+    ruta.split('/').pop()!.replace('.png', ''),
+    mod.default,
+  ])
+);
+---
+
+<ul class="os__grid rv">
+  {
+    obrasSociales.map((o) => (
+      <li class="os__item">
+        {o.logo && logos[o.logo] ? (
+          <Image
+            class:list={[
+              'os__logo',
+              // Un logo vertical con la misma altura maxima que uno apaisado
+              // pesa la mitad. Se le da mas alto para emparejar el gris optico.
+              logos[o.logo].width / logos[o.logo].height < 1.9 && 'os__logo--alto',
+            ]}
+            src={logos[o.logo]}
+            alt={o.nombre}
+            widths={[260, 520]}
+            sizes="(max-width: 640px) 45vw, 200px"
+            loading="lazy"
+          />
+        ) : (
+          <span class="os__nombre">{o.nombre}</span>
+        )}
+        {o.copago && (
+          <span class="os__copago" aria-label="abona copago">
+            *
+          </span>
+        )}
+      </li>
+    ))
+  }
+</ul>

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Deco from '../components/Deco.astro';
 import Cierre from '../components/Cierre.astro';
+import ObrasSociales from '../components/ObrasSociales.astro';
 import { obrasSociales, aranceles, contacto } from '../data/contenido';
 
 const conCopago = obrasSociales.filter((o) => o.copago).length;
@@ -28,16 +29,7 @@ const conCopago = obrasSociales.filter((o) => o.copago).length;
 
   <section class="seccion" style="padding-top:clamp(1.5rem,4vw,3rem)">
     <div class="contenedor">
-      <div class="os__grid rv">
-        {
-          obrasSociales.map((o) => (
-            <div class="os__item">
-              {o.nombre}
-              {o.copago && <sup aria-label="abona copago">*</sup>}
-            </div>
-          ))
-        }
-      </div>
+      <ObrasSociales />
       <p class="os__nota rv"><sup>*</sup><span>{aranceles.notaCopago}</span></p>
 
       <div class="info__grid">

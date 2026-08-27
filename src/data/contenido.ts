@@ -370,27 +370,34 @@ export const profesionales: Profesional[] = [
   },
 ];
 
-/** El asterisco del documento marca las que abonan copago. */
-export const obrasSociales = [
+/**
+ * El asterisco del documento marca las que abonan copago.
+ * `logo` es el nombre del archivo en src/assets/logos (sin extension).
+ * Las que no lo tienen se muestran con el nombre en texto, en la misma celda.
+ * La procedencia de cada logo esta en src/assets/logos/ORIGEN.md.
+ */
+export type ObraSocial = { nombre: string; copago: boolean; logo?: string };
+
+export const obrasSociales: ObraSocial[] = [
   { nombre: 'Caja de Servicios Sociales', copago: true },
-  { nombre: 'Avalian', copago: true },
+  { nombre: 'Avalian', copago: true, logo: 'avalian' },
   { nombre: 'Dasuten', copago: true },
-  { nombre: 'IOSFA', copago: true },
-  { nombre: 'Galeno', copago: true },
-  { nombre: 'Medicus', copago: true },
-  { nombre: 'Medifé', copago: true },
-  { nombre: 'OSDE', copago: false },
-  { nombre: 'OSDEPYM', copago: false },
-  { nombre: 'OSPEDYC', copago: true },
-  { nombre: 'OSMATA', copago: false },
+  { nombre: 'IOSFA', copago: true, logo: 'iosfa' },
+  { nombre: 'Galeno', copago: true, logo: 'galeno' },
+  { nombre: 'Medicus', copago: true, logo: 'medicus' },
+  { nombre: 'Medifé', copago: true, logo: 'medife' },
+  { nombre: 'OSDE', copago: false, logo: 'osde' },
+  { nombre: 'OSDEPYM', copago: false, logo: 'osdepym' },
+  { nombre: 'OSPEDYC', copago: true, logo: 'ospedyc' },
+  { nombre: 'OSMATA', copago: false, logo: 'osmata' },
   { nombre: 'OSPTV', copago: true },
   { nombre: 'OSPE', copago: true },
   { nombre: 'OSPSA', copago: true },
-  { nombre: 'OSUTHGRA', copago: true },
-  { nombre: 'PAMI', copago: false },
+  { nombre: 'OSUTHGRA', copago: true, logo: 'osuthgra' },
+  { nombre: 'PAMI', copago: false, logo: 'pami' },
   { nombre: 'Poder Judicial', copago: false },
-  { nombre: 'Swiss Medical', copago: true },
-  { nombre: 'Sancor Salud', copago: true },
+  { nombre: 'Swiss Medical', copago: true, logo: 'swiss-medical' },
+  { nombre: 'Sancor Salud', copago: true, logo: 'sancor-salud' },
 ];
 
 export const aranceles = {

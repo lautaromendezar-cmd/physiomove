@@ -90,6 +90,15 @@ Las fotos originales del cliente son HEIC de hasta 5712 px y no entran al repo. 
 `material-drive/` y `_work/` están en `.gitignore`: el repo lleva el sitio, no los 257 MB de
 material fuente.
 
+### Logos de las obras sociales
+
+13 de las 19 coberturas se muestran con el logo oficial, bajado **del sitio de cada obra social**
+(no de Google Imágenes) y verificado uno por uno. La URL exacta de cada uno está en
+**`src/assets/logos/ORIGEN.md`**, junto con el detalle de las 6 que quedan en texto y por qué.
+
+Los sitios que arman el logo con JavaScript (Galeno, Medicus, Sancor, OSDEPYM, OSPEDYC) no lo
+dejan en el HTML: esos se capturan del DOM ya renderizado con `scripts/capturar.mjs`.
+
 ---
 
 ## Animación
@@ -136,6 +145,8 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 | **Aparatología de Kinesiología Deportiva** | Campo vacío en el documento.                                                                              |
 | **Quién atiende** (servicios 3, 4 y 5) | Campos vacíos.                                                                                                |
 | **Facebook, TikTok y YouTube**   | En el documento estaba el texto de ejemplo de la plantilla, no cuentas reales. Sólo se publica Instagram.            |
+| **Logos de 6 obras sociales**    | OSPE, OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Caja de Servicios Sociales y Poder Judicial son de Santa Cruz y no tienen logo web usable. Se muestran en texto. Detalle en `src/assets/logos/ORIGEN.md`. |
+| **Logo de OSMATA**               | El archivo del sitio oficial dice SMATA (el sindicato), no OSMATA. Conviene que el cliente lo confirme.              |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
 
 ---
