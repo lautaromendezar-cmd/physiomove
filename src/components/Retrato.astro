@@ -1,0 +1,46 @@
+---
+/**
+ * Retrato de un profesional.
+ * El material del cliente trae fotos individuales pero con nombres de archivo
+ * que no permiten saber quien es quien (IMG_4406, IMG_5903...), asi que
+ * hasta que las identifique se muestra el monograma sobre la paleta del logo.
+ * Cuando lleguen identificadas, alcanza con pasarle `foto` a este componente.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  iniciales: string;
+  nombre: string;
+  foto?: ImageMetadata;
+  clase?: string;
+}
+const { iniciales, nombre, foto, clase = 'persona__retrato' } = Astro.props;
+---
+
+<div class={clase}>
+  {
+    foto ? (
+      <Image src={foto} alt={`Retrato de ${nombre}`} width={640} height={800} loading="lazy" />
+    ) : (
+      <>
+        <svg viewBox="0 0 200 250" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+          <path
+            d="M-20 190 C 40 150, 60 230, 120 195 S 200 120, 230 150"
+            fill="none"
+            stroke="rgba(150,185,207,.5)"
+            stroke-width="1.5"
+          />
+          <path
+            d="M-20 215 C 50 175, 70 255, 130 220 S 210 145, 240 175"
+            fill="none"
+            stroke="rgba(150,185,207,.3)"
+            stroke-width="1"
+          />
+          <circle cx="165" cy="55" r="46" fill="rgba(150,185,207,.13)" />
+        </svg>
+        <span class="persona__iniciales" aria-hidden="true">{iniciales}</span>
+      </>
+    )
+  }
+</div>

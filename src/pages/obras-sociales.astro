@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import Deco from '../components/Deco.astro';
+import Cierre from '../components/Cierre.astro';
+import { obrasSociales, aranceles, contacto } from '../data/contenido';
+
+const conCopago = obrasSociales.filter((o) => o.copago).length;
+---
+
+<Base
+  titulo="Obras sociales y aranceles | PhysioMove Río Gallegos"
+  descripcion="Obras sociales y prepagas que atendemos en PhysioMove Río Gallegos, requisitos para el turno, trámite de autorización y valor de la sesión para particulares."
+  ruta="/obras-sociales"
+>
+  <section class="cabecera">
+    <Deco variante="hero" />
+    <div class="contenedor">
+      <p class="miga"><a href="/">Inicio</a> / Obras sociales</p>
+      <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy);max-width:14ch">
+        Obras sociales y aranceles
+      </h1>
+      <p class="bajada" data-hero-anima style="margin-top:1.75rem;max-width:58ch">
+        Trabajamos con {obrasSociales.length} obras sociales y prepagas. {conCopago} de ellas
+        abonan copago.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion" style="padding-top:clamp(1.5rem,4vw,3rem)">
+    <div class="contenedor">
+      <div class="os__grid rv">
+        {
+          obrasSociales.map((o) => (
+            <div class="os__item">
+              {o.nombre}
+              {o.copago && <sup aria-label="abona copago">*</sup>}
+            </div>
+          ))
+        }
+      </div>
+      <p class="os__nota rv"><sup>*</sup><span>{aranceles.notaCopago}</span></p>
+
+      <div class="info__grid">
+        <div class="info__card info__card--destacada rv">
+          <h2>Particulares</h2>
+          <span class="info__precio">$19.500</span>
+          <p>{aranceles.particulares}</p>
+        </div>
+
+        <div class="info__card rv">
+          <h2>Qué traer</h2>
+          <p>{aranceles.queTraer}</p>
+        </div>
+
+        <div class="info__card rv">
+          <h2>Autorizaciones</h2>
+          <p>{aranceles.autorizacion}</p>
+        </div>
+
+        <div class="info__card rv">
+          <h2>¿Tu cobertura no está?</h2>
+          <p>
+            Consultanos por WhatsApp al
+            <a href={contacto.whatsappTexto} target="_blank" rel="noopener">{contacto.telefono}</a>
+            y te confirmamos cómo seguir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Cierre
+    titulo="Coordiná tu turno"
+    texto="Si venís por obra social, acordate de la orden médica y la credencial digital. El trámite de autorización queda a cargo del paciente."
+  />
+</Base>

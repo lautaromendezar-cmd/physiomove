@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/marca/logo.png';
+import { centro, contacto, servicios } from '../data/contenido';
+
+const anio = 2026;
+---
+
+<footer class="pm-footer">
+  <div class="contenedor">
+    <div class="pm-footer__grid">
+      <div>
+        <div class="pm-footer__marca">
+          <Image src={logo} alt="" width={104} height={104} loading="lazy" />
+          <span>
+            <strong>{centro.nombre}</strong>
+            <small>{centro.bajada}</small>
+          </span>
+        </div>
+        <p style="max-width:32ch">{centro.frase}. Kinesiología deportiva en {contacto.localidad}, {contacto.provincia}.</p>
+      </div>
+
+      <div>
+        <h2>Servicios</h2>
+        <ul>
+          {
+            servicios.map((s) => (
+              <li>
+                <a href={`/servicios/${s.slug}`}>{s.nombre}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2>El centro</h2>
+        <ul>
+          <li><a href="/servicios">Todos los servicios</a></li>
+          <li><a href="/equipo">Equipo profesional</a></li>
+          <li><a href="/obras-sociales">Obras sociales y aranceles</a></li>
+          <li><a href="/contacto">Sede y contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Contacto</h2>
+        <ul>
+          <li><a href={contacto.mapaLink} target="_blank" rel="noopener">{contacto.direccion}<br />{contacto.localidad}, {contacto.provincia}</a></li>
+          <li><a href={`tel:${contacto.telefonoE164}`}>{contacto.telefono}</a></li>
+          <li><a href={`mailto:${contacto.mail}`}>{contacto.mail}</a></li>
+          <li><a href={contacto.instagram} target="_blank" rel="noopener">{contacto.instagramUsuario}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pm-footer__legal">
+      <span>© {anio} {centro.nombre} — {centro.bajada}</span>
+      <span>
+        {contacto.horarios.map((h) => `${h.dias}: ${h.horas}`).join(' · ')}
+      </span>
+    </div>
+  </div>
+</footer>
+
+{/* Secciones pendientes de contenido del cliente — no se renderizan todavía:
+    <SeccionVideos />      (canal de YouTube y links, punto 6 del documento)
+    <SeccionConvenios />   (Catexis, Play Inside Basketball Camp, punto 5)
+    Ver README.md > "Contenido pendiente". */}

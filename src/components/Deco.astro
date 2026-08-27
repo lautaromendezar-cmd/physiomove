@@ -1,0 +1,161 @@
+---
+/**
+ * Formas decorativas de fondo: circulos suaves y lineas curvas SVG
+ * en la paleta del logo. Las curvas se dibujan con DrawSVG al hacer scroll
+ * (data-draw) y en la variante "sede" una forma recorre la curva con MotionPath.
+ */
+interface Props {
+  variante?: 'hero' | 'suave' | 'oscura' | 'sede' | 'cierre';
+  class?: string;
+}
+const { variante = 'suave', class: clase = '' } = Astro.props;
+
+const tono = variante === 'oscura' || variante === 'sede' || variante === 'cierre';
+const trazo = tono ? 'rgba(150,185,207,.38)' : 'rgba(13,70,104,.22)';
+---
+
+<div class:list={['deco', clase]} aria-hidden="true">
+  {
+    variante === 'hero' && (
+      <>
+        <span
+          class="deco__blob"
+          style="width:min(46vw,560px);aspect-ratio:1;top:-16%;right:-12%;background:var(--hueso)"
+        />
+        <span
+          class="deco__blob"
+          style="width:min(22vw,240px);aspect-ratio:1;bottom:6%;left:-8%;background:var(--crema);opacity:.5"
+        />
+        <svg
+          viewBox="0 0 1200 700"
+          preserveAspectRatio="none"
+          style="top:0;left:0;width:100%;height:100%"
+        >
+          <path
+            data-draw
+            d="M-40 470 C 220 380, 300 620, 560 520 S 980 250, 1260 330"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1.5"
+          />
+          <path
+            data-draw
+            d="M-40 560 C 260 470, 340 700, 620 600 S 1020 330, 1260 420"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1"
+            opacity=".6"
+          />
+        </svg>
+      </>
+    )
+  }
+
+  {
+    variante === 'suave' && (
+      <>
+        <span
+          class="deco__blob"
+          style="width:min(34vw,420px);aspect-ratio:1;top:-14%;left:-10%;background:var(--hueso)"
+        />
+        <svg
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="none"
+          style="top:0;left:0;width:100%;height:100%"
+        >
+          <path
+            data-draw
+            d="M1240 120 C 980 220, 900 40, 640 190 S 180 470, -40 380"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1.25"
+          />
+        </svg>
+      </>
+    )
+  }
+
+  {
+    variante === 'oscura' && (
+      <>
+        <span
+          class="deco__blob"
+          style="width:min(40vw,520px);aspect-ratio:1;bottom:-22%;left:-14%;background:rgba(150,185,207,.10);opacity:1"
+        />
+        <svg
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="none"
+          style="top:0;left:0;width:100%;height:100%"
+        >
+          <path
+            data-draw
+            d="M-40 200 C 240 120, 380 340, 660 260 S 1040 60, 1260 160"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1.25"
+          />
+          <path
+            data-draw
+            d="M-40 660 C 260 580, 420 780, 700 700 S 1060 520, 1260 600"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1"
+            opacity=".7"
+          />
+        </svg>
+      </>
+    )
+  }
+
+  {
+    variante === 'sede' && (
+      <>
+        <span
+          class="deco__blob"
+          style="width:min(38vw,480px);aspect-ratio:1;top:-18%;right:-12%;background:rgba(150,185,207,.09);opacity:1"
+        />
+        <svg
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="none"
+          style="top:0;left:0;width:100%;height:100%"
+        >
+          <path
+            id="ruta-sede"
+            data-draw
+            data-ruta
+            d="M-40 640 C 200 560, 320 300, 600 340 S 980 620, 1260 420"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1.5"
+          />
+          <circle data-viajero r="6" fill="var(--acero)" opacity="0" />
+        </svg>
+      </>
+    )
+  }
+
+  {
+    variante === 'cierre' && (
+      <svg
+        viewBox="0 0 1200 500"
+        preserveAspectRatio="none"
+        style="top:0;left:0;width:100%;height:100%"
+      >
+        <path
+          data-draw
+          d="M-40 380 C 240 300, 360 460, 640 380 S 1020 200, 1260 280"
+          fill="none"
+          stroke="rgba(255,255,255,.28)"
+          stroke-width="1.25"
+        />
+        <path
+          data-draw
+          d="M-40 140 C 220 220, 400 60, 660 140 S 1040 320, 1260 240"
+          fill="none"
+          stroke="rgba(255,255,255,.16)"
+          stroke-width="1"
+        />
+      </svg>
+    )
+  }
+</div>

@@ -1,0 +1,73 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Deco from '../../components/Deco.astro';
+import Cierre from '../../components/Cierre.astro';
+import { foto } from '../../data/fotos';
+import { servicios, contacto } from '../../data/contenido';
+---
+
+<Base
+  titulo="Servicios | PhysioMove Río Gallegos"
+  descripcion="Consulta, kinesiología deportiva, evaluaciones de rendimiento con IVOLUTION, fisioterapia invasiva MEP, recovery post competencia e iniciación a la performance en niños."
+  ruta="/servicios"
+>
+  <section class="cabecera">
+    <Deco variante="hero" />
+    <div class="contenedor">
+      <p class="miga"><a href="/">Inicio</a> / Servicios</p>
+      <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy);max-width:16ch">
+        Seis servicios, una misma forma de trabajar
+      </h1>
+      <p class="bajada" data-hero-anima style="margin-top:1.75rem;max-width:56ch">
+        Todo empieza con una evaluación y un razonamiento clínico. Después, ejercicio guiado,
+        planificado y dosificado. Entrá en cada servicio para ver el detalle.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion" style="padding-top:0">
+    <div class="contenedor">
+      <div class="svc__lista">
+        {
+          servicios.map((s) => (
+            <a class="svc__card rv" href={`/servicios/${s.slug}`}>
+              <figure>
+                <Picture
+                  src={foto(s.foto)}
+                  formats={['avif', 'webp']}
+                  widths={[380, 620]}
+                  sizes="(max-width: 640px) 100vw, 34vw"
+                  alt={s.fotoAlt}
+                  loading="lazy"
+                />
+              </figure>
+              <div class="svc__card__cuerpo">
+                <p class="numeral">{s.numero}</p>
+                <h2 style="font-family:var(--display);text-transform:uppercase;font-size:clamp(1.15rem,1.8vw,1.5rem);color:var(--navy);line-height:1.05;margin:0">
+                  {s.nombre}
+                </h2>
+                <p>{s.resumen}</p>
+                {s.atiende && <p class="numeral" style="color:var(--gris)">Atiende: {s.atiende}</p>}
+                <span class="svc__card__mas">
+                  Ver el servicio
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                    <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <p class="bajada rv" style="margin-top:3rem">
+        ¿No sabés cuál te corresponde? Escribinos por
+        <a class="enlace" href={contacto.whatsappTexto} target="_blank" rel="noopener">WhatsApp</a>
+        y lo vemos juntos.
+      </p>
+    </div>
+  </section>
+
+  <Cierre />
+</Base>

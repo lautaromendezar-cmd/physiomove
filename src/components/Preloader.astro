@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/marca/logo.png';
+---
+
+<div class="pm-pre" data-pre role="status" aria-live="polite" aria-label="Cargando">
+  <div class="pm-pre__marca">
+    <svg class="pm-pre__anillo" viewBox="0 0 100 100" aria-hidden="true">
+      <circle data-anillo cx="50" cy="50" r="48"></circle>
+      <circle data-anillo-int cx="50" cy="50" r="43" stroke-width="0.75" opacity=".6"></circle>
+    </svg>
+    <Image src={logo} alt="" width={220} height={220} loading="eager" data-pre-logo />
+  </div>
+  <div class="pm-pre__barra"><i data-pre-barra></i></div>
+  <span class="pm-pre__num" data-pre-num>0%</span>
+</div>

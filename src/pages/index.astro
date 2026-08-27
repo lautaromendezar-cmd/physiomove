@@ -1,0 +1,376 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Deco from '../components/Deco.astro';
+import Cierre from '../components/Cierre.astro';
+import Retrato from '../components/Retrato.astro';
+import { foto } from '../data/fotos';
+import {
+  centro,
+  contacto,
+  servicios,
+  profesionales,
+  obrasSociales,
+  aranceles,
+  galeria,
+} from '../data/contenido';
+
+const boxPrivados = 3;
+---
+
+<Base
+  titulo="PhysioMove | Kinesiología deportiva en Río Gallegos"
+  descripcion="Centro deportivo especializado en Río Gallegos: kinesiología deportiva, evaluaciones de rendimiento con tecnología IVOLUTION, fisioterapia invasiva MEP y recovery. Donde volvés al deporte."
+  ruta="/"
+>
+  <!-- ============================================================ HERO -->
+  <section class="hero">
+    <Deco variante="hero" />
+    <div class="contenedor">
+      <div class="hero__grid">
+        <div>
+          <p class="volanta" data-hero-anima>
+            Centro deportivo especializado · {contacto.localidad}
+          </p>
+          <h1 class="titulo-xxl hero__titulo" data-hero-titulo>
+            Donde volvés<br /><span class="hero__frase-fuerte">al deporte</span>
+          </h1>
+          <p class="hero__texto" data-hero-anima>
+            Kinesiología deportiva, evaluaciones de rendimiento y readaptación en
+            {contacto.localidad}. Recuperarte a través del ejercicio guiado, planificado y
+            dosificado por kinesiólogos deportivos.
+          </p>
+          <div class="hero__acciones" data-hero-anima>
+            <a class="btn" href={contacto.whatsappTexto} target="_blank" rel="noopener">
+              Agendá tu turno
+            </a>
+            <a class="btn btn--linea" href="/servicios">Ver servicios</a>
+          </div>
+
+          <dl class="hero__stats" data-hero-anima>
+            <div class="stat">
+              <dd class="stat__numero" data-scramble={String(centro.apertura)}>{centro.apertura}</dd>
+              <dt class="stat__texto">Año de apertura en {contacto.localidad}</dt>
+            </div>
+            <div class="stat">
+              <dd class="stat__numero" data-scramble={`0${boxPrivados}`}>0{boxPrivados}</dd>
+              <dt class="stat__texto">Box privados más gimnasio exclusivo</dt>
+            </div>
+            <div class="stat">
+              <dd class="stat__numero" data-scramble={String(obrasSociales.length)}>{obrasSociales.length}</dd>
+              <dt class="stat__texto">Obras sociales y prepagas</dt>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="hero__figura" style="margin:0" data-hero-figura>
+          <Picture
+            src={foto('hero-entrenamiento')}
+            formats={['avif', 'webp']}
+            widths={[640, 900, 1200]}
+            sizes="(max-width: 900px) 100vw, 46vw"
+            alt="Paciente entrenando con banda elástica sobre la pista azul del gimnasio de PhysioMove, bajo el cartel Donde volvés al deporte"
+            loading="eager"
+            fetchpriority="high"
+            data-hero-img
+          />
+          <figcaption class="hero__sello" data-hero-sello>
+            {contacto.direccion}<br />{contacto.localidad}, {contacto.provincia}
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== ORIGEN -->
+  <section class="seccion crema">
+    <Deco variante="suave" />
+    <div class="contenedor">
+      <div class="origen__grid">
+        <figure class="origen__figura rv" style="margin:0">
+          <Picture
+            src={foto('equipo-grupo')}
+            formats={['avif', 'webp']}
+            widths={[480, 760, 1000]}
+            sizes="(max-width: 900px) 100vw, 36vw"
+            alt="Tres profesionales de PhysioMove en el gimnasio del centro, frente al cartel Kinesiología deportiva"
+            loading="lazy"
+            data-parallax
+          />
+        </figure>
+
+        <div>
+          <p class="volanta">Cómo nació PhysioMove</p>
+          <p class="origen__cita" data-lineas>
+            La recuperación de una lesión debía ser <em>en movimiento</em>.
+          </p>
+          <p class="bajada rv">{centro.origen}</p>
+          <div class="origen__dato rv">
+            <strong>{centro.apertura}</strong>
+            <span class="bajada" style="font-size:.95rem"
+              >Año en que abrimos las puertas en {contacto.localidad}, {contacto.provincia}.</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== DIFERENCIAL -->
+  <section class="seccion dif oscuro">
+    <Deco variante="oscura" />
+    <div class="contenedor">
+      <div class="dif__grid">
+        <div>
+          <p class="volanta">Qué hacemos distinto</p>
+          <h2 class="dif__titulo" data-lineas>
+            Razonamiento clínico y <em>ejercicio planificado</em>
+          </h2>
+          <p class="dif__texto rv">{centro.diferencial}</p>
+
+          <div class="dif__claves">
+            <div class="dif__clave rv">
+              <span>01</span>
+              <p><b>A quiénes atendemos.</b> {centro.pacientes}</p>
+            </div>
+            <div class="dif__clave rv">
+              <span>02</span>
+              <p>
+                <b>Nuestra postura.</b> El movimiento es el mejor antiinflamatorio y el reposo
+                no es sinónimo de cura: siempre estamos a favor del movimiento y del ejercicio,
+                siempre y cuando el contexto acompañe.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dif__figuras rv">
+          <Picture
+            src={foto('razonamiento-datos')}
+            formats={['avif', 'webp']}
+            widths={[420, 700]}
+            sizes="(max-width: 900px) 100vw, 30vw"
+            alt="Pantalla con los datos de un test de fuerza durante una evaluación en PhysioMove"
+            loading="lazy"
+            pictureAttributes={{ class: 'dif__foto--grande' }}
+          />
+          <Picture
+            src={foto('ejercicio-planificado')}
+            formats={['avif', 'webp']}
+            widths={[320, 520]}
+            sizes="(max-width: 900px) 50vw, 18vw"
+            alt="Paciente ejecutando una sentadilla con banda elástica guiado por el equipo"
+            loading="lazy"
+            pictureAttributes={{ class: 'dif__foto--chica' }}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= SERVICIOS -->
+  <section class="seccion" data-svc>
+    <div class="contenedor">
+      <div class="svc__grid">
+        <div class="svc__panel" data-svc-panel>
+          <p class="volanta">Servicios</p>
+          <h2 class="titulo-l" data-lineas>Qué hacemos<br />en el centro</h2>
+          <ol class="svc__indice" data-svc-indice>
+            {
+              servicios.map((s, i) => (
+                <li data-activo={i === 0 ? 'true' : 'false'}>
+                  <span>{s.numero}</span>
+                  {s.nombre}
+                </li>
+              ))
+            }
+          </ol>
+          <div class="svc__progreso"><i data-svc-progreso></i></div>
+          <p class="bajada rv" style="margin-top:2rem;font-size:.95rem">
+            Cada servicio tiene su página con el detalle completo: qué es, para quién sirve y
+            cómo es una sesión.
+          </p>
+        </div>
+
+        <div class="svc__lista" data-svc-lista>
+          {
+            servicios.map((s) => (
+              <a class="svc__card rv" href={`/servicios/${s.slug}`} data-svc-card>
+                <figure>
+                  <Picture
+                    src={foto(s.foto)}
+                    formats={['avif', 'webp']}
+                    widths={[380, 620]}
+                    sizes="(max-width: 640px) 100vw, 26vw"
+                    alt={s.fotoAlt}
+                    loading="lazy"
+                  />
+                </figure>
+                <div class="svc__card__cuerpo">
+                  <p class="numeral">{s.numero}</p>
+                  <h3>{s.nombre}</h3>
+                  <p>{s.resumen}</p>
+                  <span class="svc__card__mas">
+                    Ver el servicio
+                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                      <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= GALERIA -->
+  <section class="galeria oscuro" data-galeria>
+    <div class="contenedor galeria__cabecera">
+      <div>
+        <p class="volanta">El centro por dentro</p>
+        <h2 class="titulo-l" data-lineas>Tres box privados<br />y un gimnasio propio</h2>
+      </div>
+      <p class="bajada" style="max-width:38ch">{centro.espacio}</p>
+    </div>
+
+    <div class="galeria__pista" data-galeria-pista>
+      {
+        galeria.map((g, i) => (
+          <figure class="galeria__item">
+            <Picture
+              src={foto(g.foto)}
+              formats={['avif', 'webp']}
+              widths={[320, 520, 840]}
+              sizes="(max-width: 1000px) 74vw, 30vw"
+              alt={g.alt}
+              loading="lazy"
+            />
+            <figcaption>{String(i + 1).padStart(2, '0')} — {g.titulo}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ========================================================== EQUIPO -->
+  <section class="seccion crema">
+    <Deco variante="suave" />
+    <div class="contenedor">
+      <div
+        style="display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap"
+      >
+        <div>
+          <p class="volanta">Equipo profesional</p>
+          <h2 class="titulo-l" data-lineas>Quiénes<br />te atienden</h2>
+        </div>
+        <a class="enlace" href="/equipo">
+          Ver las fichas completas
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="equipo__grid">
+        {
+          profesionales.map((p) => (
+            <article class="persona rv">
+              <Retrato iniciales={p.iniciales} nombre={p.nombre} />
+              <div class="persona__cuerpo">
+                <h3>{p.nombre}</h3>
+                <p class="persona__titulo">{p.titulo}</p>
+                {p.matricula && <p class="persona__mp">{p.matricula}</p>}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== OBRAS SOCIALES -->
+  <section class="seccion">
+    <div class="contenedor">
+      <div
+        style="display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap"
+      >
+        <div>
+          <p class="volanta">Obras sociales y prepagas</p>
+          <h2 class="titulo-l" data-lineas>Trabajamos con<br />{obrasSociales.length} coberturas</h2>
+        </div>
+        <a class="enlace" href="/obras-sociales">
+          Aranceles y requisitos
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="os__grid rv">
+        {
+          obrasSociales.map((o) => (
+            <div class="os__item">
+              {o.nombre}
+              {o.copago && <sup aria-label="abona copago">*</sup>}
+            </div>
+          ))
+        }
+      </div>
+      <p class="os__nota rv"><sup>*</sup><span>{aranceles.notaCopago}</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ SEDE -->
+  <section class="seccion oscuro">
+    <Deco variante="sede" />
+    <div class="contenedor">
+      <div class="sede__grid">
+        <div>
+          <p class="volanta">La sede</p>
+          <h2 class="titulo-l" data-lineas>{contacto.direccion}<br />{contacto.localidad}</h2>
+          <dl class="sede__datos">
+            <div class="sede__dato rv">
+              <dt>Dirección</dt>
+              <dd>
+                {contacto.direccion}, {contacto.localidad}, {contacto.provincia}.<br />
+                {contacto.entre}.
+              </dd>
+            </div>
+            <div class="sede__dato rv">
+              <dt>Horarios</dt>
+              <dd>
+                {contacto.horarios.map((h) => <span>{h.dias}: {h.horas}<br /></span>)}
+              </dd>
+            </div>
+            <div class="sede__dato rv">
+              <dt>Turnos</dt>
+              <dd>
+                <a href={contacto.whatsappTexto} target="_blank" rel="noopener"
+                  >WhatsApp {contacto.telefono}</a
+                ><br />
+                <a href={`mailto:${contacto.mail}`}>{contacto.mail}</a>
+              </dd>
+            </div>
+          </dl>
+          <div class="rv" style="margin-top:2.25rem">
+            <a class="btn btn--claro" href="/contacto">Cómo llegar</a>
+          </div>
+        </div>
+
+        <div class="rv">
+          <iframe
+            class="sede__mapa"
+            src={contacto.mapaEmbed}
+            title={`Mapa con la ubicación de ${centro.nombre} en ${contacto.direccion}, ${contacto.localidad}`}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Cierre />
+</Base>

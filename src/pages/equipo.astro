@@ -1,0 +1,123 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Deco from '../components/Deco.astro';
+import Cierre from '../components/Cierre.astro';
+import Retrato from '../components/Retrato.astro';
+import { foto } from '../data/fotos';
+import { profesionales, centro } from '../data/contenido';
+
+const conFicha = profesionales.filter((p) => p.fichaCompleta);
+const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
+---
+
+<Base
+  titulo="Equipo profesional | PhysioMove Río Gallegos"
+  descripcion="Kinesiólogos deportivos matriculados de PhysioMove: formación, especialidad y experiencia de cada profesional del centro en Río Gallegos."
+  ruta="/equipo"
+>
+  <section class="cabecera">
+    <Deco variante="hero" />
+    <div class="contenedor">
+      <p class="miga"><a href="/">Inicio</a> / Equipo</p>
+      <div class="cabecera__grid">
+        <div>
+          <p class="volanta" data-hero-anima>Equipo profesional</p>
+          <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy)">
+            Quiénes te atienden
+          </h1>
+          <p class="bajada" data-hero-anima style="margin-top:1.75rem">
+            {centro.diferencial}
+          </p>
+        </div>
+        <figure class="cabecera__figura" style="margin:0" data-hero-figura>
+          <Picture
+            src={foto('equipo-grupo')}
+            formats={['avif', 'webp']}
+            widths={[520, 800, 1100]}
+            sizes="(max-width: 760px) 100vw, 42vw"
+            alt="Tres profesionales de PhysioMove en el gimnasio del centro"
+            loading="eager"
+            fetchpriority="high"
+            data-hero-img
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" style="padding-top:clamp(2rem,5vw,4rem)">
+    <div class="contenedor">
+      {
+        conFicha.map((p) => (
+          <article class="ficha rv">
+            <div>
+              <Retrato iniciales={p.iniciales} nombre={p.nombre} clase="ficha__retrato" />
+              {p.matricula && (
+                <p class="persona__mp" style="padding-top:1rem">
+                  {p.matricula}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <h2 class="titulo-m" style="color:var(--navy)">{p.nombre}</h2>
+              <p class="bajada" style="margin-top:.6rem">{p.titulo}</p>
+
+              {p.bio && <p class="ficha__bio" style="margin-top:1.75rem">{p.bio}</p>}
+
+              <div class="ficha__datos" style="margin-top:2rem">
+                {p.especialidad && (
+                  <div class="ficha__dato">
+                    <h3>Especialidad</h3>
+                    <p>{p.especialidad}</p>
+                  </div>
+                )}
+                {p.formacion && (
+                  <div class="ficha__dato">
+                    <h3>Formación</h3>
+                    <p>{p.formacion}</p>
+                  </div>
+                )}
+                {p.experiencia && (
+                  <div class="ficha__dato">
+                    <h3>Experiencia</h3>
+                    <p>{p.experiencia}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    sinFicha.length > 0 && (
+      <section class="seccion crema">
+        <Deco variante="suave" />
+        <div class="contenedor">
+          <p class="volanta">También en el centro</p>
+          <h2 class="titulo-l" data-lineas>Equipo interdisciplinario</h2>
+          <div class="equipo__grid">
+            {sinFicha.map((p) => (
+              <article class="persona rv">
+                <Retrato iniciales={p.iniciales} nombre={p.nombre} />
+                <div class="persona__cuerpo">
+                  <h3>{p.nombre}</h3>
+                  <p class="persona__titulo">{p.titulo}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <Cierre
+    titulo="Sacá tu turno con el equipo"
+    texto="Escribinos por WhatsApp y coordinamos la primera consulta con el profesional que corresponda."
+  />
+</Base>

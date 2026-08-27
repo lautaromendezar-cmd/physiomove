@@ -1,0 +1,129 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Deco from '../../components/Deco.astro';
+import Cierre from '../../components/Cierre.astro';
+import { foto } from '../../data/fotos';
+import { servicios, centro, contacto } from '../../data/contenido';
+
+export function getStaticPaths() {
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.slug },
+    props: { servicio },
+  }));
+}
+
+const { servicio } = Astro.props;
+const otros = servicios.filter((s) => s.slug !== servicio.slug).slice(0, 3);
+---
+
+<Base
+  titulo={`${servicio.nombre} | PhysioMove Río Gallegos`}
+  descripcion={servicio.metaDescription}
+  ruta={`/servicios/${servicio.slug}`}
+>
+  <section class="cabecera">
+    <Deco variante="hero" />
+    <div class="contenedor">
+      <p class="miga">
+        <a href="/">Inicio</a> / <a href="/servicios">Servicios</a> / {servicio.nombre}
+      </p>
+      <div class="cabecera__grid">
+        <div>
+          <p class="volanta" data-hero-anima>Servicio {servicio.numero}</p>
+          <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy)">
+            {servicio.nombre}
+          </h1>
+          <p class="bajada" data-hero-anima style="margin-top:1.75rem">{servicio.resumen}</p>
+          <div class="hero__acciones" data-hero-anima>
+            <a class="btn" href={contacto.whatsappTexto} target="_blank" rel="noopener">
+              Agendá tu turno
+            </a>
+            <a class="btn btn--linea" href="/obras-sociales">Obras sociales</a>
+          </div>
+        </div>
+
+        <figure class="cabecera__figura" style="margin:0" data-hero-figura>
+          <Picture
+            src={foto(servicio.foto)}
+            formats={['avif', 'webp']}
+            widths={[520, 800, 1100]}
+            sizes="(max-width: 760px) 100vw, 42vw"
+            alt={servicio.fotoAlt}
+            loading="eager"
+            fetchpriority="high"
+            data-hero-img
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" style="padding-top:clamp(2rem,5vw,4rem)">
+    <div class="contenedor">
+      <div class="bloques">
+        {
+          servicio.bloques.map((b) => (
+            <div class="bloque rv">
+              <h2>{b.titulo}</h2>
+              <div>
+                {b.texto && <p>{b.texto}</p>}
+                {b.lista && (
+                  <ul>
+                    {b.lista.map((item) => (
+                      <li>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ))
+        }
+
+        {
+          servicio.atiende && (
+            <div class="bloque rv">
+              <h2>Quién lo atiende</h2>
+              <div>
+                <p>{servicio.atiende}</p>
+                <p style="margin-top:.75rem">
+                  <a class="enlace" href="/equipo">
+                    Conocé al equipo
+                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                      <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                  </a>
+                </p>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion crema">
+    <Deco variante="suave" />
+    <div class="contenedor">
+      <p class="volanta">Otros servicios</p>
+      <h2 class="titulo-l" data-lineas>Seguí explorando</h2>
+      <div class="otros">
+        {
+          otros.map((s) => (
+            <a class="rv" href={`/servicios/${s.slug}`}>
+              <span>{s.numero}</span>
+              {s.nombre}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Cierre
+    titulo={`Turnos para ${servicio.nombre.toLowerCase()}`}
+    texto={`Escribinos por WhatsApp y coordinamos. ${centro.nombre} está en ${contacto.direccion}, ${contacto.localidad}.`}
+  />
+</Base>

@@ -1,0 +1,27 @@
+---
+import Deco from './Deco.astro';
+import { contacto } from '../data/contenido';
+
+interface Props {
+  titulo?: string;
+  texto?: string;
+}
+const {
+  titulo = 'Empezá tu recuperación',
+  texto = 'Escribinos por WhatsApp y coordinamos la primera consulta. Si venís por obra social, acordate de la orden médica y la credencial.',
+} = Astro.props;
+---
+
+<section class="seccion cierre oscuro">
+  <Deco variante="cierre" />
+  <div class="contenedor cierre__inner">
+    <h2 class="rv">{titulo}</h2>
+    <p class="rv bajada" style="text-align:center">{texto}</p>
+    <div class="rv" style="display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center">
+      <a class="btn btn--claro" href={contacto.whatsappTexto} target="_blank" rel="noopener">
+        Agendá tu turno
+      </a>
+      <a class="btn btn--linea" href="/contacto">Cómo llegar</a>
+    </div>
+  </div>
+</section>

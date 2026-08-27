@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Deco from '../components/Deco.astro';
+import { contacto } from '../data/contenido';
+---
+
+<Base
+  titulo="Página no encontrada | PhysioMove"
+  descripcion="La página que buscás no existe. Volvé al inicio de PhysioMove, centro deportivo especializado en Río Gallegos."
+  ruta="/404"
+>
+  <section class="error">
+    <Deco variante="hero" />
+    <div class="contenedor">
+      <h1>404</h1>
+      <p class="bajada" style="margin-inline:auto">
+        Esta página no existe o cambió de dirección.
+      </p>
+      <div
+        style="display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;margin-top:2rem"
+      >
+        <a class="btn" href="/">Volver al inicio</a>
+        <a class="btn btn--linea" href={contacto.whatsappTexto} target="_blank" rel="noopener">
+          Escribinos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

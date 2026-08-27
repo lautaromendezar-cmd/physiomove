@@ -1,0 +1,107 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Deco from '../components/Deco.astro';
+import { foto } from '../data/fotos';
+import { contacto, centro } from '../data/contenido';
+---
+
+<Base
+  titulo="Contacto y sede | PhysioMove Río Gallegos"
+  descripcion="PhysioMove queda en Santiago del Estero 80, Río Gallegos, entre Don Bosco y Kirchner. Lunes a viernes de 7 a 20 hs. Turnos por WhatsApp."
+  ruta="/contacto"
+>
+  <section class="cabecera">
+    <Deco variante="hero" />
+    <div class="contenedor">
+      <p class="miga"><a href="/">Inicio</a> / Contacto</p>
+      <div class="cabecera__grid">
+        <div>
+          <p class="volanta" data-hero-anima>La sede</p>
+          <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy)">
+            {contacto.direccion}
+          </h1>
+          <p class="bajada" data-hero-anima style="margin-top:1.5rem">
+            {contacto.localidad}, {contacto.provincia}. {contacto.entre}.
+          </p>
+          <div class="hero__acciones" data-hero-anima>
+            <a class="btn" href={contacto.whatsappTexto} target="_blank" rel="noopener">
+              Agendá tu turno
+            </a>
+            <a class="btn btn--linea" href={contacto.mapaLink} target="_blank" rel="noopener">
+              Abrir en Google Maps
+            </a>
+          </div>
+        </div>
+
+        <figure class="cabecera__figura" style="margin:0" data-hero-figura>
+          <Picture
+            src={foto('espacio-recepcion')}
+            formats={['avif', 'webp']}
+            widths={[520, 800, 1100]}
+            sizes="(max-width: 760px) 100vw, 42vw"
+            alt="Recepción de PhysioMove con la alfombra del logo PM sobre el piso"
+            loading="eager"
+            fetchpriority="high"
+            data-hero-img
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion oscuro" style="padding-top:clamp(2.5rem,5vw,4rem)">
+    <Deco variante="sede" />
+    <div class="contenedor">
+      <div class="sede__grid">
+        <div>
+          <p class="volanta">Datos de contacto</p>
+          <h2 class="titulo-l" data-lineas>Escribinos<br />y coordinamos</h2>
+
+          <dl class="sede__datos">
+            <div class="sede__dato rv">
+              <dt>WhatsApp y teléfono</dt>
+              <dd>
+                <a href={contacto.whatsappTexto} target="_blank" rel="noopener"
+                  >{contacto.telefono}</a
+                >
+              </dd>
+            </div>
+            <div class="sede__dato rv">
+              <dt>Mail</dt>
+              <dd><a href={`mailto:${contacto.mail}`}>{contacto.mail}</a></dd>
+            </div>
+            <div class="sede__dato rv">
+              <dt>Instagram</dt>
+              <dd>
+                <a href={contacto.instagram} target="_blank" rel="noopener"
+                  >{contacto.instagramUsuario}</a
+                >
+              </dd>
+            </div>
+            <div class="sede__dato rv">
+              <dt>Horarios</dt>
+              <dd>
+                {contacto.horarios.map((h) => <span>{h.dias}: {h.horas}<br /></span>)}
+              </dd>
+            </div>
+            <div class="sede__dato rv">
+              <dt>Cómo llegar</dt>
+              <dd>{contacto.direccion}, {contacto.localidad}. {contacto.entre}.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="rv">
+          <iframe
+            class="sede__mapa"
+            src={contacto.mapaEmbed}
+            title={`Mapa con la ubicación de ${centro.nombre} en ${contacto.direccion}, ${contacto.localidad}`}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

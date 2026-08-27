@@ -1,0 +1,161 @@
+---
+import '../styles/global.css';
+import Cabecera from '../components/Cabecera.astro';
+import PieDePagina from '../components/PieDePagina.astro';
+import Preloader from '../components/Preloader.astro';
+import { centro, contacto, servicios } from '../data/contenido';
+
+interface Props {
+  titulo: string;
+  descripcion: string;
+  /** Se usa para el canonical y el og:url */
+  ruta?: string;
+}
+
+const { titulo, descripcion, ruta = Astro.url.pathname } = Astro.props;
+const canonical = new URL(ruta, Astro.site).href;
+const og = new URL('/og-physiomove.jpg', Astro.site).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': ['MedicalBusiness', 'Physiotherapy'],
+  '@id': new URL('/', Astro.site).href,
+  name: `${centro.nombre} — ${centro.bajada}`,
+  alternateName: 'PhysioMove Río Gallegos',
+  slogan: centro.frase,
+  description: centro.diferencial,
+  url: new URL('/', Astro.site).href,
+  image: og,
+  logo: new URL('/favicon-512.png', Astro.site).href,
+  telephone: contacto.telefonoE164,
+  email: contacto.mail,
+  foundingDate: String(centro.apertura),
+  priceRange: '$$',
+  currenciesAccepted: 'ARS',
+  medicalSpecialty: 'PhysicalTherapy',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: contacto.direccion,
+    addressLocality: contacto.localidad,
+    addressRegion: contacto.provincia,
+    postalCode: contacto.codigoPostal,
+    addressCountry: 'AR',
+  },
+  areaServed: { '@type': 'City', name: contacto.localidad },
+  sameAs: [contacto.instagram],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '20:00',
+    },
+  ],
+  availableService: servicios.map((s) => ({
+    '@type': 'MedicalTherapy',
+    name: s.nombre,
+    description: s.resumen,
+    url: new URL(`/servicios/${s.slug}`, Astro.site).href,
+  })),
+};
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#002B4A" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={centro.nombre} />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@400;500;600;700&display=swap"
+    />
+
+    <script is:inline set:html={JSON.stringify(schema)} type="application/ld+json" />
+
+    <script is:inline>
+      // Clase `js` -> habilita los estados iniciales de las animaciones.
+      // Si este script no corre, el CSS nunca oculta nada y la pagina se ve entera.
+      (function () {
+        var raiz = document.documentElement;
+        raiz.classList.add('js');
+        var reducido =
+          window.matchMedia &&
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var visto = false;
+        try {
+          visto = sessionStorage.getItem('pm-visto') === '1';
+        } catch (e) {}
+
+        if (visto || reducido) {
+          raiz.classList.add('pm-visto');
+        } else {
+          raiz.classList.add('pm-cargando');
+          // Red de seguridad: pase lo que pase con el JS de animaciones,
+          // a los 4,5 s el overlay se va y la pagina queda usable.
+          setTimeout(function () {
+            raiz.classList.remove('pm-cargando');
+            raiz.classList.add('pm-visto');
+            var pre = document.querySelector('[data-pre]');
+            if (pre && pre.parentNode) pre.parentNode.removeChild(pre);
+          }, 4500);
+        }
+        try {
+          sessionStorage.setItem('pm-visto', '1');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="salto" href="#contenido">Ir al contenido</a>
+    <Preloader />
+    <Cabecera />
+    <main id="contenido">
+      <slot />
+    </main>
+    <PieDePagina />
+
+    <a
+      class="wa"
+      href={contacto.whatsappTexto}
+      target="_blank"
+      rel="noopener"
+      aria-label="Escribinos por WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"
+        ></path>
+        <path
+          d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.16 8.16 0 0 1-1.25-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"
+        ></path>
+      </svg>
+    </a>
+
+    <script>
+      import '../scripts/animaciones';
+    </script>
+  </body>
+</html>
