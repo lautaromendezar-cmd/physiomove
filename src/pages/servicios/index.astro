@@ -28,7 +28,7 @@ import { servicios, contacto } from '../../data/contenido';
 
   <section class="seccion" style="padding-top:0">
     <div class="contenedor">
-      <div class="svc__lista">
+      <div class="svc__lista svc__lista--pagina">
         {
           servicios.map((s) => (
             <a class="svc__card rv" href={`/servicios/${s.slug}`}>
@@ -36,8 +36,8 @@ import { servicios, contacto } from '../../data/contenido';
                 <Picture
                   src={foto(s.foto)}
                   formats={['avif', 'webp']}
-                  widths={[380, 620]}
-                  sizes="(max-width: 640px) 100vw, 34vw"
+                  widths={[420, 700, 1000]}
+                  sizes="(max-width: 760px) 100vw, 46vw"
                   alt={s.fotoAlt}
                   loading="lazy"
                 />

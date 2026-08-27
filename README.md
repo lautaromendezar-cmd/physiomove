@@ -73,8 +73,10 @@ Sacada con un script de los archivos reales del logo (`material-drive/logo/`), n
 | `--acero-texto`   | `#3F6C88` | versión oscura para texto chico (AA) |
 | `--crema`         | `#EDE4D3` | círculo del logo (72 % del PNG)      |
 
-Tipografía: **Oswald** para títulos (mayúsculas, condensada, como en Instagram) e **Inter** para
-el cuerpo.
+Tipografía: **Oswald** para títulos (mayúsculas, condensada, como en Instagram) y **Geist** para
+el cuerpo. Geist en vez de Inter a propósito: Inter es la fuente por defecto de casi todo sitio
+generado con IA y se nota. Si hay que volver atrás es una línea en `global.css` (`--cuerpo`) y
+otra en el `<link>` de `Base.astro`.
 
 ### Imágenes
 
@@ -137,6 +139,31 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
 
 ---
+
+## Decisiones de diseño (anti-genérico)
+
+Repasado contra las reglas de "AI tells". Lo que se corrigió:
+
+- **Nada de cards repetidas.** Los seis servicios son una lista con hairlines y ritmo alternado
+  (la foto cambia de lado y de proporción en pares e impares). En `/servicios`, además, el primero
+  y el último ocupan el ancho completo y el resto va en dos columnas.
+- **Cajas sólo donde la elevación significa algo.** El equipo y los bloques de aranceles no llevan
+  borde: se separan con espacio y una línea. La única card real es la de "Particulares".
+- **"Otros servicios"** dejó de ser tres cards iguales en fila; ahora es una lista con separadores.
+- **Íconos reales.** El de WhatsApp es el path oficial de Simple Icons, no uno dibujado a ojo.
+- **Sin animar propiedades de layout.** El subrayado del nav va por `transform: scaleX` y la flecha
+  de los enlaces por `translateX`, no por `right` ni `gap`.
+- **Feedback táctil** en `:active` (antes no había ninguno).
+- **`dvh` además de `vh`** en las alturas, por la barra de direcciones de iOS.
+- Sin negro puro, sin glows, sin gradientes de texto, sin cursor custom, sin emojis, un solo
+  acento, y todos los datos son reales.
+
+Dos reglas del checklist se dejaron de lado **a propósito**, porque contradicen el pedido del
+cliente:
+
+- **Título del hero grande.** El brief pedía "que impacte al abrir" y contraste fuerte de tamaños.
+- **Nada en loop infinito.** El brief lo prohíbe explícitamente y para un centro de salud está
+  bien: no hay pulsos, shimmers ni carruseles automáticos.
 
 ## Qué verificar antes de publicar
 
