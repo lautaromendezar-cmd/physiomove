@@ -421,3 +421,68 @@ export const galeria = [
   { foto: 'equipo-hexagonos', titulo: 'El equipo', alt: 'Profesional de PhysioMove frente al mural con las etapas de la rehabilitación' },
   { foto: 'ninos-evaluacion', titulo: 'En el club', alt: 'Kinesiólogo registrando los datos de la evaluación de un chico durante un camp deportivo' },
 ];
+
+/**
+ * Banda de fotos del hero. Siete verticales elegidas porque muestran cosas
+ * DISTINTAS: tratamiento manual, entrenamiento, evaluacion con tecnologia,
+ * recovery, chicos y el metodo. Las 16 fotos del centro comparten pared, pasto
+ * verde y pista azul: en tarjetas chicas, siete del mismo tipo leen como una
+ * sola repetida.
+ *
+ * giro  = rotacion en grados (asimetrica a proposito: un arco simetrico lee a
+ *         plantilla)
+ * baja  = cuanto CAE la tarjeta por debajo del piso del hero, en fraccion de
+ *         su alto: es lo que rompe la fila perfecta
+ * vel   = velocidad relativa en el parallax del scroll
+ */
+export const bandaHero = [
+  {
+    foto: 'espacio-recepcion',
+    giro: -2.6,
+    baja: 0.55,
+    vel: 0.55,
+    alt: 'Recepción de PhysioMove con la alfombra del logo PM en el piso',
+  },
+  {
+    foto: 'consulta-evaluacion',
+    giro: 1.4,
+    baja: 0.1,
+    vel: 1,
+    alt: 'Kinesiólogo de PhysioMove trabajando sobre la rodilla de un paciente en la camilla',
+  },
+  {
+    foto: 'evaluacion-plataforma',
+    giro: -1.1,
+    baja: 0.75,
+    vel: 0.45,
+    alt: 'Evaluación de la carrera sobre cinta con registro de datos en PhysioMove',
+  },
+  {
+    foto: 'hero-entrenamiento',
+    giro: 0.9,
+    baja: 0,
+    vel: 0.8,
+    alt: 'Paciente entrenando con banda elástica sobre la pista azul del gimnasio de PhysioMove, bajo el cartel Donde volvés al deporte',
+  },
+  {
+    foto: 'equipo-hexagonos',
+    giro: -1.8,
+    baja: 0.6,
+    vel: 1.15,
+    alt: 'Profesional de PhysioMove frente al mural con las etapas de la rehabilitación',
+  },
+  {
+    foto: 'recovery-presoterapia',
+    giro: 2.4,
+    baja: 0.2,
+    vel: 0.6,
+    alt: 'Paciente en sesión de recovery con botas de presoterapia en un box privado',
+  },
+  {
+    foto: 'ninos-entrenamiento',
+    giro: -2.2,
+    baja: 0.85,
+    vel: 1.05,
+    alt: 'Dos chicos entrenando con un kinesiólogo frente al mural de hexágonos del centro',
+  },
+];

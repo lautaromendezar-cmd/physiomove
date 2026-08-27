@@ -14,6 +14,7 @@ import {
   obrasSociales,
   aranceles,
   galeria,
+  bandaHero,
 } from '../data/contenido';
 
 const boxPrivados = 3;
@@ -25,61 +26,73 @@ const boxPrivados = 3;
   ruta="/"
 >
   <!-- ============================================================ HERO -->
-  <section class="hero">
-    <Deco variante="hero" />
-    <div class="contenedor">
-      <div class="hero__grid">
-        <div class="hero__col">
-          <p class="volanta" data-hero-anima>
-            Centro deportivo especializado · {contacto.localidad}
-          </p>
-          <h1 class="titulo-xxl hero__titulo" data-hero-titulo>
-            Donde volvés<br /><span class="hero__frase-fuerte">al deporte</span>
-          </h1>
-          <p class="hero__texto" data-hero-anima>
-            Kinesiología deportiva, evaluaciones de rendimiento y readaptación en
-            {contacto.localidad}. Recuperarte a través del ejercicio guiado, planificado y
-            dosificado por kinesiólogos deportivos.
-          </p>
-          <div class="hero__acciones" data-hero-anima>
-            <a class="btn" href={contacto.whatsappTexto} target="_blank" rel="noopener">
-              Agendá tu turno
-            </a>
-            <a class="btn btn--linea" href="/servicios">Ver servicios</a>
-          </div>
+  <section class="hero oscuro">
+    <Deco variante="hero-oscuro" />
 
-          <dl class="hero__stats" data-hero-anima>
-            <div class="stat">
-              <dd class="stat__numero" data-scramble={String(centro.apertura)}>{centro.apertura}</dd>
-              <dt class="stat__texto">Año de apertura en {contacto.localidad}</dt>
-            </div>
-            <div class="stat">
-              <dd class="stat__numero" data-scramble={`0${boxPrivados}`}>0{boxPrivados}</dd>
-              <dt class="stat__texto">Box privados más gimnasio exclusivo</dt>
-            </div>
-            <div class="stat">
-              <dd class="stat__numero" data-scramble={String(obrasSociales.length)}>{obrasSociales.length}</dd>
-              <dt class="stat__texto">Obras sociales y prepagas</dt>
-            </div>
-          </dl>
+    <div class="hero__cabeza">
+      <div class="contenedor">
+        <p class="volanta volanta--centro" data-hero-anima>
+          Centro deportivo especializado · {contacto.localidad}
+        </p>
+        <h1 class="titulo-xxl hero__titulo" data-hero-titulo>
+          Donde volvés<br /><span class="hero__frase-fuerte">al deporte</span>
+        </h1>
+        <div class="hero__acciones" data-hero-anima>
+          <a class="btn btn--claro" href={contacto.whatsappTexto} target="_blank" rel="noopener">
+            Agendá tu turno
+          </a>
+          <a class="btn btn--linea" href="/servicios">Ver servicios</a>
         </div>
 
-        <figure class="hero__figura" data-hero-figura>
-          <Picture
-            src={foto('hero-entrenamiento')}
-            formats={['avif', 'webp']}
-            widths={[760, 1100, 1500]}
-            sizes="(max-width: 900px) 100vw, 50vw"
-            alt="Paciente entrenando con banda elástica sobre la pista azul del gimnasio de PhysioMove, bajo el cartel Donde volvés al deporte"
-            loading="eager"
-            fetchpriority="high"
-            data-hero-img
-          />
-          <figcaption class="hero__sello" data-hero-sello>
-            {contacto.direccion}<br />{contacto.localidad}, {contacto.provincia}
-          </figcaption>
-        </figure>
+        <dl class="hero__stats" data-hero-anima>
+          <div class="stat">
+            <dd class="stat__numero" data-scramble={String(centro.apertura)}>{centro.apertura}</dd>
+            <dt class="stat__texto">Año de apertura en {contacto.localidad}</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__numero" data-scramble={`0${boxPrivados}`}>0{boxPrivados}</dd>
+            <dt class="stat__texto">Box privados más gimnasio exclusivo</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__numero" data-scramble={String(obrasSociales.length)}>{obrasSociales.length}</dd>
+            <dt class="stat__texto">Obras sociales y prepagas</dt>
+          </div>
+        </dl>
       </div>
+    </div>
+
+    <!--
+      Banda de fotos verticales a sangre. La tira es mas ancha que el viewport a
+      proposito: las de los extremos se cortan contra el borde. El material del
+      cliente es 16 de 18 fotos en 3:4, asi que la banda usa la foto como viene,
+      sin recortes ni relleno inventado.
+    -->
+    <div class="hero__banda" data-hero-banda>
+      <ul class="hero__tira" role="list">
+        {
+          bandaHero.map((item, i) => (
+            <li
+              class="hero__carta"
+              data-hero-carta
+              style={`--giro:${item.giro}deg;--baja:${item.baja};--vel:${item.vel}`}
+            >
+              <div class="hero__marco" data-hero-marco>
+                <Picture
+                  src={foto(item.foto)}
+                  formats={['avif', 'webp']}
+                  widths={[320, 500, 700]}
+                  sizes="(max-width: 900px) 46vw, 24vw"
+                  alt={item.alt}
+                  loading={i < 4 ? 'eager' : 'lazy'}
+                  fetchpriority={i === 3 ? 'high' : undefined}
+                  data-hero-img={i === 3 ? '' : undefined}
+                />
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <span class="hero__velo" aria-hidden="true" />
     </div>
   </section>
 

@@ -159,9 +159,42 @@ function entradaHero() {
     tl.from(titulo, { opacity: 0, duration: 0.5 });
   }
 
-  tl.from('[data-hero-anima]', { y: 26, opacity: 0, duration: 0.7, stagger: 0.1 }, '-=0.55')
-    .from('[data-hero-figura]', { opacity: 0, scale: 1.04, duration: 1, ease: 'power2.out' }, '-=0.95')
-    .from('[data-hero-sello]', { opacity: 0, x: -18, duration: 0.5 }, '-=0.4');
+  tl.from('[data-hero-anima]', { y: 26, opacity: 0, duration: 0.7, stagger: 0.1 }, '-=0.55');
+
+  // Cabecera de las paginas internas (contacto, equipo, ficha de servicio).
+  // La home ya no tiene figura: entra por la banda de fotos, mas abajo.
+  if (q('[data-hero-figura]')) {
+    tl.from(
+      '[data-hero-figura]',
+      { opacity: 0, scale: 1.04, duration: 1, ease: 'power2.out' },
+      '-=0.95'
+    );
+    if (q('[data-hero-sello]')) {
+      tl.from('[data-hero-sello]', { opacity: 0, x: -18, duration: 0.5 }, '-=0.4');
+    }
+  }
+
+  // Banda de fotos: suben desde abajo, del centro hacia afuera. Se anima el
+  // .hero__marco y NO el <li>: el <li> lleva el giro y el desfasaje en su
+  // transform del CSS, y GSAP lo reescribiria entero.
+  const marcos = qa('[data-hero-marco]');
+  if (marcos.length) {
+    if (reducido) {
+      tl.from('[data-hero-banda]', { opacity: 0, duration: 0.6 }, '-=0.5');
+    } else {
+      tl.from(
+        marcos,
+        {
+          yPercent: 46,
+          opacity: 0,
+          duration: 1.15,
+          ease: 'power3.out',
+          stagger: { each: 0.075, from: 'center' },
+        },
+        '-=0.85'
+      );
+    }
+  }
 
   // ScrambleText: unico lugar del sitio, y una sola vez.
   const stats = qa('[data-scramble]');
@@ -398,6 +431,73 @@ function parallaxFotos() {
   });
 }
 
+/*
+  Banda del hero: parallax por tarjeta. Va sobre el <picture>, que es 125% mas
+  alto que la tarjeta justamente para tener de donde correrse. Cada una se mueve
+  segun su --vel: si todas fueran a la misma velocidad la banda se desplazaria
+  como un bloque solo y no se leeria la profundidad.
+*/
+function bandaHeroScroll() {
+  const banda = q('[data-hero-banda]');
+  if (!banda) return;
+
+  qa('[data-hero-carta]', banda).forEach((li) => {
+    const vel = parseFloat(getComputedStyle(li).getPropertyValue('--vel')) || 1;
+    const pic = q('picture', li);
+    if (!pic) return;
+    gsap.fromTo(
+      pic,
+      { yPercent: 6 * vel },
+      {
+        yPercent: -6 * vel,
+        ease: 'none',
+        scrollTrigger: { trigger: banda, start: 'top bottom', end: 'bottom top', scrub: 1 },
+      }
+    );
+  });
+}
+
+/*
+  Hover: la que se mira sube y recupera color, las demas bajan saturacion y se
+  apagan. El desplazamiento y la escala se animan como VARIABLES CSS (--sube,
+  --esc) en vez de tocar el transform: asi el giro y el desfasaje de cada
+  tarjeta, que viven en el CSS, siguen intactos.
+
+  Solo con puntero fino: en tactil el hover queda pegado despues del toque.
+*/
+function bandaHeroHover() {
+  const banda = q('[data-hero-banda]');
+  if (!banda || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const cartas = qa('[data-hero-carta]', banda);
+  if (!cartas.length) return;
+
+  const NORMAL = 'saturate(0.88) contrast(1.04) brightness(1)';
+  const APAGADA = 'saturate(0.42) contrast(1.04) brightness(0.68)';
+
+  const pintar = (activa) => {
+    cartas.forEach((li) => {
+      const esActiva = li === activa;
+      gsap.to(li, {
+        '--sube': activa ? (esActiva ? '-20px' : '10px') : '0px',
+        '--esc': esActiva ? 1.045 : 1,
+        duration: 0.45,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+      gsap.to(q('img', li), {
+        filter: activa && !esActiva ? APAGADA : NORMAL,
+        duration: 0.45,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    });
+  };
+
+  cartas.forEach((li) => li.addEventListener('mouseenter', () => pintar(li)));
+  banda.addEventListener('mouseleave', () => pintar(null));
+}
+
 /* ------------------------------------------------------------------- arranque */
 
 function arrancar() {
@@ -414,6 +514,8 @@ function arrancar() {
   decorativas();
   viajeroPorLaCurva();
   parallaxFotos();
+  bandaHeroScroll();
+  bandaHeroHover();
 
   const mm = gsap.matchMedia();
   mm.add('(min-width: 1001px)', () => {

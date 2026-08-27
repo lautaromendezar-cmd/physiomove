@@ -169,6 +169,7 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 | **Logos de 6 obras sociales**    | OSPE, OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Caja de Servicios Sociales y Poder Judicial son de Santa Cruz y no tienen logo web usable. Se muestran en texto. Detalle en `src/assets/logos/ORIGEN.md`. |
 | **Logo de OSMATA**               | El archivo del sitio oficial dice SMATA (el sindicato), no OSMATA. Conviene que el cliente lo confirme.              |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
+| **Foto del salto en la banda**   | `evaluacion-plataforma` es la más floja de las siete del hero: el original ya viene con la cabeza fuera de cuadro. Sirve, pero es la primera a reemplazar cuando el cliente mande fotos nuevas. |
 
 ---
 
@@ -179,14 +180,16 @@ Repasado contra las reglas de "AI tells". Lo que se corrigió:
 - **El hero entra en una pantalla.** Mide `100dvh` menos el header y todo lo que va adentro
   escala también con el **alto** del viewport (`min(vw, dvh)`), no sólo con el ancho: con `clamp()`
   sobre `vw` el título se clavaba en su máximo y los stats terminaban fuera de la primera pantalla.
-  Y la foto va en `position: absolute` dentro de su figura — con `height: 100%` en un contenedor de
-  altura indefinida el navegador cae a `auto`, la imagen tomaba su altura natural (1238 px a 1920
-  de ancho) y empujaba el hero. Verificado de 1920×1080 a 1280×720.
-- **La foto manda, sin marcos.** El hero sangra arriba, a la derecha y abajo del viewport, y las
-  cabeceras de las páginas internas sangran a la derecha. Antes las fotos iban dentro de un arco de
-  medio punto: leía como spa, no como centro deportivo, y encajonaba la imagen. Ojo con volver a
-  poner `style="margin:0"` en esas `<figure>`: pisa el margen negativo que produce el sangrado (el
-  reset global ya les saca el margen).
+  Verificado de 1920×1080 a 1024×640.
+- **El hero es una banda de fotos verticales, no una foto sola.** 16 de las 18 fotos del cliente
+  son 3:4. Una imagen a ancho completo obligaba a inventar con IA más de la mitad de una **sede
+  real** (y a reescribir el cartel pintado en la pared): se descartó. La banda consigue el ancho
+  completo sin tocar ninguna foto — el ancho lo da la tira, no cada imagen. Detalle en
+  "La banda del hero", más abajo.
+- **La foto manda, sin marcos.** Las cabeceras de las páginas internas sangran a la derecha. Antes
+  las fotos iban dentro de un arco de medio punto: leía como spa, no como centro deportivo, y
+  encajonaba la imagen. Ojo con volver a poner `style="margin:0"` en esas `<figure>`: pisa el
+  margen negativo que produce el sangrado (el reset global ya les saca el margen).
 - **Nada de cards repetidas.** Los seis servicios son una lista con hairlines y ritmo alternado
   (la foto cambia de lado y de proporción en pares e impares). En `/servicios`, además, el primero
   y el último ocupan el ancho completo y el resto va en dos columnas.
@@ -207,6 +210,37 @@ cliente:
 - **Título del hero grande.** El brief pedía "que impacte al abrir" y contraste fuerte de tamaños.
 - **Nada en loop infinito.** El brief lo prohíbe explícitamente y para un centro de salud está
   bien: no hay pulsos, shimmers ni carruseles automáticos.
+
+## La banda del hero
+
+Siete fotos verticales a sangre en el piso del hero, sobre navy. Las siete salen de
+`bandaHero` en `src/data/contenido.ts`, con su giro, su desfasaje y su velocidad de parallax.
+
+**Se eligieron por contraste de contenido, no por calidad:** recepción, tratamiento manual,
+evaluación con tecnología, entrenamiento, método, recovery y chicos. Las 18 fotos del centro
+comparten pared, pasto verde y pista azul; en tarjetas de 200 px, siete del mismo tipo leen como
+una sola repetida.
+
+Tres cosas que parecen detalles y no lo son:
+
+1. **Capas separadas por dueño.** El `<li>` lleva el giro y el desfasaje en su `transform` de CSS;
+   el `.hero__marco` es de la entrada; el `<picture>`, del parallax; el `<img>`, del filtro del
+   hover. Si GSAP toca el `transform` del `<li>` lo reescribe entero y se pierde el giro: lo lee
+   del matrix computado, en px, no como está declarado. Por eso el hover anima las **variables**
+   `--sube` y `--esc`, no `y` ni `scale`.
+2. **La tira va en `position: absolute` dentro de la banda.** La banda es un item de flex, así que
+   su alto no cuenta como "definido" y un `height: 100%` adentro cae a `auto`. Con las tarjetas
+   midiéndose por `aspect-ratio` sobre ese alto, el cálculo se cierra en cero y **las fotos
+   desaparecen**. El `inset: 0` le da un alto concreto. Por lo mismo la tira **no** puede llevar
+   `width: max-content`: el sangrado lo produce `justify-content: center`.
+3. **El alto de la tarjeta sale del espacio que sobra**, no de `vw` ni de `dvh`. Atado a `vw`, a
+   1280×720 la banda subía y se comía la fila de stats (medido: −8 px de holgura, texto ilegible
+   sobre una foto clara). Con la banda quedándose el resto del flex, la holgura queda entre 38 y
+   69 px de 1920×1080 a 1024×640.
+
+Medido con Chrome, no a ojo: holgura stats/fotos y sangrado en 7 viewports, contraste AA de los
+seis textos del hero sobre el navy, y que ni con `prefers-reduced-motion` ni sin JavaScript quede
+una foto invisible.
 
 ## Qué verificar antes de publicar
 

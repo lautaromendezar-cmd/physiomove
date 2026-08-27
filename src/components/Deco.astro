@@ -5,12 +5,16 @@
  * (data-draw) y en la variante "sede" una forma recorre la curva con MotionPath.
  */
 interface Props {
-  variante?: 'hero' | 'suave' | 'oscura' | 'sede' | 'cierre';
+  variante?: 'hero' | 'hero-oscuro' | 'suave' | 'oscura' | 'sede' | 'cierre';
   class?: string;
 }
 const { variante = 'suave', class: clase = '' } = Astro.props;
 
-const tono = variante === 'oscura' || variante === 'sede' || variante === 'cierre';
+const tono =
+  variante === 'hero-oscuro' ||
+  variante === 'oscura' ||
+  variante === 'sede' ||
+  variante === 'cierre';
 const trazo = tono ? 'rgba(150,185,207,.38)' : 'rgba(13,70,104,.22)';
 ---
 
@@ -41,6 +45,44 @@ const trazo = tono ? 'rgba(150,185,207,.38)' : 'rgba(13,70,104,.22)';
           <path
             data-draw
             d="M-40 560 C 260 470, 340 700, 620 600 S 1020 330, 1260 420"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1"
+            opacity=".6"
+          />
+        </svg>
+      </>
+    )
+  }
+
+  {
+    variante === 'hero-oscuro' && (
+      <>
+        <span
+          class="deco__blob"
+          style="width:min(46vw,560px);aspect-ratio:1;top:-18%;right:-12%;background:rgba(150,185,207,.11);opacity:1"
+        />
+        <span
+          class="deco__blob"
+          style="width:min(24vw,260px);aspect-ratio:1;top:8%;left:-9%;background:rgba(150,185,207,.08);opacity:1"
+        />
+        <svg
+          viewBox="0 0 1200 700"
+          preserveAspectRatio="none"
+          style="top:0;left:0;width:100%;height:100%"
+        >
+          {/* Corren por arriba del titulo: mas abajo cruzaban las letras y la
+              fila de stats, y leian como un error de maqueta. */}
+          <path
+            data-draw
+            d="M-40 95 C 200 40, 320 180, 580 120 S 990 -10, 1260 60"
+            fill="none"
+            stroke={trazo}
+            stroke-width="1.5"
+          />
+          <path
+            data-draw
+            d="M-40 160 C 240 105, 360 240, 620 180 S 1030 45, 1260 120"
             fill="none"
             stroke={trazo}
             stroke-width="1"
