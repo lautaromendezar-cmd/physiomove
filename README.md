@@ -68,10 +68,20 @@ Sacada con un script de los archivos reales del logo (`material-drive/logo/`), n
 | Token             | Hex       | De dónde sale                       |
 | ----------------- | --------- | ----------------------------------- |
 | `--navy`          | `#0D4668` | azul petróleo del logo (14 % del PNG) |
-| `--profundo`      | `#002B4A` | navy del banner de marca             |
+| `--profundo`      | `#00131F` | navy del banner (`#002B4A`) bajado a casi negro |
 | `--acero`         | `#96B9CF` | anillo interior del logo             |
 | `--acero-texto`   | `#3F6C88` | versión oscura para texto chico (AA) |
 | `--crema`         | `#EDE4D3` | círculo del logo (72 % del PNG)      |
+
+**Todas las superficies oscuras salen de `--profundo`** y son un solo tono: hero, la sección de
+razonamiento, la galería, la banda de cierre, el pie y el preloader. El pie tenía su propio
+`#001d33` hardcodeado; ya no. Se bajó de `#002B4A` a `#00131F` para que las fotos sean la fuente
+de luz de esas secciones.
+
+Si se vuelve a tocar ese valor hay que acordarse de tres degradados que funden **hacia** él y que
+por eso usan `--profundo-canales` (los canales sueltos, porque `rgb()` no acepta un hex con alfa):
+el velo de la banda del hero, su versión de mobile y el velo de la banda de cierre. Ese último va
+sobre una foto: bajar el token sin bajarle la opacidad tapa la imagen por completo.
 
 Tipografía: **Oswald** para títulos (mayúsculas, condensada, como en Instagram) y **Geist** para
 el cuerpo. Geist en vez de Inter a propósito: Inter es la fuente por defecto de casi todo sitio
@@ -238,9 +248,15 @@ Tres cosas que parecen detalles y no lo son:
    sobre una foto clara). Con la banda quedándose el resto del flex, la holgura queda entre 38 y
    69 px de 1920×1080 a 1024×640.
 
+El hero **no lleva curvas**: con siete fotos abajo, las líneas cruzaban las letras del título y
+competían con las imágenes. El resto del sitio las conserva (variantes `suave`, `oscura`, `sede`
+y `cierre` del `Deco`).
+
 Medido con Chrome, no a ojo: holgura stats/fotos y sangrado en 7 viewports, contraste AA de los
-seis textos del hero sobre el navy, y que ni con `prefers-reduced-motion` ni sin JavaScript quede
-una foto invisible.
+seis textos del hero sobre el fondo, y que ni con `prefers-reduced-motion` ni sin JavaScript quede
+una foto invisible. El texto de la banda de cierre, que sí va sobre una foto, se mide sobre los
+**píxeles renderizados**, capturando con el texto en `transparent`: si no, el muestreo lee las
+propias letras blancas como fondo y todo da 1:1.
 
 ## Qué verificar antes de publicar
 

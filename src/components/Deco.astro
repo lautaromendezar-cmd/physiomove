@@ -66,29 +66,12 @@ const trazo = tono ? 'rgba(150,185,207,.38)' : 'rgba(13,70,104,.22)';
           class="deco__blob"
           style="width:min(24vw,260px);aspect-ratio:1;top:8%;left:-9%;background:rgba(150,185,207,.08);opacity:1"
         />
-        <svg
-          viewBox="0 0 1200 700"
-          preserveAspectRatio="none"
-          style="top:0;left:0;width:100%;height:100%"
-        >
-          {/* Corren por arriba del titulo: mas abajo cruzaban las letras y la
-              fila de stats, y leian como un error de maqueta. */}
-          <path
-            data-draw
-            d="M-40 95 C 200 40, 320 180, 580 120 S 990 -10, 1260 60"
-            fill="none"
-            stroke={trazo}
-            stroke-width="1.5"
-          />
-          <path
-            data-draw
-            d="M-40 160 C 240 105, 360 240, 620 180 S 1030 45, 1260 120"
-            fill="none"
-            stroke={trazo}
-            stroke-width="1"
-            opacity=".6"
-          />
-        </svg>
+        {/*
+          Sin curvas. Con la banda de siete fotos abajo, las lineas cruzaban las
+          letras del titulo y competian con las imagenes en vez de acompanarlas.
+          El resto del sitio las conserva: viven en las variantes suave, oscura,
+          sede y cierre.
+        */}
       </>
     )
   }
