@@ -160,6 +160,11 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 
 Repasado contra las reglas de "AI tells". Lo que se corrigió:
 
+- **La foto manda, sin marcos.** El hero sangra arriba, a la derecha y abajo del viewport, y las
+  cabeceras de las páginas internas sangran a la derecha. Antes las fotos iban dentro de un arco de
+  medio punto: leía como spa, no como centro deportivo, y encajonaba la imagen. Ojo con volver a
+  poner `style="margin:0"` en esas `<figure>`: pisa el margen negativo que produce el sangrado (el
+  reset global ya les saca el margen).
 - **Nada de cards repetidas.** Los seis servicios son una lista con hairlines y ritmo alternado
   (la foto cambia de lado y de proporción en pares e impares). En `/servicios`, además, el primero
   y el último ocupan el ancho completo y el resto va en dos columnas.

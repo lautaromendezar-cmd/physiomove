@@ -29,7 +29,7 @@ const boxPrivados = 3;
     <Deco variante="hero" />
     <div class="contenedor">
       <div class="hero__grid">
-        <div>
+        <div class="hero__col">
           <p class="volanta" data-hero-anima>
             Centro deportivo especializado · {contacto.localidad}
           </p>
@@ -64,12 +64,12 @@ const boxPrivados = 3;
           </dl>
         </div>
 
-        <figure class="hero__figura" style="margin:0" data-hero-figura>
+        <figure class="hero__figura" data-hero-figura>
           <Picture
             src={foto('hero-entrenamiento')}
             formats={['avif', 'webp']}
-            widths={[640, 900, 1200]}
-            sizes="(max-width: 900px) 100vw, 46vw"
+            widths={[760, 1100, 1500]}
+            sizes="(max-width: 900px) 100vw, 50vw"
             alt="Paciente entrenando con banda elástica sobre la pista azul del gimnasio de PhysioMove, bajo el cartel Donde volvés al deporte"
             loading="eager"
             fetchpriority="high"
@@ -88,7 +88,7 @@ const boxPrivados = 3;
     <Deco variante="suave" />
     <div class="contenedor">
       <div class="origen__grid">
-        <figure class="origen__figura rv" style="margin:0">
+        <figure class="origen__figura rv">
           <Picture
             src={foto('equipo-grupo')}
             formats={['avif', 'webp']}
