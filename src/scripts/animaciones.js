@@ -421,11 +421,16 @@ function parallaxFotos() {
   qa('[data-parallax]').forEach((img) => {
     gsap.fromTo(
       img,
-      { yPercent: -3.5 },
+      { yPercent: -3 },
       {
-        yPercent: 3.5,
+        yPercent: 3,
         ease: 'none',
-        scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 },
+        scrollTrigger: {
+          trigger: img.closest('.marco-foto') || img.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
       }
     );
   });

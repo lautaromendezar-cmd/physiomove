@@ -161,6 +161,35 @@ Dos redes de seguridad, porque un overlay colgado deja la página inutilizable:
 
 ---
 
+## Fotos: marco, formas y parallax
+
+Tres piezas que se combinan, todas en `global.css`:
+
+- **`--radio-foto` (6 px)** es el redondeo de **todas** las fotos del sitio. El `--radio` de 2 px se
+  queda para botones y cajas: sobre una imagen no se ve. Única excepción, las cabeceras de las
+  páginas internas, que sangran contra el borde derecho del viewport: sólo se redondean las
+  esquinas de la izquierda, y en mobile —donde sangran de los dos lados— ninguna.
+- **`.marco-foto`** va en el `<picture>` (por `pictureAttributes`) y es el que enmascara. **La
+  relación de aspecto se declara en el marco, no en la `<img>`**, porque la imagen pasa a ser más
+  alta que su marco: 118 % con `top: -9%`. Ese sobrante es de donde se corre el parallax.
+- **`.foto-formas`** dibuja las dos formas desfasadas del fondo con `::before` (acero, arriba a la
+  izquierda) y `::after` (crema oscurecida, abajo a la derecha). `--simple` deja sólo la primera.
+  Sobre `.oscuro` la primera pasa a navy.
+
+Dos cosas que ya mordieron:
+
+1. **El recorrido del parallax tiene que entrar en el sobrante.** El script mueve la imagen ±3 % de
+   **su propia altura**; el sobrante es 9 % del marco por lado. Se verifica barriendo **todo** el
+   scroll, no en un punto suelto: el peor caso está en los extremos del recorrido, y midiendo en
+   el medio daba holgura de sobra cuando en realidad se pasaba.
+2. **Un `border` en el marco se come ese sobrante.** La foto chica de la sección oscura lo tenía y
+   quedaba en 1,3 px en desktop y en −1,3 px en mobile, o sea dejando ver el fondo. Va `outline`,
+   que dibuja por fuera y no ocupa caja.
+
+La crema tal cual (`#EDE4D3`) sobre el hueso de las secciones (`#F7F3EC`) no se ve: es la misma
+sombra. La forma se oscurece **hacia el negro y no hacia el navy** — mezclada con navy vira a gris
+verdoso y ensucia.
+
 ## Contenido pendiente del cliente
 
 El documento fuente tiene campos vacíos o con el placeholder de la plantilla. **Eso no se

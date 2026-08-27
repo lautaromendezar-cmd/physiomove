@@ -36,6 +36,10 @@
   --seccion: clamp(4.5rem, 10vw, 9rem);
 
   --radio: 2px;
+  /* Las FOTOS llevan mas radio que el resto de la interfaz. El de 2 px sobre una
+     imagen no se ve, y con siete tarjetas redondeadas en el hero el resto de las
+     fotos del sitio quedaban en otro idioma. */
+  --radio-foto: 6px;
   --sombra: 0 18px 40px -28px rgba(0, 43, 74, 0.45);
 }
 
@@ -957,9 +961,7 @@ p:last-child {
   height: calc(100% + 44px);
   width: auto;
   aspect-ratio: 3 / 4;
-  /* Un poco mas que el radio del sitio: son tarjetas sueltas sobre el fondo y
-     con 2 px se pegan entre si. */
-  border-radius: 6px;
+  border-radius: var(--radio-foto);
   overflow: hidden;
   /* --baja empuja hacia ABAJO, o sea fuera del viewport: las tarjetas estan
      ancladas al piso. Es lo que rompe la fila perfecta. */
@@ -1112,6 +1114,95 @@ p:last-child {
   }
 }
 
+/* ---------- fotos: marco y formas de fondo ---------- */
+
+/*
+  Marco de foto. Va en el <picture> (pictureAttributes) y es el que enmascara:
+  pone el redondeo y recorta. La relacion de aspecto se declara ACA y no en la
+  <img>, porque la imagen pasa a ser mas alta que el marco.
+*/
+.marco-foto {
+  position: relative;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radio-foto);
+}
+
+.marco-foto img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/*
+  Con parallax la imagen es 14% mas alta que el marco y arranca 7% arriba: ese
+  sobrante es de donde se corre. Sin el, al desplazarse deja ver el fondo por
+  arriba o por abajo. El recorrido del script es de 3,5% de la ALTURA DE LA
+  IMAGEN para cada lado, o sea un 4% del marco: entra en el 7% de sobra.
+*/
+.marco-foto img {
+  top: -7%;
+  height: 114%;
+}
+
+/*
+  Formas desfasadas detras de la foto. Son la misma caja de la foto corrida en
+  diagonal, una para cada lado. No llevan sombra ni borde: la profundidad la da
+  el desfasaje.
+*/
+.foto-formas {
+  position: relative;
+  --desfase: clamp(0.75rem, 2.2vw, 2rem);
+}
+
+.foto-formas::before,
+.foto-formas::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  border-radius: var(--radio-foto);
+  pointer-events: none;
+}
+
+/* Arriba a la izquierda. */
+.foto-formas::before {
+  inset: calc(-1 * var(--desfase)) var(--desfase) var(--desfase)
+    calc(-1 * var(--desfase));
+  background: var(--acero);
+}
+
+/*
+  Abajo a la derecha. La crema tal cual (#EDE4D3) sobre el hueso de la seccion
+  (#F7F3EC) no se ve: es la misma sombra. Se oscurece hacia el negro y no hacia
+  el navy: mezclada con el navy vira a gris verdoso y ensucia. Asi sigue siendo
+  la crema del logo, mas oscura.
+*/
+.foto-formas::after {
+  inset: var(--desfase) calc(-1 * var(--desfase)) calc(-1 * var(--desfase))
+    var(--desfase);
+  background: color-mix(in srgb, var(--crema) 84%, #000);
+}
+
+/* Una sola forma, para donde dos serian demasiado. */
+.foto-formas--simple::after {
+  display: none;
+}
+
+/* Sobre fondo oscuro la crema y el acero gritan: va el navy de la marca. */
+.oscuro .foto-formas::before {
+  background: var(--navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marco-foto img {
+    top: 0;
+    height: 100%;
+  }
+}
+
 /* ---------- origen ---------- */
 
 .origen__grid {
@@ -1125,11 +1216,8 @@ p:last-child {
   position: relative;
 }
 
-.origen__figura img {
-  width: 100%;
+.origen__marco {
   aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: var(--radio);
 }
 
 .origen__cita {
@@ -1247,15 +1335,21 @@ p:last-child {
   padding-bottom: clamp(3rem, 8vw, 6rem);
 }
 
-.dif__figuras img {
-  border-radius: var(--radio);
+.dif__figuras .marco-foto {
   box-shadow: 0 30px 60px -35px rgba(0, 0, 0, 0.85);
 }
 
-.dif__foto--grande img {
-  width: 100%;
+.dif__foto--grande {
   aspect-ratio: 3 / 4;
-  object-fit: cover;
+}
+
+/*
+  La caja de .dif__figuras incluye el padding de abajo que le deja lugar a la
+  foto chica. Sin corregirlo, la forma de fondo se estira bastante mas abajo que
+  la foto grande y queda flotando sin referencia.
+*/
+.dif__figuras.foto-formas::before {
+  bottom: calc(var(--desfase) + clamp(3rem, 8vw, 6rem));
 }
 
 .dif__foto--chica {
@@ -1265,11 +1359,11 @@ p:last-child {
   width: 58%;
 }
 
-.dif__foto--chica img {
-  width: 100%;
+.dif__foto--chica {
   aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 6px solid var(--profundo);
+  /* outline y no border: el border ocupa caja y le come al parallax el sobrante
+     del que se corre (quedaba en 1,3 px, y en mobile dejaba ver el fondo). */
+  outline: 6px solid var(--profundo);
 }
 
 @media (max-width: 900px) {
@@ -1395,7 +1489,7 @@ p:last-child {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: var(--radio);
+  border-radius: var(--radio-foto);
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -1586,7 +1680,7 @@ p:last-child {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: var(--radio);
+  border-radius: var(--radio-foto);
 }
 
 .galeria__item figcaption {
@@ -1653,7 +1747,7 @@ p:last-child {
 
 .persona__retrato {
   aspect-ratio: 4 / 5;
-  border-radius: var(--radio);
+  border-radius: var(--radio-foto);
   background: var(--navy);
   display: grid;
   place-items: center;
@@ -2081,12 +2175,15 @@ p:last-child {
   margin-right: calc(-1 * max(var(--gutter), (100vw - var(--ancho)) / 2 + var(--gutter)));
 }
 
-.cabecera__figura img {
-  width: 100%;
+.cabecera__marco {
   aspect-ratio: 5 / 4;
-  object-fit: cover;
+  /* Sangra contra el borde derecho del viewport: ese lado no tiene esquina que
+     redondear. Solo las de la izquierda. */
+  border-radius: var(--radio-foto) 0 0 var(--radio-foto);
+}
+
+.cabecera__figura img {
   object-position: 50% 32%;
-  border-radius: 0;
 }
 
 .miga {
@@ -2174,8 +2271,10 @@ p:last-child {
     margin-inline: calc(-1 * var(--gutter));
   }
 
-  .cabecera__figura img {
+  .cabecera__marco {
     aspect-ratio: 3 / 2;
+    /* Aca sangra de los dos lados: no queda ninguna esquina adentro. */
+    border-radius: 0;
   }
 
   .bloque {

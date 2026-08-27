@@ -100,7 +100,7 @@ const boxPrivados = 3;
     <Deco variante="suave" />
     <div class="contenedor">
       <div class="origen__grid">
-        <figure class="origen__figura rv">
+        <figure class="origen__figura foto-formas rv">
           <Picture
             src={foto('equipo-grupo')}
             formats={['avif', 'webp']}
@@ -108,6 +108,7 @@ const boxPrivados = 3;
             sizes="(max-width: 900px) 100vw, 36vw"
             alt="Tres profesionales de PhysioMove en el gimnasio del centro, frente al cartel Kinesiología deportiva"
             loading="lazy"
+            pictureAttributes={{ class: 'origen__marco marco-foto' }}
             data-parallax
           />
         </figure>
@@ -157,7 +158,7 @@ const boxPrivados = 3;
           </div>
         </div>
 
-        <div class="dif__figuras rv">
+        <div class="dif__figuras foto-formas foto-formas--simple rv">
           <Picture
             src={foto('razonamiento-datos')}
             formats={['avif', 'webp']}
@@ -165,7 +166,8 @@ const boxPrivados = 3;
             sizes="(max-width: 900px) 100vw, 30vw"
             alt="Pantalla con los datos de un test de fuerza durante una evaluación en PhysioMove"
             loading="lazy"
-            pictureAttributes={{ class: 'dif__foto--grande' }}
+            pictureAttributes={{ class: 'dif__foto--grande marco-foto' }}
+            data-parallax
           />
           <Picture
             src={foto('ejercicio-planificado')}
@@ -174,7 +176,8 @@ const boxPrivados = 3;
             sizes="(max-width: 900px) 50vw, 18vw"
             alt="Paciente ejecutando una sentadilla con banda elástica guiado por el equipo"
             loading="lazy"
-            pictureAttributes={{ class: 'dif__foto--chica' }}
+            pictureAttributes={{ class: 'dif__foto--chica marco-foto' }}
+            data-parallax
           />
         </div>
       </div>

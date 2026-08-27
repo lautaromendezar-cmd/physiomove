@@ -45,6 +45,8 @@ const otros = servicios.filter((s) => s.slug !== servicio.slug).slice(0, 3);
 
         <figure class="cabecera__figura" data-hero-figura>
           <Picture
+            pictureAttributes={{ class: 'cabecera__marco marco-foto' }}
+            data-parallax
             src={foto(servicio.foto)}
             formats={['avif', 'webp']}
             widths={[520, 800, 1100]}
