@@ -90,6 +90,22 @@ Las fotos originales del cliente son HEIC de hasta 5712 px y no entran al repo. 
 `material-drive/` y `_work/` están en `.gitignore`: el repo lleva el sitio, no los 257 MB de
 material fuente.
 
+#### Si clonás en otra máquina
+
+El material original **no está en el repo**. Con sólo clonar podés hacer todo salvo tocar las
+imágenes:
+
+| Se puede | No se puede sin `material-drive/` |
+| --- | --- |
+| `npm install`, `dev`, `build`, `preview` | `npm run assets` (necesita `_work/full`) |
+| Editar textos, estilos, animaciones, páginas | Recortar o regenerar una foto |
+| Cambiar qué foto usa cada sección, entre las 18 que ya están en `src/assets/fotos` | Sumar una foto nueva del centro |
+| Agregar el logo de una obra social nueva (se baja de su sitio, ver `ORIGEN.md`) | — |
+
+Para volver a tener el pipeline completo hay que copiar la carpeta `material-drive/` (el `.docx`,
+`imagenes-centro/`, `imagenes-profesionales/` y `logo/`) y convertir los HEIC a
+`_work/full/*.jpg` con ffmpeg, como se explica arriba.
+
 ### Logos de las obras sociales
 
 13 de las 19 coberturas se muestran con el logo oficial, bajado **del sitio de cada obra social**
