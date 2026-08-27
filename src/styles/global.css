@@ -896,7 +896,7 @@ p:last-child {
 
 .hero__tira {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   gap: clamp(0.75rem, 1.6vw, 1.75rem);
   height: 100%;
@@ -948,9 +948,13 @@ p:last-child {
   --esc: 1;
   position: relative;
   flex: none;
-  /* El alto lo pone la banda; el ancho sale del 3:4 de la foto original. */
-  height: 100%;
-  max-height: 560px;
+  /*
+    El alto lo pone la banda; el ancho sale del 3:4 de la foto original. Los
+    44 px de mas son para que toda tarjeta cuelgue por debajo del piso del hero:
+    sin eso, la que tiene --baja 0 apoya justo en el borde y al subir en el hover
+    despega y se le ve el canto de abajo.
+  */
+  height: calc(100% + 44px);
   width: auto;
   aspect-ratio: 3 / 4;
   /* Un poco mas que el radio del sitio: son tarjetas sueltas sobre el fondo y
@@ -997,18 +1001,25 @@ p:last-child {
   filter: saturate(0.88) contrast(1.04);
 }
 
-/* Velo: funde el borde de arriba de las fotos con el navy del hero. Es lo que
-   sostiene el contraste de los stats montados sobre la banda. */
-.hero__velo {
+/*
+  Velo: funde el borde de arriba de la foto con el fondo del hero.
+
+  Va en CADA tarjeta y no en la banda. Cuando era de la banda, la que sube en el
+  hover se salia de esa caja y aparecia su borde de arriba sin fundir, con la
+  foto cruda. Puesto en la tarjeta viaja con ella, y ademas queda parejo entre
+  las siete pese a que cada una arranca a distinta altura por su --baja.
+*/
+.hero__carta::after {
+  content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgb(var(--profundo-canales) / 0.94) 0%,
-    rgb(var(--profundo-canales) / 0.58) 12%,
-    rgb(var(--profundo-canales) / 0.2) 26%,
-    rgb(var(--profundo-canales) / 0) 44%
+    rgb(var(--profundo-canales) / 0.92) 0%,
+    rgb(var(--profundo-canales) / 0.5) 14%,
+    rgb(var(--profundo-canales) / 0.16) 28%,
+    rgb(var(--profundo-canales) / 0) 46%
   );
 }
 
@@ -1067,7 +1078,6 @@ p:last-child {
 
   .hero__carta {
     height: auto;
-    max-height: none;
     width: clamp(190px, 58vw, 300px);
   }
 
@@ -1093,11 +1103,11 @@ p:last-child {
     transform: none;
   }
 
-  .hero__velo {
+  .hero__carta::after {
     background: linear-gradient(
       to bottom,
-      rgb(var(--profundo-canales) / 0.55) 0%,
-      rgb(var(--profundo-canales) / 0) 32%
+      rgb(var(--profundo-canales) / 0.45) 0%,
+      rgb(var(--profundo-canales) / 0) 30%
     );
   }
 }

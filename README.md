@@ -231,22 +231,27 @@ evaluación con tecnología, entrenamiento, método, recovery y chicos. Las 18 f
 comparten pared, pasto verde y pista azul; en tarjetas de 200 px, siete del mismo tipo leen como
 una sola repetida.
 
-Tres cosas que parecen detalles y no lo son:
+Cuatro cosas que parecen detalles y no lo son:
 
 1. **Capas separadas por dueño.** El `<li>` lleva el giro y el desfasaje en su `transform` de CSS;
    el `.hero__marco` es de la entrada; el `<picture>`, del parallax; el `<img>`, del filtro del
    hover. Si GSAP toca el `transform` del `<li>` lo reescribe entero y se pierde el giro: lo lee
    del matrix computado, en px, no como está declarado. Por eso el hover anima las **variables**
    `--sube` y `--esc`, no `y` ni `scale`.
-2. **La tira va en `position: absolute` dentro de la banda.** La banda es un item de flex, así que
+2. **El velo es de cada foto, no de la banda.** Cuando vivía en la banda, la tarjeta que sube en
+   el hover se salía de esa caja y aparecía su borde de arriba sin fundir, con la foto cruda. En la
+   tarjeta viaja con ella y además queda parejo entre las siete, que arrancan a distinta altura por
+   su `--baja`. Por lo mismo cada tarjeta mide **44 px más que la banda**: así todas cuelgan por
+   debajo del piso del hero y la de `--baja: 0`, que apoyaba justo en el borde, no despega al subir.
+3. **La tira va en `position: absolute` dentro de la banda.** La banda es un item de flex, así que
    su alto no cuenta como "definido" y un `height: 100%` adentro cae a `auto`. Con las tarjetas
    midiéndose por `aspect-ratio` sobre ese alto, el cálculo se cierra en cero y **las fotos
    desaparecen**. El `inset: 0` le da un alto concreto. Por lo mismo la tira **no** puede llevar
    `width: max-content`: el sangrado lo produce `justify-content: center`.
-3. **El alto de la tarjeta sale del espacio que sobra**, no de `vw` ni de `dvh`. Atado a `vw`, a
+4. **El alto de la tarjeta sale del espacio que sobra**, no de `vw` ni de `dvh`. Atado a `vw`, a
    1280×720 la banda subía y se comía la fila de stats (medido: −8 px de holgura, texto ilegible
-   sobre una foto clara). Con la banda quedándose el resto del flex, la holgura queda entre 38 y
-   69 px de 1920×1080 a 1024×640.
+   sobre una foto clara). Con la banda quedándose el resto del flex, la holgura queda entre 46 y
+   71 px de 1920×1080 a 1024×640.
 
 El hero **no lleva curvas**: con siete fotos abajo, las líneas cruzaban las letras del título y
 competían con las imágenes. El resto del sitio las conserva (variantes `suave`, `oscura`, `sede`
