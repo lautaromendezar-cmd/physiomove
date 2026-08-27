@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/marca/logo.png';
-import { centro, contacto } from '../data/contenido';
+import { centro, contacto, servicios } from '../data/contenido';
 
 const ruta = Astro.url.pathname.replace(/\/$/, '') || '/';
 const actual = (href: string) =>
@@ -26,13 +26,52 @@ const enlaces = [
     </a>
 
     <nav class="pm-nav" id="menu" data-menu aria-label="Principal">
-      {
-        enlaces.map((e) => (
-          <a href={e.href} aria-current={actual(e.href) ? 'page' : undefined}>
-            {e.texto}
-          </a>
-        ))
-      }
+      <ul class="pm-nav__lista">
+        {
+          enlaces.map((e) =>
+            e.href === '/servicios' ? (
+              <li class="pm-nav__item pm-nav__item--sub" data-sub>
+                <a href={e.href} aria-current={actual(e.href) ? 'page' : undefined}>
+                  {e.texto}
+                </a>
+                <button
+                  class="pm-nav__abrir"
+                  type="button"
+                  data-sub-boton
+                  aria-expanded="false"
+                  aria-controls="submenu-servicios"
+                  aria-label="Ver todos los servicios"
+                >
+                  <svg width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true">
+                    <path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                </button>
+
+                <ul class="pm-sub" id="submenu-servicios">
+                  {servicios.map((s, i) => (
+                    <li style={`--i:${i}`}>
+                      <a
+                        href={`/servicios/${s.slug}`}
+                        aria-current={ruta === `/servicios/${s.slug}` ? 'page' : undefined}
+                      >
+                        <span>{s.numero}</span>
+                        {s.nombre}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ) : (
+              <li class="pm-nav__item">
+                <a href={e.href} aria-current={actual(e.href) ? 'page' : undefined}>
+                  {e.texto}
+                </a>
+              </li>
+            )
+          )
+        }
+      </ul>
+
       <a class="btn" href={contacto.whatsappTexto} target="_blank" rel="noopener">
         Agendá tu turno
       </a>
@@ -62,30 +101,60 @@ const enlaces = [
   const header = document.querySelector<HTMLElement>('[data-header]');
   const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
   const menu = document.querySelector<HTMLElement>('[data-menu]');
+  const sub = document.querySelector<HTMLElement>('[data-sub]');
+  const subBoton = document.querySelector<HTMLButtonElement>('[data-sub-boton]');
+
+  const cerrarSub = () => {
+    if (!sub || !subBoton) return;
+    sub.dataset.abierto = 'false';
+    subBoton.setAttribute('aria-expanded', 'false');
+  };
+
+  const cerrarMenu = () => {
+    if (!burger || !menu) return;
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Abrir el menú');
+    menu.dataset.abierto = 'false';
+    cerrarSub();
+  };
 
   if (burger && menu) {
     burger.addEventListener('click', () => {
       const abierto = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!abierto));
-      burger.setAttribute('aria-label', abierto ? 'Abrir el menú' : 'Cerrar el menú');
-      menu.dataset.abierto = String(!abierto);
+      if (abierto) return cerrarMenu();
+      burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Cerrar el menú');
+      menu.dataset.abierto = 'true';
     });
 
-    menu.querySelectorAll('a').forEach((a) =>
-      a.addEventListener('click', () => {
-        burger.setAttribute('aria-expanded', 'false');
-        menu.dataset.abierto = 'false';
-      })
-    );
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.dataset.abierto === 'true') {
-        burger.setAttribute('aria-expanded', 'false');
-        menu.dataset.abierto = 'false';
-        burger.focus();
-      }
-    });
+    // Los links navegan y cierran; el boton del submenu no debe cerrar nada.
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', cerrarMenu));
   }
+
+  if (sub && subBoton) {
+    subBoton.addEventListener('click', () => {
+      const abierto = sub.dataset.abierto === 'true';
+      sub.dataset.abierto = String(!abierto);
+      subBoton.setAttribute('aria-expanded', String(!abierto));
+    });
+
+    // En desktop el submenu se abre solo al pasar el mouse o al tabular dentro
+    // (lo hace el CSS). Aca solo se corrige el estado del boton al salir.
+    sub.addEventListener('mouseleave', cerrarSub);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (sub && sub.dataset.abierto === 'true') {
+      cerrarSub();
+      subBoton?.focus();
+      return;
+    }
+    if (menu && menu.dataset.abierto === 'true') {
+      cerrarMenu();
+      burger?.focus();
+    }
+  });
 
   if (header) {
     const marcar = () => {

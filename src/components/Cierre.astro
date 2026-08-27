@@ -1,5 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import Deco from './Deco.astro';
+import { foto } from '../data/fotos';
 import { contacto } from '../data/contenido';
 
 interface Props {
@@ -13,6 +15,17 @@ const {
 ---
 
 <section class="seccion cierre oscuro">
+  <div class="cierre__fondo" aria-hidden="true">
+    <Picture
+      src={foto('cta-fondo')}
+      formats={['avif', 'webp']}
+      widths={[900, 1600, 2400]}
+      sizes="100vw"
+      alt=""
+      loading="lazy"
+      data-parallax-fondo
+    />
+  </div>
   <Deco variante="cierre" />
   <div class="contenedor cierre__inner">
     <h2 class="rv">{titulo}</h2>

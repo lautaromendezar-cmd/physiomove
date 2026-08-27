@@ -50,11 +50,11 @@ import { contacto, centro } from '../data/contenido';
     </div>
   </section>
 
-  <section class="seccion oscuro" style="padding-top:clamp(2.5rem,5vw,4rem)">
+  <section class="seccion oscuro sede">
     <Deco variante="sede" />
-    <div class="contenedor">
+    <div>
       <div class="sede__grid">
-        <div>
+        <div class="sede__texto">
           <p class="volanta">Datos de contacto</p>
           <h2 class="titulo-l" data-lineas>Escribinos<br />y coordinamos</h2>
 
@@ -92,7 +92,7 @@ import { contacto, centro } from '../data/contenido';
           </dl>
         </div>
 
-        <div class="rv">
+        <div class="sede__figura">
           <iframe
             class="sede__mapa"
             src={contacto.mapaEmbed}

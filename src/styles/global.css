@@ -98,6 +98,14 @@ p {
   text-wrap: pretty;
 }
 
+/* El navegador le mete margin-inline-start: 40px a los <dd> por defecto:
+   sin esto los numeros del hero quedan corridos respecto de su etiqueta. */
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
 p:last-child {
   margin-bottom: 0;
 }
@@ -450,6 +458,22 @@ p:last-child {
   gap: clamp(1rem, 2vw, 2rem);
 }
 
+.pm-nav__lista {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pm-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .pm-nav a {
   font-family: var(--display);
   text-transform: uppercase;
@@ -489,12 +513,95 @@ p:last-child {
   font-size: 0.8rem;
 }
 
+/* ---------- submenu de servicios ---------- */
+
+.pm-nav__abrir {
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--gris);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+}
+
+.pm-nav__item--sub:hover .pm-nav__abrir,
+.pm-nav__item--sub:focus-within .pm-nav__abrir {
+  transform: rotate(180deg);
+  color: var(--navy);
+}
+
+.pm-sub {
+  position: absolute;
+  top: 100%;
+  left: -1rem;
+  z-index: 5;
+  min-width: 20rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: 0 24px 48px -30px rgba(0, 43, 74, 0.65);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.24s;
+}
+
+.pm-nav__item--sub:hover .pm-sub,
+.pm-nav__item--sub:focus-within .pm-sub,
+.pm-nav__item--sub[data-abierto='true'] .pm-sub {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.pm-sub li {
+  display: block;
+}
+
+.pm-sub a {
+  display: grid;
+  grid-template-columns: 1.9rem 1fr;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pm-sub a::after {
+  display: none;
+}
+
+.pm-sub a span {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--acero-texto);
+}
+
+.pm-sub a:hover,
+.pm-sub a[aria-current='page'] {
+  background: var(--hueso);
+  color: var(--navy);
+}
+
 /* El CTA dentro del menu es solo para mobile: en desktop manda .pm-header__cta */
 @media (min-width: 901px) {
-  .pm-nav .btn {
+  .pm-nav > .btn {
     display: none;
   }
 }
+
 
 .pm-burger {
   display: none;
@@ -578,17 +685,84 @@ p:last-child {
     transform: translateY(0);
   }
 
+  .pm-nav__lista {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+
+  .pm-nav__item {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--linea);
+  }
+
   .pm-nav a {
     font-size: 1.15rem;
     padding: 0.85rem 0;
-    border-bottom: 1px solid var(--linea);
+    flex: 1;
   }
 
   .pm-nav a::after {
     display: none;
   }
 
-  .pm-nav .btn {
+  .pm-nav__abrir {
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--navy);
+  }
+
+  /* En mobile no hay hover: el submenu se despliega con el boton.
+     Se muestra con display (nada de animar alturas) y cada item entra con
+     transform + opacity en cascada. */
+  .pm-sub,
+  .pm-nav__item--sub:hover .pm-sub,
+  .pm-nav__item--sub:focus-within .pm-sub {
+    position: static;
+    order: 3;
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 0 0 0.5rem;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+  }
+
+  .pm-nav__item--sub[data-abierto='true'] .pm-sub {
+    display: block;
+  }
+
+  .pm-nav__item--sub[data-abierto='true'] .pm-sub li {
+    animation: pm-sub-entra 0.34s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 40ms);
+  }
+
+  @keyframes pm-sub-entra {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pm-nav__item--sub[data-abierto='true'] .pm-sub li {
+      animation: none;
+    }
+  }
+
+  .pm-sub a {
+    font-size: 0.95rem;
+    padding: 0.6rem 0 0.6rem 1rem;
+    border-bottom: 0;
+  }
+
+  .pm-nav > .btn {
     margin-top: 1.25rem;
     justify-content: center;
   }
@@ -1232,9 +1406,28 @@ p:last-child {
 
 .equipo__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
-  gap: clamp(1rem, 2.2vw, 1.75rem);
+  /* Los cinco del staff van en una sola fila: con auto-fill entraban cuatro
+     y el quinto quedaba colgado abajo. */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.9rem, 1.8vw, 1.5rem);
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* En /equipo esta grilla la usa un solo profesional: ahi no se fuerza la fila. */
+.equipo__grid--pocos {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+}
+
+@media (max-width: 1000px) {
+  .equipo__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .equipo__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .persona {
@@ -1261,7 +1454,7 @@ p:last-child {
 .persona__iniciales {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   color: var(--crema);
   letter-spacing: 0.04em;
   position: relative;
@@ -1285,13 +1478,14 @@ p:last-child {
 }
 
 .persona__cuerpo h3 {
-  font-size: 1.08rem;
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
   color: var(--navy);
-  line-height: 1.1;
+  line-height: 1.12;
+  text-wrap: balance;
 }
 
 .persona__titulo {
-  font-size: 0.86rem;
+  font-size: 0.8rem;
   color: var(--gris);
   margin: 0;
   line-height: 1.45;
@@ -1387,10 +1581,70 @@ p:last-child {
   position: relative;
   border-right: 1px solid var(--linea);
   border-bottom: 1px solid var(--linea);
-  padding: 1.15rem 1.35rem;
+  min-height: 112px;
+  perspective: 700px;
+}
+
+/* La celda gira sobre su eje y el dorso dice el nombre y si abona copago,
+   que hoy solo se sabe yendo a leer la nota al pie. */
+.os__cara {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  transform-style: preserve-3d;
+  transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.os__item:hover .os__cara,
+.os__item:focus-within .os__cara {
+  transform: rotateX(180deg);
+}
+
+.os__frente,
+.os__dorso {
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
-  min-height: 112px;
+  padding: 1.15rem 1.35rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.os__dorso {
+  transform: rotateX(180deg);
+  background: var(--navy);
+  align-content: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.os__dorso b {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.92rem;
+  line-height: 1.15;
+  color: #fff;
+  font-weight: 500;
+}
+
+.os__dorso small {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--acero);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os__cara {
+    transition: none;
+  }
+
+  .os__item:hover .os__cara,
+  .os__item:focus-within .os__cara {
+    transform: none;
+  }
 }
 
 /* Los logos se normalizaron a una caja de 520x180 con el mismo peso optico,
@@ -1497,11 +1751,31 @@ p:last-child {
 
 /* ---------- sede / contacto ---------- */
 
+.sede {
+  padding-block: 0;
+  overflow: hidden;
+}
+
 .sede__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: stretch;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.sede__texto {
+  padding-block: var(--seccion);
+  /* Alinea con .contenedor sin depender de el, para que la columna del mapa
+     pueda salirse hasta el borde del viewport. */
+  padding-inline-start: max(
+    var(--gutter),
+    calc((100vw - var(--ancho)) / 2 + var(--gutter))
+  );
+}
+
+.sede__figura {
+  position: relative;
+  min-height: 100%;
 }
 
 .sede__datos {
@@ -1541,9 +1815,10 @@ p:last-child {
 
 .sede__mapa {
   border: 0;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radio);
+  height: 100%;
   filter: grayscale(0.25) contrast(1.05);
   background: #0a3552;
 }
@@ -1551,10 +1826,22 @@ p:last-child {
 @media (max-width: 900px) {
   .sede__grid {
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .sede__texto {
+    padding-inline: var(--gutter);
+    padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .sede__figura {
+    position: static;
+    min-height: 0;
   }
 
   .sede__mapa {
-    aspect-ratio: 1 / 1;
+    position: static;
+    height: clamp(320px, 60vw, 460px);
   }
 }
 
@@ -1724,10 +2011,37 @@ p:last-child {
 
 .cierre {
   position: relative;
-  background: var(--navy);
+  background: var(--profundo);
   color: #fff;
   overflow: hidden;
   text-align: center;
+  isolation: isolate;
+  padding-block: clamp(5rem, 11vw, 10rem);
+}
+
+/* Foto real del centro de fondo, con velo. El archivo ya viene desenfocado
+   desde scripts/preparar-imagenes.mjs para que no compita con el titulo. */
+.cierre__fondo {
+  position: absolute;
+  inset: -8% 0;
+  z-index: -2;
+}
+
+.cierre__fondo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+.cierre::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(120% 82% at 50% 50%, rgba(0, 28, 49, 0.68) 0%, rgba(0, 28, 49, 0.9) 72%),
+    rgba(0, 43, 74, 0.74);
 }
 
 .cierre__inner {

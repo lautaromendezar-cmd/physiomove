@@ -100,7 +100,7 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
         <div class="contenedor">
           <p class="volanta">También en el centro</p>
           <h2 class="titulo-l" data-lineas>Equipo interdisciplinario</h2>
-          <div class="equipo__grid">
+          <div class="equipo__grid equipo__grid--pocos">
             {sinFicha.map((p) => (
               <article class="persona rv">
                 <Retrato iniciales={p.iniciales} nombre={p.nombre} />

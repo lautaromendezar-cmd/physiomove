@@ -114,8 +114,13 @@ GSAP 3.15 con los plugins oficiales (gratuitos desde 3.13). Todo vive en
 - **Pin lateral** — el panel de servicios queda fijo con índice activo y barra de progreso.
 - **Galería horizontal** — sección pineada con scroll horizontal; en mobile degrada a carrusel
   táctil con `scroll-snap`.
+- **Parallax de fondo** — los círculos y las curvas de cada sección se mueven a distinta
+  velocidad que el contenido, igual que la foto de la banda de cierre.
 
-Con `prefers-reduced-motion: reduce` no hay preloader, ni scrambles, ni pins, ni motion path.
+El flip de las obras sociales es CSS puro (`rotateX` sobre `preserve-3d`), no GSAP.
+
+Con `prefers-reduced-motion: reduce` no hay preloader, ni scrambles, ni pins, ni motion path, ni
+flip.
 
 ### Preloader
 

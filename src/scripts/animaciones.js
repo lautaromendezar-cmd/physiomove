@@ -235,18 +235,54 @@ function decorativas() {
     );
   });
 
-  qa('.deco__blob').forEach((blob, i) => {
+  // Parallax de las formas de fondo. Cada capa se mueve a distinta velocidad:
+  // los circulos mas que las curvas, para que se lea profundidad y no un bloque.
+  qa('.deco').forEach((deco) => {
+    const seccion = deco.parentElement;
+    if (!seccion) return;
+
+    // En la primera pantalla el scroll arranca con la seccion ya encuadrada:
+    // con 'top bottom' el recorrido util seria la mitad y no se notaria nada.
+    const arriba = seccion.getBoundingClientRect().top + window.scrollY < 10;
+    const st = {
+      trigger: seccion,
+      start: arriba ? 'top top' : 'top bottom',
+      end: 'bottom top',
+      scrub: 1,
+      invalidateOnRefresh: true,
+    };
+
+    qa('.deco__blob', deco).forEach((blob, i) => {
+      gsap.fromTo(
+        blob,
+        { yPercent: -14 - i * 4 },
+        { yPercent: 20 + i * 6, ease: 'none', scrollTrigger: { ...st } }
+      );
+    });
+
+    qa('svg', deco).forEach((svg) => {
+      gsap.fromTo(
+        svg,
+        { yPercent: -6 },
+        { yPercent: 9, ease: 'none', scrollTrigger: { ...st } }
+      );
+    });
+  });
+
+  // La foto de fondo del CTA se mueve al reves que la seccion.
+  qa('[data-parallax-fondo]').forEach((img) => {
     gsap.fromTo(
-      blob,
-      { yPercent: -6 },
+      img,
+      { yPercent: -7 },
       {
-        yPercent: 10 + i * 2,
+        yPercent: 7,
         ease: 'none',
         scrollTrigger: {
-          trigger: blob.closest('.deco').parentElement,
+          trigger: img.closest('section'),
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 1.1,
+          scrub: 1,
+          invalidateOnRefresh: true,
         },
       }
     );

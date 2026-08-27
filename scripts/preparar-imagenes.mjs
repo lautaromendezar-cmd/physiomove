@@ -71,3 +71,17 @@ await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#002
   .toFile('public/og-physiomove.jpg');
 
 console.log('listo');
+
+// Fondo apaisado para la banda de cierre: se recorta una franja horizontal del
+// original vertical, porque a 21:9 un recorte centrado pierde toda la escena.
+// Va con un desenfoque leve horneado en el archivo: sin eso el cartel de la
+// pared se lee y compite con el titulo del CTA, y hacerlo por CSS costaria GPU.
+await sharp(path.join(ORIGEN, 'IMG_1201.jpg'))
+  .rotate()
+  .extract({ left: 0, top: 1750, width: 4284, height: 1900 })
+  .resize({ width: 2400 })
+  .blur(7)
+  .modulate({ brightness: 0.82 })
+  .jpeg({ quality: 72, mozjpeg: true })
+  .toFile(path.join(FOTOS, 'cta-fondo.jpg'));
+console.log('cta-fondo.jpg listo');

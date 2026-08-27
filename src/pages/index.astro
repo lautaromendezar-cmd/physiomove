@@ -315,11 +315,11 @@ const boxPrivados = 3;
   </section>
 
   <!-- ============================================================ SEDE -->
-  <section class="seccion oscuro">
+  <section class="seccion oscuro sede">
     <Deco variante="sede" />
-    <div class="contenedor">
+    <div>
       <div class="sede__grid">
-        <div>
+        <div class="sede__texto">
           <p class="volanta">La sede</p>
           <h2 class="titulo-l" data-lineas>{contacto.direccion}<br />{contacto.localidad}</h2>
           <dl class="sede__datos">
@@ -351,7 +351,7 @@ const boxPrivados = 3;
           </div>
         </div>
 
-        <div class="rv">
+        <div class="sede__figura">
           <iframe
             class="sede__mapa"
             src={contacto.mapaEmbed}
