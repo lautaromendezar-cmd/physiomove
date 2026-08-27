@@ -160,6 +160,12 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 
 Repasado contra las reglas de "AI tells". Lo que se corrigió:
 
+- **El hero entra en una pantalla.** Mide `100dvh` menos el header y todo lo que va adentro
+  escala también con el **alto** del viewport (`min(vw, dvh)`), no sólo con el ancho: con `clamp()`
+  sobre `vw` el título se clavaba en su máximo y los stats terminaban fuera de la primera pantalla.
+  Y la foto va en `position: absolute` dentro de su figura — con `height: 100%` en un contenedor de
+  altura indefinida el navegador cae a `auto`, la imagen tomaba su altura natural (1238 px a 1920
+  de ancho) y empujaba el hero. Verificado de 1920×1080 a 1280×720.
 - **La foto manda, sin marcos.** El hero sangra arriba, a la derecha y abajo del viewport, y las
   cabeceras de las páginas internas sangran a la derecha. Antes las fotos iban dentro de un arco de
   medio punto: leía como spa, no como centro deportivo, y encajonaba la imagen. Ojo con volver a
