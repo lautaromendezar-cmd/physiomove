@@ -190,6 +190,24 @@ La crema tal cual (`#EDE4D3`) sobre el hueso de las secciones (`#F7F3EC`) no se 
 sombra. La forma se oscurece **hacia el negro y no hacia el navy** — mezclada con navy vira a gris
 verdoso y ensucia.
 
+### Retratos del equipo
+
+Los archivos del cliente (`IMG_4406.HEIC`, `IMG_5903.HEIC`…) **no traen metadata que permita saber
+quién es quién**. Los identificó él, por el **orden de la carpeta del Drive ordenada por nombre**:
+la lista que pasó es de izquierda a derecha. Ese mapa vive en `scripts/preparar-imagenes.mjs`
+(`RETRATOS_MAP`) y es la única fuente de la identificación — si alguna vez se reordena la carpeta,
+el mapa sigue siendo válido porque guarda el nombre de archivo, no la posición.
+
+Como control cruzado, el género de las seis fotos coincide con el de los seis nombres en ese orden.
+
+Vienen de cuerpo entero y descentradas, así que cada una lleva **su recorte a mano** al 4:5 de las
+fichas (`cx`, `arriba`, `alto`, en fracciones de la original). El recorte automático de sharp
+(`strategy.attention`) no sirve acá: las fotos ya son 3:4, así que recorta apenas los costados y
+deja a la persona igual de chica.
+
+Los retratos van en `src/assets/retratos/` y **no** en `src/assets/fotos/`: el glob de `fotos.ts` es
+eager y se llevaría al build cualquier retrato que todavía no use nadie.
+
 ## Contenido pendiente del cliente
 
 El documento fuente tiene campos vacíos o con el placeholder de la plantilla. **Eso no se
@@ -197,7 +215,7 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 
 | Qué                              | Estado                                                                                                            |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Fotos de los profesionales**   | Hay 6 retratos en `imagenes-profesionales/` pero con nombres tipo `IMG_5903.HEIC`: no se sabe quién es quién. Se usa el monograma sobre la paleta de marca. Cuando lleguen identificadas, se le pasa `foto` a `<Retrato>`. |
+| **Ficha de Nicolás Ovando**      | La carpeta trae **6** retratos y el sitio tiene **5** profesionales: la sexta foto es del profe Nicolás Ovando, que no figura en el documento. No se emite ni se inventa su ficha. Cuando el cliente mande título y especialidad, se suma a `RETRATOS_MAP` (su recorte ya está anotado ahí) y a `profesionales`. |
 | **Sección de videos**            | Punto 6 del documento sin definir. No se construyó; queda el comentario en `PieDePagina.astro`.                     |
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
 | **Ficha de Graciela Sanchez**    | Sin experiencia, Instagram ni bio. Se muestra con título, matrícula, especialidad y formación.                       |

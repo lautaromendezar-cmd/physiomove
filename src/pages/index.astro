@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Deco from '../components/Deco.astro';
 import Cierre from '../components/Cierre.astro';
 import Retrato from '../components/Retrato.astro';
+import { retrato } from '../data/retratos';
 import ObrasSociales from '../components/ObrasSociales.astro';
 import { foto } from '../data/fotos';
 import {
@@ -293,7 +294,7 @@ const boxPrivados = 3;
         {
           profesionales.map((p) => (
             <article class="persona rv">
-              <Retrato iniciales={p.iniciales} nombre={p.nombre} />
+              <Retrato iniciales={p.iniciales} nombre={p.nombre} foto={retrato(p.retrato)} />
               <div class="persona__cuerpo">
                 <h3>{p.nombre}</h3>
                 <p class="persona__titulo">{p.titulo}</p>

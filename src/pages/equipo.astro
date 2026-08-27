@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Deco from '../components/Deco.astro';
 import Cierre from '../components/Cierre.astro';
 import Retrato from '../components/Retrato.astro';
+import { retrato } from '../data/retratos';
 import { foto } from '../data/fotos';
 import { profesionales, centro } from '../data/contenido';
 
@@ -54,7 +55,7 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
         conFicha.map((p) => (
           <article class="ficha rv">
             <div>
-              <Retrato iniciales={p.iniciales} nombre={p.nombre} clase="ficha__retrato" />
+              <Retrato iniciales={p.iniciales} nombre={p.nombre} foto={retrato(p.retrato)} clase="ficha__retrato" />
               {p.matricula && (
                 <p class="persona__mp" style="padding-top:1rem">
                   {p.matricula}
@@ -105,7 +106,7 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
           <div class="equipo__grid equipo__grid--pocos">
             {sinFicha.map((p) => (
               <article class="persona rv">
-                <Retrato iniciales={p.iniciales} nombre={p.nombre} />
+                <Retrato iniciales={p.iniciales} nombre={p.nombre} foto={retrato(p.retrato)} />
                 <div class="persona__cuerpo">
                   <h3>{p.nombre}</h3>
                   <p class="persona__titulo">{p.titulo}</p>

@@ -33,6 +33,56 @@ const FOTOS_MAP = {
 
 const LADO_MAX = 1800;
 
+/*
+  Retratos del equipo. El cliente identifico las fotos por su ORDEN en la
+  carpeta imagenes-profesionales del Drive, ordenada por nombre: la lista que
+  paso es de izquierda a derecha. De ahi sale este mapa; los archivos no traen
+  ninguna metadata que permita deducirlo.
+
+  Vienen de cuerpo entero y descentradas, asi que cada una lleva su recorte a
+  mano al 4:5 de las fichas. cx es el centro horizontal, arriba donde empieza el
+  recorte y alto cuanto toma, todo en fracciones de la imagen original.
+*/
+const RETRATOS = 'src/assets/retratos';
+const RETRATOS_MAP = [
+  { nombre: 'marcos',   archivo: 'IMG_5903.jpg', cx: 0.527, arriba: 0.30,  alto: 0.62 },
+  { nombre: 'sofia',    archivo: 'IMG_4406.jpg', cx: 0.366, arriba: 0.32,  alto: 0.62 },
+  { nombre: 'agustin',  archivo: 'c3a04435-3456-4fac-ab04-a43862470aa0.jpg', cx: 0.562, arriba: 0.05, alto: 0.72 },
+  { nombre: 'graciela', archivo: 'IMG_5914.jpg', cx: 0.394, arriba: 0.25,  alto: 0.66 },
+  { nombre: 'lucia',    archivo: 'IMG_5922.jpg', cx: 0.522, arriba: 0.385, alto: 0.50 },
+];
+
+/*
+  La sexta foto de la carpeta, 97522126-5334-4b50-b05a-00d7d7076fff.jpg, es de
+  Nicolas Ovando (cx 0.490, arriba 0.30, alto 0.62). NO se emite: no esta en
+  `profesionales`, asi que hoy no la usa nadie y solo pesaria en el build. Si el
+  cliente manda su titulo y especialidad, se suma a la lista de arriba.
+*/
+
+const ALTO_RETRATO = 1000;
+
+fs.mkdirSync(RETRATOS, { recursive: true });
+
+for (const r of RETRATOS_MAP) {
+  const origen = path.join(ORIGEN, r.archivo);
+  if (!fs.existsSync(origen)) { console.warn('FALTA', origen); continue; }
+  const { width: W, height: H } = await sharp(origen).rotate().metadata();
+  let alto = Math.round(r.alto * H);
+  let ancho = Math.round((alto * 4) / 5);
+  if (ancho > W) { ancho = W; alto = Math.round((ancho * 5) / 4); }
+  const left = Math.max(0, Math.min(Math.round(r.cx * W - ancho / 2), W - ancho));
+  const top = Math.max(0, Math.min(Math.round(r.arriba * H), H - alto));
+  const destino = path.join(RETRATOS, `retrato-${r.nombre}.jpg`);
+  const info = await sharp(origen)
+    .rotate()
+    .extract({ left, top, width: ancho, height: alto })
+    .resize({ height: ALTO_RETRATO, withoutEnlargement: true })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(destino);
+  console.log(`retrato-${r.nombre}.jpg`, `${info.width}x${info.height}`, `${(fs.statSync(destino).size / 1024).toFixed(0)} KB`);
+}
+
+
 fs.mkdirSync(FOTOS, { recursive: true });
 fs.mkdirSync(MARCA, { recursive: true });
 

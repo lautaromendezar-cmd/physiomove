@@ -1,10 +1,11 @@
 ---
 /**
  * Retrato de un profesional.
- * El material del cliente trae fotos individuales pero con nombres de archivo
- * que no permiten saber quien es quien (IMG_4406, IMG_5903...), asi que
- * hasta que las identifique se muestra el monograma sobre la paleta del logo.
- * Cuando lleguen identificadas, alcanza con pasarle `foto` a este componente.
+ * Los archivos del cliente no traen metadata que permita saber quien es quien
+ * (IMG_4406, IMG_5903...); los identifico el por su ORDEN en la carpeta del
+ * Drive. El mapa esta en scripts/preparar-imagenes.mjs.
+ * Sin `foto` cae al monograma sobre la paleta del logo, que es lo que se usa
+ * mientras falte el retrato de alguien.
  */
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';

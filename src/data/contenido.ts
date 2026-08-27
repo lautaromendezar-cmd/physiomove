@@ -308,13 +308,16 @@ export type Profesional = {
   formacion?: string;
   experiencia?: string;
   bio?: string;
+  /** Nombre del archivo en src/assets/retratos, sin extension. */
+  retrato?: string;
   fichaCompleta: boolean;
 };
 
 export const profesionales: Profesional[] = [
   {
-    nombre: 'Marcos Exequiel Anaquin',
+    nombre: 'Marcos Exequiel Anaquín',
     iniciales: 'MA',
+    retrato: 'retrato-marcos',
     titulo: 'Licenciado en Kinesiología y Fisioterapia',
     matricula: 'LK MP 294',
     especialidad:
@@ -329,6 +332,7 @@ export const profesionales: Profesional[] = [
   {
     nombre: 'Sofía Alejandra Anaquín',
     iniciales: 'SA',
+    retrato: 'retrato-sofia',
     titulo: 'Licenciada en Kinesiología y Fisioterapia',
     matricula: 'LK MP 336',
     especialidad: 'Especialista en Kinesiología Deportiva',
@@ -342,6 +346,7 @@ export const profesionales: Profesional[] = [
   {
     nombre: 'Eduardo Agustín Guiguet',
     iniciales: 'EG',
+    retrato: 'retrato-agustin',
     titulo: 'Licenciado en Kinesiología y Fisioterapia',
     matricula: 'LK MP 385',
     especialidad: 'Kinesiología deportiva',
@@ -353,8 +358,9 @@ export const profesionales: Profesional[] = [
     fichaCompleta: true,
   },
   {
-    nombre: 'Graciela Sanchez',
+    nombre: 'Graciela Sánchez',
     iniciales: 'GS',
+    retrato: 'retrato-graciela',
     titulo: 'Licenciada en Kinesiología y Fisioterapia',
     matricula: 'LK MP 432',
     especialidad: 'Kinesiología deportiva',
@@ -363,8 +369,9 @@ export const profesionales: Profesional[] = [
     fichaCompleta: true,
   },
   {
-    nombre: 'Lucía Fernandez',
+    nombre: 'Lucía Fernández',
     iniciales: 'LF',
+    retrato: 'retrato-lucia',
     titulo: 'Licenciada en Nutrición',
     fichaCompleta: false,
   },
