@@ -1,25 +1,18 @@
 /* =========================================================================
    PHYSIOMOVE — capa de animacion
    GSAP 3.15 con los plugins oficiales (gratuitos desde 3.13):
-   ScrollTrigger · SplitText · ScrambleText · DrawSVG · MotionPath
+   ScrollTrigger · SplitText · DrawSVG · MotionPath
    Reglas: nada en loop, duraciones cortas, y con prefers-reduced-motion
-   se desactivan scrambles, pins y motion paths (quedan fades simples).
+   se desactivan conteos, pins y motion paths (quedan fades simples).
    ========================================================================= */
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
-import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 
-gsap.registerPlugin(
-  ScrollTrigger,
-  SplitText,
-  ScrambleTextPlugin,
-  DrawSVGPlugin,
-  MotionPathPlugin
-);
+gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin, MotionPathPlugin);
 
 const raiz = document.documentElement;
 const q = (sel, ctx = document) => ctx.querySelector(sel);
@@ -148,7 +141,7 @@ function entradaHero() {
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   if (reducido) {
-    qa('[data-scramble]').forEach((el) => (el.textContent = el.dataset.scramble));
+    qa('[data-conteo]').forEach((el) => (el.textContent = el.dataset.conteo));
     return tl;
   }
 
@@ -196,22 +189,32 @@ function entradaHero() {
     }
   }
 
-  // ScrambleText: unico lugar del sitio, y una sola vez.
-  const stats = qa('[data-scramble]');
+  // Conteo de los numeros del hero: unico lugar del sitio, y una sola vez.
+  // El HTML trae el valor final (fallback sin JS); aca se arranca de cero y
+  // se cuenta hasta ese valor respetando prefijo (+) y sufijo (%).
+  const stats = qa('[data-conteo]');
   if (stats.length && !reducido) {
     stats.forEach((el, i) => {
-      const valor = el.dataset.scramble;
+      const partes = el.dataset.conteo.match(/^([^0-9]*)(\d+)(.*)$/);
+      if (!partes) return;
+      const [, prefijo, numero, sufijo] = partes;
+      const estado = { n: 0 };
+      el.textContent = `${prefijo}0${sufijo}`;
       tl.to(
-        el,
+        estado,
         {
-          duration: 0.9,
-          scrambleText: { text: valor, chars: '0123456789', speed: 0.45, revealDelay: 0.15 },
+          n: Number(numero),
+          duration: 1.3,
+          ease: 'power2.out',
+          onUpdate: () => {
+            el.textContent = `${prefijo}${Math.round(estado.n)}${sufijo}`;
+          },
         },
         i === 0 ? '-=0.35' : '<0.12'
       );
     });
   } else {
-    stats.forEach((el) => (el.textContent = el.dataset.scramble));
+    stats.forEach((el) => (el.textContent = el.dataset.conteo));
   }
 
   return tl;
@@ -510,7 +513,7 @@ function arrancar() {
 
   if (reducido) {
     gsap.set('.rv', { opacity: 1, y: 0 });
-    qa('[data-scramble]').forEach((el) => (el.textContent = el.dataset.scramble));
+    qa('[data-conteo]').forEach((el) => (el.textContent = el.dataset.conteo));
     qa('.deco [data-draw]').forEach((l) => gsap.set(l, { drawSVG: '100%' }));
     return;
   }

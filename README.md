@@ -134,7 +134,7 @@ GSAP 3.15 con los plugins oficiales (gratuitos desde 3.13). Todo vive en
 
 - **ScrollTrigger** — reveals, staggers y parallax de las formas decorativas.
 - **SplitText** — título del hero y titulares de sección, por líneas con máscara.
-- **ScrambleText** — sólo en los números del hero, una vez.
+- **Conteo** — los números del hero cuentan de cero a su valor real (`data-conteo`), una vez.
 - **DrawSVG** — las curvas de fondo se dibujan con el scroll; el anillo del preloader también.
 - **MotionPath** — un punto recorre la curva de la sección "La sede", atado al scroll.
 - **Pin lateral** — el panel de servicios queda fijo con índice activo y barra de progreso.
@@ -145,7 +145,7 @@ GSAP 3.15 con los plugins oficiales (gratuitos desde 3.13). Todo vive en
 
 El flip de las obras sociales es CSS puro (`rotateX` sobre `preserve-3d`), no GSAP.
 
-Con `prefers-reduced-motion: reduce` no hay preloader, ni scrambles, ni pins, ni motion path, ni
+Con `prefers-reduced-motion: reduce` no hay preloader, ni conteos, ni pins, ni motion path, ni
 flip.
 
 ### Preloader

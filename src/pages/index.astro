@@ -16,9 +16,8 @@ import {
   aranceles,
   galeria,
   bandaHero,
+  metricas,
 } from '../data/contenido';
-
-const boxPrivados = 3;
 ---
 
 <Base
@@ -45,19 +44,21 @@ const boxPrivados = 3;
           <a class="btn btn--linea" href="/servicios">Ver servicios</a>
         </div>
 
+        <p class="hero__obras" data-hero-anima>
+          Trabajamos con <a href="/obras-sociales">{obrasSociales.length} obras sociales y prepagas</a>
+        </p>
+
         <dl class="hero__stats" data-hero-anima>
-          <div class="stat">
-            <dd class="stat__numero" data-scramble={String(centro.apertura)}>{centro.apertura}</dd>
-            <dt class="stat__texto">Año de apertura en {contacto.localidad}</dt>
-          </div>
-          <div class="stat">
-            <dd class="stat__numero" data-scramble={`0${boxPrivados}`}>0{boxPrivados}</dd>
-            <dt class="stat__texto">Box privados más gimnasio exclusivo</dt>
-          </div>
-          <div class="stat">
-            <dd class="stat__numero" data-scramble={String(obrasSociales.length)}>{obrasSociales.length}</dd>
-            <dt class="stat__texto">Obras sociales y prepagas</dt>
-          </div>
+          {
+            metricas.map((m) => (
+              <div class="stat">
+                <dd class="stat__numero" data-conteo={m.valor}>
+                  {m.valor}
+                </dd>
+                <dt class="stat__texto">{m.texto}</dt>
+              </div>
+            ))
+          }
         </dl>
       </div>
     </div>

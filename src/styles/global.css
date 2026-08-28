@@ -854,6 +854,23 @@ p:last-child {
   margin-top: clamp(1.1rem, 2.8dvh, 2.1rem);
 }
 
+.hero__obras {
+  margin-top: clamp(0.9rem, 2.2dvh, 1.5rem);
+  font-size: 0.82rem;
+  color: #b6cbd9;
+}
+
+.hero__obras a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(150, 185, 207, 0.55);
+}
+
+.hero__obras a:hover {
+  text-decoration-color: #fff;
+}
+
 .hero__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

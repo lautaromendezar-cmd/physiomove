@@ -20,6 +20,13 @@ export const centro = {
     'Actualmente contamos con tres box privados, un baño de damas y otro para caballeros, y un gimnasio de uso exclusivo para pacientes que eligen recuperarse bajo nuestro seguimiento profesional.',
 };
 
+/** Métricas del hero. Datos reales pasados por el cliente (ago 2026). */
+export const metricas = [
+  { valor: '+4300', texto: 'Pacientes pasaron por PhysioMove' },
+  { valor: '+450', texto: 'Atletas de vuelta al deporte' },
+  { valor: '97%', texto: 'Llegan por recomendación' },
+];
+
 export const contacto = {
   direccion: 'Santiago del Estero 80',
   entre: 'Entre Don Bosco y Kirchner',
@@ -373,6 +380,7 @@ export const profesionales: Profesional[] = [
     iniciales: 'LF',
     retrato: 'retrato-lucia',
     titulo: 'Licenciada en Nutrición',
+    matricula: 'MP 204',
     fichaCompleta: false,
   },
 ];

@@ -110,6 +110,7 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
                 <div class="persona__cuerpo">
                   <h3>{p.nombre}</h3>
                   <p class="persona__titulo">{p.titulo}</p>
+                  {p.matricula && <p class="persona__mp">{p.matricula}</p>}
                 </div>
               </article>
             ))}
