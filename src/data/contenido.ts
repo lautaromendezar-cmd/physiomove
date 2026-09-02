@@ -383,6 +383,15 @@ export const profesionales: Profesional[] = [
     matricula: 'MP 204',
     fichaCompleta: false,
   },
+  // Sumado el 2/9/2026 a pedido del cliente. La bio todavia no llego:
+  // cuando la mande, se completan los campos y pasa a fichaCompleta.
+  {
+    nombre: 'Nicolás Oviedo',
+    iniciales: 'NO',
+    retrato: 'retrato-nicolas',
+    titulo: 'Profesor',
+    fichaCompleta: false,
+  },
 ];
 
 /**

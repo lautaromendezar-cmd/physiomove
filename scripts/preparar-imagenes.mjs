@@ -85,10 +85,11 @@ const RETRATOS_MAP = [
 ];
 
 /*
-  La sexta foto de la carpeta, 97522126-5334-4b50-b05a-00d7d7076fff.jpg, es de
-  Nicolas Ovando (cx 0.490, arriba 0.30, alto 0.62). NO se emite: no esta en
-  `profesionales`, asi que hoy no la usa nadie y solo pesaria en el build. Si el
-  cliente manda su titulo y especialidad, se suma a la lista de arriba.
+  La sexta foto de la carpeta, 97522126-5334-4b50-b05a-00d7d7076fff.jpg, era de
+  Nicolas (Ovando en el Drive; el cliente despues lo pidio como "Nicolas
+  Oviedo"). Quedo superada: el 2/9/2026 mando una foto nueva en
+  fotos-marcos/profe-nicolas-oviedo.jfif, de la que sale retrato-nicolas.jpg
+  con extract left 243, top 560, 666x832 (4:5 sobre el original de 1200x1600).
 */
 
 const ALTO_RETRATO = 1000;
