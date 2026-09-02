@@ -272,9 +272,9 @@ export const servicios: Servicio[] = [
       'En PhysioMove buscamos construir una base sólida para el desarrollo físico y deportivo de cada niño, niña y adolescente, utilizando la fuerza como una capacidad fundamental y como base para el desarrollo de las demás capacidades condicionales.',
     metaDescription:
       'Entrenamiento de fuerza infanto-juvenil en Río Gallegos: evaluación inicial con la plataforma de fuerza IVOLUTION, planificación individualizada y seguimiento periódico.',
-    foto: 'ninos-entrenamiento',
+    foto: 'infanto-juvenil',
     fotoAlt:
-      'Profesional de PhysioMove entrenando a dos chicos frente al mural de hexágonos del centro',
+      'El profe hablando con tres chicos sentados sobre la pista de césped del gimnasio de PhysioMove',
     bloques: [
       {
         titulo: 'Cómo trabajamos',

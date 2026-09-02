@@ -50,6 +50,7 @@ const MARCOS_MAP = {
   'evaluacion-club':        'hero/6.jfif',
   'equipo-delegacion':      'hero/7.jfif',
   'como-inicio':            'como-inicio.jfif',
+  'infanto-juvenil':        'infanto.jfif',
 };
 
 /*
