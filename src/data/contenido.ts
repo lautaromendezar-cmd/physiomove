@@ -307,7 +307,7 @@ export const servicios: Servicio[] = [
         ],
       },
     ],
-    atiende: 'Profe. Nicolás Oviedo',
+    atiende: 'Profe. Nicolás Ovando',
   },
 ];
 
@@ -391,7 +391,7 @@ export const profesionales: Profesional[] = [
   // Sumado el 2/9/2026 a pedido del cliente. La bio todavia no llego:
   // cuando la mande, se completan los campos y pasa a fichaCompleta.
   {
-    nombre: 'Nicolás Oviedo',
+    nombre: 'Nicolás Ovando',
     iniciales: 'NO',
     retrato: 'retrato-nicolas',
     titulo: 'Profesor',
