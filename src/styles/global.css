@@ -2454,6 +2454,23 @@ p:last-child {
   line-height: 1;
 }
 
+/* Nota bajo los botones con el portal de autogestion (BlipDoc). */
+.cierre__online {
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.cierre__online a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(150, 185, 207, 0.55);
+}
+
+.cierre__online a:hover {
+  text-decoration-color: #fff;
+}
+
 .cierre p {
   color: #cfe0ea;
 }

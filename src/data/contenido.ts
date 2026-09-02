@@ -43,6 +43,9 @@ export const contacto = {
   whatsapp: 'https://wa.me/542966663958',
   whatsappTexto:
     'https://wa.me/542966663958?text=Hola%20PhysioMove%2C%20quiero%20agendar%20un%20turno.',
+  /* Portal de autogestión de turnos (BlipDoc): el paciente elige
+     profesional y horario. Lo pasó el cliente el 2/9/2026. */
+  turnosOnline: 'https://blipdoc.com/portal/physiomove',
   mail: 'physiomove.depor@gmail.com',
   instagram: 'https://www.instagram.com/physiomove.rgl/',
   instagramUsuario: '@physiomove.rgl',

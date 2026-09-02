@@ -8,7 +8,7 @@ import { contacto, centro } from '../data/contenido';
 
 <Base
   titulo="Contacto y sede | PhysioMove Río Gallegos"
-  descripcion="PhysioMove queda en Santiago del Estero 80, Río Gallegos, entre Don Bosco y Kirchner. Lunes a viernes de 7 a 20 hs. Turnos por WhatsApp."
+  descripcion="PhysioMove queda en Santiago del Estero 80, Río Gallegos, entre Don Bosco y Kirchner. Lunes a viernes de 7 a 20 hs. Turnos por WhatsApp o autogestión online."
   ruta="/contacto"
 >
   <section class="cabecera">
@@ -67,6 +67,14 @@ import { contacto, centro } from '../data/contenido';
                 <a href={contacto.whatsappTexto} target="_blank" rel="noopener"
                   >{contacto.telefono}</a
                 >
+              </dd>
+            </div>
+            <div class="sede__dato rv">
+              <dt>Turnos online</dt>
+              <dd>
+                <a href={contacto.turnosOnline} target="_blank" rel="noopener"
+                  >Autogestioná tu turno</a
+                >, eligiendo profesional y horario.
               </dd>
             </div>
             <div class="sede__dato rv">
