@@ -31,11 +31,13 @@ import {
 
     <div class="hero__cabeza">
       <div class="contenedor">
-        <p class="volanta volanta--centro" data-hero-anima>
-          Centro deportivo especializado · {contacto.localidad}
-        </p>
+        <div class="hero__meta" data-hero-anima>
+          <span class="hero__meta-lugar">{contacto.localidad}</span>
+          <p class="hero__meta-frase">Donde volvés al deporte</p>
+          <span class="hero__meta-lugar hero__meta-lugar--der">{contacto.provincia}</span>
+        </div>
         <h1 class="titulo-xxl hero__titulo" data-hero-titulo>
-          Donde volvés<br /><span class="hero__frase-fuerte">al deporte</span>
+          Centro Deportivo<br /><span class="hero__frase-fuerte">Especializado</span>
         </h1>
         <div class="hero__acciones" data-hero-anima>
           <a class="btn btn--claro" href={contacto.whatsappTexto} target="_blank" rel="noopener">
