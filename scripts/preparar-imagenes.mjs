@@ -52,6 +52,7 @@ const MARCOS_MAP = {
   'como-inicio':            'como-inicio.jfif',
   'infanto-juvenil':        'infanto.jfif',
   'kinesiologia-deportiva': 'kinesiologia-deportiva.jfif',
+  'fisioterapia-invasiva':  'fisioterapia-invasiva.jfif',
 };
 
 /*

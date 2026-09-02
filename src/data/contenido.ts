@@ -192,9 +192,9 @@ export const servicios: Servicio[] = [
       'Una técnica mínimamente invasiva para tendinopatías y lesiones musculares crónicas.',
     metaDescription:
       'Fisioterapia invasiva MEP en Río Gallegos: técnica mínimamente invasiva para tendinopatías y lesiones musculares crónicas, con corriente galvánica.',
-    foto: 'mep-sesion',
+    foto: 'fisioterapia-invasiva',
     fotoAlt:
-      'Kinesiólogo de PhysioMove trabajando sobre la pierna de un paciente recostado en la camilla',
+      'Primer plano de una aguja de punción seca aplicada en la rodilla de un paciente, en un box de PhysioMove',
     bloques: [
       {
         titulo: 'Qué es',
