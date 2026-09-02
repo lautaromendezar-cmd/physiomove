@@ -1785,9 +1785,10 @@ p:last-child {
 
 .equipo__grid {
   display: grid;
-  /* Los cinco del staff van en una sola fila: con auto-fill entraban cuatro
-     y el quinto quedaba colgado abajo. */
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* Todo el staff va en UNA fila: con auto-fill quedaba siempre alguno
+     colgado abajo. --cols la pone el home con profesionales.length, asi
+     sumar gente no vuelve a desarmar la fila. */
+  grid-template-columns: repeat(var(--cols, 6), minmax(0, 1fr));
   gap: clamp(0.9rem, 1.8vw, 1.5rem);
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
 }
