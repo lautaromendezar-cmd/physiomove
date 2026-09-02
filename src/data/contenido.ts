@@ -104,9 +104,9 @@ export const servicios: Servicio[] = [
       'Entrevista inicial, tests clínicos y funcionales, y una planificación acorde a las capacidades físicas de cada paciente.',
     metaDescription:
       'Kinesiología deportiva en Río Gallegos: entrevista inicial, tests clínicos y funcionales, y ejercicio planificado y guiado por kinesiólogos deportivos.',
-    foto: 'ejercicio-planificado',
+    foto: 'kinesiologia-deportiva',
     fotoAlt:
-      'Paciente haciendo una sentadilla con banda elástica sobre la pista azul del gimnasio de PhysioMove',
+      'El equipo de PhysioMove junto a un plantel de básquet bajo el cartel Kinesiología Deportiva del centro',
     bloques: [
       {
         titulo: 'Qué es',

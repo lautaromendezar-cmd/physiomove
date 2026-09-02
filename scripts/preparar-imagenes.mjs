@@ -51,6 +51,7 @@ const MARCOS_MAP = {
   'equipo-delegacion':      'hero/7.jfif',
   'como-inicio':            'como-inicio.jfif',
   'infanto-juvenil':        'infanto.jfif',
+  'kinesiologia-deportiva': 'kinesiologia-deportiva.jfif',
 };
 
 /*
