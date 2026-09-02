@@ -490,7 +490,7 @@ export const bandaHero = [
     giro: -1.8,
     baja: 0.6,
     vel: 1.15,
-    alt: 'Evaluación de fuerza de un deportista en camilla isométrica con registro de datos en la laptop',
+    alt: 'Plantel de rugby alrededor de la estación de registro durante una evaluación de fuerza en el gimnasio',
   },
   {
     foto: 'evaluacion-club',
