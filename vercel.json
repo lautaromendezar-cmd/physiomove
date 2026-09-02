@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/servicios/iniciacion-performance-ninos",
+      "destination": "/servicios/entrenamiento-fuerza-infanto-juvenil",
+      "permanent": true
+    }
+  ]
+}

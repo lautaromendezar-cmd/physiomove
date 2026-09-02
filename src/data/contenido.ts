@@ -258,38 +258,43 @@ export const servicios: Servicio[] = [
       },
     ],
   },
+  /*
+    Renombrado el 2/9/2026 (era "Iniciación a la performance deportiva en
+    niños"): texto nuevo dictado por el cliente. El slug cambia con el nombre;
+    la URL vieja redirige via vercel.json. Los bloques de clases y horarios se
+    conservaron porque el texto nuevo no los reemplaza (son info práctica).
+  */
   {
-    slug: 'iniciacion-performance-ninos',
-    nombre: 'Iniciación a la performance deportiva en niños',
+    slug: 'entrenamiento-fuerza-infanto-juvenil',
+    nombre: 'Entrenamiento de Fuerza Infanto-Juvenil',
     numero: '06',
     resumen:
-      'Grupos reducidos, evaluación funcional inicial con tecnología IVOLUTION y un plan personalizado para cada atleta.',
+      'En PhysioMove buscamos construir una base sólida para el desarrollo físico y deportivo de cada niño, niña y adolescente, utilizando la fuerza como una capacidad fundamental y como base para el desarrollo de las demás capacidades condicionales.',
     metaDescription:
-      'Iniciación a la performance deportiva para niños en Río Gallegos: grupos reducidos, evaluación funcional con tecnología IVOLUTION y plan personalizado.',
+      'Entrenamiento de fuerza infanto-juvenil en Río Gallegos: evaluación inicial con la plataforma de fuerza IVOLUTION, planificación individualizada y seguimiento periódico.',
     foto: 'ninos-entrenamiento',
     fotoAlt:
       'Profesional de PhysioMove entrenando a dos chicos frente al mural de hexágonos del centro',
     bloques: [
       {
-        titulo: 'Modalidad de trabajo',
-        lista: [
-          'Entrenamos en grupos pequeños, priorizando el bienestar integral de cada atleta en su dimensión física, funcional y emocional.',
-          'La primera clase incluye una evaluación funcional y de fuerza a partir del uso de la tecnología IVOLUTION, realizada por kinesiólogos y el profe a cargo.',
-          'Esa evaluación nos permite conocer el punto de partida, detectar déficits o asimetrías y diseñar un plan personalizado, asegurando una mejora continua con datos objetivos.',
-        ],
+        titulo: 'Cómo trabajamos',
+        texto:
+          'El proceso comienza con una evaluación inicial, donde analizamos aspectos como la movilidad, flexibilidad y control motor. Además, mediante la plataforma de fuerza IVOLUTION, evaluamos la capacidad de producir fuerza de los miembros inferiores, la velocidad con la que se genera y diferentes variables relacionadas con el salto y su eficiencia.',
       },
       {
-        titulo: 'Beneficios del programa',
-        lista: [
-          'Desarrollo seguro de la fuerza en todas sus magnitudes',
-          'Prevención de lesiones',
-          'Mejora de la postura, la confianza y los hábitos saludables',
-          'Entrenamiento divertido y motivador',
-        ],
+        titulo: 'Planificación individualizada',
+        texto:
+          'A partir de estos resultados, diseñamos una planificación individualizada, estableciendo un punto de partida y objetivos claros para cada persona.',
       },
       {
-        titulo: 'Cómo es un entrenamiento',
-        lista: ['Bloque de movilidad articular', 'Entrada en calor', 'Bloque de fuerza'],
+        titulo: 'Evaluaciones y seguimiento',
+        texto:
+          'El proceso incluye evaluaciones y seguimientos periódicos, que nos permiten observar los cambios, medir las mejoras y ajustar la planificación de acuerdo con la evolución y las necesidades de cada deportista.',
+      },
+      {
+        titulo: 'Nuestra filosofía',
+        texto:
+          'Evaluar para conocer desde dónde partimos. Planificar para saber hacia dónde vamos. Revaluar para visualizar nuestro progreso.',
       },
       { titulo: 'Cuántas clases al mes', texto: 'Habitualmente son ocho clases por mes.' },
       {
@@ -302,7 +307,7 @@ export const servicios: Servicio[] = [
         ],
       },
     ],
-    atiende: 'Profe. Nicolás Ovando',
+    atiende: 'Profe. Nicolás Oviedo',
   },
 ];
 
