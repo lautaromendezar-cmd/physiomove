@@ -34,26 +34,27 @@ const FOTOS_MAP = {
 const LADO_MAX = 1800;
 
 /*
-  Banda del hero (cambio del 2/9/2026): el cliente dejo 7 fotos nuevas en
-  fotos-marcos/hero (1.jfif a 7.jfif; la 4 es el local y va al centro de la
-  banda). La carpeta es material fuente y no viaja en el repo, igual que
-  _work/: si no esta, el bloque se saltea y quedan los jpg ya commiteados
-  en src/assets/fotos.
+  Material que el cliente fue dejando en fotos-marcos/ (2/9/2026): las 7 de
+  hero/ reemplazan la banda (la 4 es el local y va al centro) y como-inicio
+  es la figura de la seccion de origen. La carpeta es material fuente y no
+  viaja en el repo, igual que _work/: si no esta, el bloque se saltea y
+  quedan los jpg ya commiteados en src/assets/fotos.
 */
-const BANDA = 'fotos-marcos/hero';
-const BANDA_MAP = {
-  'evaluacion-salto-rugby': '1.jfif',
-  'panam-sports':           '2.jfif',
-  'predio-afa':             '3.jfif',
-  'centro-cartel':          '4.jfif',
-  'evaluacion-fuerza':      '5.jfif',
-  'evaluacion-club':        '6.jfif',
-  'equipo-delegacion':      '7.jfif',
+const MARCOS = 'fotos-marcos';
+const MARCOS_MAP = {
+  'evaluacion-salto-rugby': 'hero/1.jfif',
+  'panam-sports':           'hero/2.jfif',
+  'predio-afa':             'hero/3.jfif',
+  'centro-cartel':          'hero/4.jfif',
+  'evaluacion-fuerza':      'hero/5.jfif',
+  'evaluacion-club':        'hero/6.jfif',
+  'equipo-delegacion':      'hero/7.jfif',
+  'como-inicio':            'como-inicio.jfif',
 };
 
 fs.mkdirSync(FOTOS, { recursive: true });
-for (const [nombre, archivo] of Object.entries(BANDA_MAP)) {
-  const origen = path.join(BANDA, archivo);
+for (const [nombre, archivo] of Object.entries(MARCOS_MAP)) {
+  const origen = path.join(MARCOS, archivo);
   if (!fs.existsSync(origen)) { console.warn('FALTA', origen); continue; }
   const destino = path.join(FOTOS, `${nombre}.jpg`);
   const info = await sharp(origen)
