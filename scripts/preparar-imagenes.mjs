@@ -52,6 +52,22 @@ const MARCOS_MAP = {
   'como-inicio':            'como-inicio.jfif',
 };
 
+/*
+  razonamiento-cientifico.jfif va en el marco CHICO de la seccion diferencial,
+  que es cuadrado: el recorte 1:1 se hornea aca (top 60 sobre el original de
+  1200x1600) para encuadrar al deportista entero con la laptop asomando abajo,
+  en vez de dejar que el object-fit centre y le corte la cabeza.
+*/
+if (fs.existsSync(path.join(MARCOS, 'razonamiento-cientifico.jfif'))) {
+  fs.mkdirSync(FOTOS, { recursive: true });
+  await sharp(path.join(MARCOS, 'razonamiento-cientifico.jfif'))
+    .rotate()
+    .extract({ left: 0, top: 60, width: 1200, height: 1200 })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(path.join(FOTOS, 'razonamiento-cientifico.jpg'));
+  console.log('razonamiento-cientifico.jpg 1200x1200');
+}
+
 fs.mkdirSync(FOTOS, { recursive: true });
 for (const [nombre, archivo] of Object.entries(MARCOS_MAP)) {
   const origen = path.join(MARCOS, archivo);
