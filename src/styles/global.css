@@ -821,6 +821,10 @@ p:last-child {
   text-transform: uppercase;
   letter-spacing: 0.22em;
   font-size: 0.78rem;
+  /* Mismo ancho que el bloque de stats: las localidades caen alineadas con
+     los bordes del titulo en vez de irse a los extremos de la pantalla. */
+  max-width: 46rem;
+  margin-inline: auto;
   margin-bottom: clamp(0.7rem, 1.9dvh, 1.4rem);
 }
 
