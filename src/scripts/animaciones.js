@@ -466,6 +466,24 @@ function bandaHeroScroll() {
 }
 
 /*
+  En mobile la banda es un carrusel con scroll-snap y arrancaria mostrando la
+  primera foto. El cliente pidio que la del medio (el local con su cartel, la
+  que en PC lleva prioridad de carga) sea la primera que se vea tambien en
+  mobile: se centra por scroll directo, sin animacion, antes de que se pinte.
+  El snap ya esta en center, asi que la posicion calculada es un punto estable.
+*/
+function centrarBandaMobile() {
+  if (!window.matchMedia('(max-width: 900px)').matches) return;
+  const tira = q('[data-hero-banda] .hero__tira');
+  const img = q('[data-hero-img]', tira || document);
+  const carta = img && img.closest('[data-hero-carta]');
+  if (!tira || !carta) return;
+  const dTira = tira.getBoundingClientRect();
+  const dCarta = carta.getBoundingClientRect();
+  tira.scrollLeft += dCarta.left - dTira.left - (dTira.width - dCarta.width) / 2;
+}
+
+/*
   Hover: la que se mira sube y recupera color, las demas bajan saturacion y se
   apagan. El desplazamiento y la escala se animan como VARIABLES CSS (--sube,
   --esc) en vez de tocar el transform: asi el giro y el desfasaje de cada
@@ -522,6 +540,7 @@ function arrancar() {
   decorativas();
   viajeroPorLaCurva();
   parallaxFotos();
+  centrarBandaMobile();
   bandaHeroScroll();
   bandaHeroHover();
 

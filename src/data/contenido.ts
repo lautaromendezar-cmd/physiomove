@@ -450,54 +450,60 @@ export const galeria = [
  *         su alto: es lo que rompe la fila perfecta
  * vel   = velocidad relativa en el parallax del scroll
  */
+/*
+  Fotos nuevas del 2/9/2026 (las dejó el cliente en fotos-marcos/hero, 1 a 7).
+  Pidió que la 4ta —el local con el cartel "Donde volvés al deporte"— quede en
+  el medio de la banda, en PC y en mobile (el carrusel arranca centrado en ella,
+  ver centrarBandaMobile en animaciones.js).
+*/
 export const bandaHero = [
   {
-    foto: 'espacio-recepcion',
+    foto: 'evaluacion-salto-rugby',
     giro: -2.6,
     baja: 0.55,
     vel: 0.55,
-    alt: 'Recepción de PhysioMove con la alfombra del logo PM en el piso',
+    alt: 'Jugador de rugby sobre la plataforma de salto durante una evaluación, con una kinesióloga revisando los datos en la laptop',
   },
   {
-    foto: 'consulta-evaluacion',
+    foto: 'panam-sports',
     giro: 1.4,
     baja: 0.1,
     vel: 1,
-    alt: 'Kinesiólogo de PhysioMove trabajando sobre la rodilla de un paciente en la camilla',
+    alt: 'Dos profesionales de PhysioMove frente al cartel de Panam Sports con los anillos olímpicos',
   },
   {
-    foto: 'evaluacion-plataforma',
+    foto: 'predio-afa',
     giro: -1.1,
     baja: 0.75,
     vel: 0.45,
-    alt: 'Evaluación de la carrera sobre cinta con registro de datos en PhysioMove',
+    alt: 'Dos integrantes del equipo frente al mural de los campeones en el Predio de AFA',
   },
   {
-    foto: 'hero-entrenamiento',
+    foto: 'centro-cartel',
     giro: 0.9,
     baja: 0,
     vel: 0.8,
-    alt: 'Paciente entrenando con banda elástica sobre la pista azul del gimnasio de PhysioMove, bajo el cartel Donde volvés al deporte',
+    alt: 'Recepción y pista del gimnasio de PhysioMove bajo el cartel Kinesiología deportiva, donde volvés al deporte',
   },
   {
-    foto: 'equipo-hexagonos',
+    foto: 'evaluacion-fuerza',
     giro: -1.8,
     baja: 0.6,
     vel: 1.15,
-    alt: 'Profesional de PhysioMove frente al mural con las etapas de la rehabilitación',
+    alt: 'Evaluación de fuerza de un deportista en camilla isométrica con registro de datos en la laptop',
   },
   {
-    foto: 'recovery-presoterapia',
+    foto: 'evaluacion-club',
     giro: 2.4,
     baja: 0.2,
     vel: 0.6,
-    alt: 'Paciente en sesión de recovery con botas de presoterapia en un box privado',
+    alt: 'Deportista acostado en la plataforma durante una evaluación de fuerza mientras dos profesionales registran los datos',
   },
   {
-    foto: 'ninos-entrenamiento',
+    foto: 'equipo-delegacion',
     giro: -2.2,
     baja: 0.85,
     vel: 1.05,
-    alt: 'Dos chicos entrenando con un kinesiólogo frente al mural de hexágonos del centro',
+    alt: 'El equipo de PhysioMove junto a una delegación deportiva tras una jornada de evaluaciones en el gimnasio',
   },
 ];

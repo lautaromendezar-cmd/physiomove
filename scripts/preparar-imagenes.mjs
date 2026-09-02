@@ -34,6 +34,37 @@ const FOTOS_MAP = {
 const LADO_MAX = 1800;
 
 /*
+  Banda del hero (cambio del 2/9/2026): el cliente dejo 7 fotos nuevas en
+  fotos-marcos/hero (1.jfif a 7.jfif; la 4 es el local y va al centro de la
+  banda). La carpeta es material fuente y no viaja en el repo, igual que
+  _work/: si no esta, el bloque se saltea y quedan los jpg ya commiteados
+  en src/assets/fotos.
+*/
+const BANDA = 'fotos-marcos/hero';
+const BANDA_MAP = {
+  'evaluacion-salto-rugby': '1.jfif',
+  'panam-sports':           '2.jfif',
+  'predio-afa':             '3.jfif',
+  'centro-cartel':          '4.jfif',
+  'evaluacion-fuerza':      '5.jfif',
+  'evaluacion-club':        '6.jfif',
+  'equipo-delegacion':      '7.jfif',
+};
+
+fs.mkdirSync(FOTOS, { recursive: true });
+for (const [nombre, archivo] of Object.entries(BANDA_MAP)) {
+  const origen = path.join(BANDA, archivo);
+  if (!fs.existsSync(origen)) { console.warn('FALTA', origen); continue; }
+  const destino = path.join(FOTOS, `${nombre}.jpg`);
+  const info = await sharp(origen)
+    .rotate()
+    .resize({ width: LADO_MAX, height: LADO_MAX, fit: 'inside', withoutEnlargement: true })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(destino);
+  console.log(`${nombre}.jpg`, `${info.width}x${info.height}`, `${(fs.statSync(destino).size / 1024).toFixed(0)} KB`);
+}
+
+/*
   Retratos del equipo. El cliente identifico las fotos por su ORDEN en la
   carpeta imagenes-profesionales del Drive, ordenada por nombre: la lista que
   paso es de izquierda a derecha. De ahi sale este mapa; los archivos no traen
