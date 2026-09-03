@@ -13,9 +13,11 @@ export const centro = {
   origen:
     'PhysioMove se forma de la idea de Marcos y Sofía, dos hermanos kinesiólogos deportistas nacidos en Río Gallegos y graduados en Córdoba, en la UNC, que dieron sus primeros pasos creyendo que la recuperación de lesiones debía ser de la misma manera en que se producen en la mayoría de los casos: en movimiento.',
   diferencial:
-    'PhysioMove se destaca principalmente por sus profesionales altamente capacitados y comprometidos con la actualización permanente, siendo el razonamiento clínico aplicado en la evaluación inicial un factor determinante para la prescripción correcta de ejercicios guiados, planificados y dosificados por nuestros kinesiólogos deportivos.',
+    'PhysioMove se destaca principalmente por sus profesionales altamente capacitados y comprometidos con la actualización permanente, siendo el razonamiento clínico aplicado en la evaluación inicial de todos los procesos.',
   pacientes:
     'Nuestro centro deportivo tiene sus puertas abiertas para todo aquel paciente que desea recuperarse a través del ejercicio. Trabajamos tanto con selecciones, equipos y gimnasios, hasta deportistas profesionales, amateurs, recreacionales, pequeños deportistas en formación y adultos mayores, entre otros.',
+  postura:
+    'Creemos en el movimiento como herramienta para transformar. Pero entendemos que cada persona, cada lesión y cada objetivo tienen su propio contexto. Por eso proponemos una mirada integral, combinando kinesiología, nutrición y acondicionamiento físico para acompañar cada proceso de manera individualizada.',
   espacio:
     'Actualmente contamos con tres box privados, un baño de damas y otro para caballeros, y un gimnasio de uso exclusivo para pacientes que eligen recuperarse bajo nuestro seguimiento profesional.',
 };
