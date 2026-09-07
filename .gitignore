@@ -9,3 +9,5 @@ material-drive/
 .env.*
 capturas/
 fotos-marcos/
+.vercel
+.env*
