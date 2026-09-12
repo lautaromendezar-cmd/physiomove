@@ -4,6 +4,31 @@
       "source": "/servicios/iniciacion-performance-ninos",
       "destination": "/servicios/entrenamiento-fuerza-infanto-juvenil",
       "permanent": true
+    },
+    {
+      "source": "/servicios/consulta",
+      "destination": "/servicios/consulta-y-evaluacion-inicial",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/kinesiologia-deportiva",
+      "destination": "/servicios/kinesiologia-deportiva-y-traumatologica",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/evaluaciones-de-rendimiento",
+      "destination": "/servicios/evaluaciones-deportivas",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/fisioterapia-invasiva-mep",
+      "destination": "/servicios/tecnicas-complementarias",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/recovery-post-competencia",
+      "destination": "/servicios/recovery-y-recuperacion-deportiva",
+      "permanent": true
     }
   ]
 }

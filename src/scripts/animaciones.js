@@ -356,10 +356,18 @@ function panelServicios() {
   const items = qa('[data-svc-indice] li', seccion);
   const cards = qa('[data-svc-card]', lista);
 
+  // El trigger es el PANEL, no la seccion: con la seccion, GSAP lo fijaba a
+  // 104 px + el padding de la seccion (~250 px) y regalaba esa altura.
   const pin = ScrollTrigger.create({
-    trigger: seccion,
+    trigger: panel,
     start: 'top 104px',
-    end: () => '+=' + Math.max(0, lista.offsetHeight - panel.offsetHeight),
+    // Con nueve servicios el panel mide ~600 px. Si no entra entre el header y
+    // el piso del viewport (pantallas bajas), no se pinea: un panel pineado
+    // mas alto que la pantalla deja el indice cortado sin forma de verlo.
+    end: () => {
+      const cabe = panel.offsetHeight <= window.innerHeight - 104 - 16;
+      return '+=' + (cabe ? Math.max(0, lista.offsetHeight - panel.offsetHeight) : 0);
+    },
     pin: panel,
     pinSpacing: false,
     invalidateOnRefresh: true,

@@ -215,21 +215,69 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 
 | Qué                              | Estado                                                                                                            |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Ficha de Nicolás Ovando**      | La carpeta trae **6** retratos y el sitio tiene **5** profesionales: la sexta foto es del profe Nicolás Ovando, que no figura en el documento. No se emite ni se inventa su ficha. Cuando el cliente mande título y especialidad, se suma a `RETRATOS_MAP` (su recorte ya está anotado ahí) y a `profesionales`. |
+| **Ficha de Nicolás Ovando**      | Está en la grilla del equipo con retrato (2-sep) y como "Profe." en el servicio infanto-juvenil, pero no hay título, especialidad ni bio: la ficha extendida no se emite ni se inventa. |
 | **Sección de videos**            | Punto 6 del documento sin definir. No se construyó; queda el comentario en `PieDePagina.astro`.                     |
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
 | **Ficha de Graciela Sanchez**    | Sin experiencia, Instagram ni bio. Se muestra con título, matrícula, especialidad y formación.                       |
 | **Ficha de Lucía Fernandez**     | Sólo nombre y título. Aparece en la grilla del equipo, sin ficha extendida.                                          |
-| **Aparatología de Kinesiología Deportiva** | Campo vacío en el documento.                                                                              |
-| **Quién atiende** (servicios 3, 4 y 5) | Campos vacíos.                                                                                                |
+| **Foto del equipo completo**     | El PDF del 12-sep pide que la foto de cabecera de `/equipo` muestre a **todos** los profesionales, incluidos Nico y Lucía. No existe ninguna así en el material: sigue la de tres hasta que el cliente la mande. |
+| **Quién atiende**                | El PDF sólo lo dice para kinesiología (todo el staff) e infanto-juvenil (Nico). Los otros siete servicios no lo tienen; nutrición se supone de Lucía, pero no está confirmado. |
 | **Facebook, TikTok y YouTube**   | En el documento estaba el texto de ejemplo de la plantilla, no cuentas reales. Sólo se publica Instagram.            |
-| **Logos de 6 obras sociales**    | OSPE, OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Caja de Servicios Sociales y Poder Judicial son de Santa Cruz y no tienen logo web usable. Se muestran en texto. Detalle en `src/assets/logos/ORIGEN.md`. |
+| **Logos de 5 obras sociales**    | OSPE, OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. Detalle en `src/assets/logos/ORIGEN.md`. |
 | **Logo de OSMATA**               | El archivo del sitio oficial dice SMATA (el sindicato), no OSMATA. Conviene que el cliente lo confirme.              |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
 | **Foto del salto en la banda**   | `evaluacion-plataforma` es la más floja de las siete del hero: el original ya viene con la cabeza fuera de cuadro. Sirve, pero es la primera a reemplazar cuando el cliente mande fotos nuevas. |
 
 ---
 
+## Textos del 12-sep-2026 (PDF del cliente)
+
+El cliente mandó **"PhysioMove — Textos web actualizados"**, una versión consolidada que
+reescribe casi todo el sitio. El PDF queda en `modificaciones-12-09-2026/` (gitignoreado: es
+material fuente). Lo que cambió y cómo se mapeó cada punto del documento:
+
+| Punto del PDF | Dónde vive en el sitio |
+| --- | --- |
+| 01 Cómo nació | Sección de origen de la home (`centro.origen`, ahora dos párrafos: se suma Agustín a fines de 2023). |
+| 02 ¿Qué nos diferencia? | Sección oscura de la home: título "Una mirada integral, basada en evidencia", `centro.diferencial`, claves `pacientes` y `postura`. |
+| 03 Servicios | Pasan de 6 a **9**: se suman Readaptación, Nutrición y Ejercicio físico adaptado; "Fisioterapia invasiva MEP" pasa a "Técnicas complementarias". |
+| 04 Nuestra forma de trabajar | Cabecera de `/servicios` (`centro.formaDeTrabajar` + `centro.lema`). |
+| 05 Evaluaciones deportivas y 06 Tecnología IVOLUTION | Bloques de la página `/servicios/evaluaciones-deportivas`. El PDF pide ahí una foto real de la sede con IVOLUTION: se usó la del deportista sobre la plataforma con la kinesióloga en la laptop (`evaluacion-ivolution`). |
+| 07 El centro | Cabecera de la galería de la home (`centro.espacio`). |
+| 08 Quiénes te atienden | Home (texto nuevo entre el título y la grilla) y cabecera de `/equipo` (`centro.equipo`, `centro.areas`). |
+| 09 Obras sociales | Se saca la Caja de Servicios Sociales (quedan 18). |
+| Cierre | Banda final de la home: "Evaluar. Planificar. Acompañar." (`centro.lema`, `centro.cierre`). |
+| Nombres | Se quitan los segundos nombres: Marcos Anaquín, Sofía Anaquín, Agustín Guiguet. |
+
+Decisiones que no están en el PDF:
+
+- **Las páginas de servicio muestran el texto del PDF y nada más de prosa.** Los bloques
+  "Qué es / Para quién sirve / Por qué" de agosto tenían otro tono y el PDF los reemplaza. Quedó
+  sólo la información práctica que no contradice (cómo es una sesión, clases y horarios).
+  Si hace falta recuperar alguno, están en el historial (`git show 9f9ed8c:src/data/contenido.ts`).
+- **Cinco slugs cambiaron con el nombre** y las URL viejas redirigen desde `vercel.json`.
+  El de infanto-juvenil se mantuvo para no encadenar dos redirecciones.
+- **Fotos de los servicios nuevos**, elegidas del material ya optimizado: readaptación usa
+  `hero-entrenamiento` (sentadilla con banda), ejercicio adaptado `IMG_2060` (movilidad guiada)
+  y nutrición `IMG_5922`, que es la foto de Lucía, la nutricionista.
+- En la clave "Nuestra forma de trabajar" el PDF trae una línea ("Se cree en el movimiento como
+  herramienta para transformar") que está en el texto pero **no se ve en la página**: se omitió.
+
+### Publicar
+
+Desde el 7-sep-2026 el push a `main` **no** dispara el deploy (la integración con GitHub quedó
+rota por un problema de la cuenta). Se publica con el CLI de Vercel desde la carpeta del proyecto:
+
+```bash
+npm run build && node scripts/verificar.mjs
+npx vercel            # preview, para revisar
+npx vercel --prod     # producción (physiomove-tau.vercel.app)
+```
+
+En una máquina nueva hace falta `npx vercel link` una vez (proyecto `physiomove`); deja
+`.vercel/` y un `.env.local`, los dos ignorados.
+
+---
 ## Decisiones de diseño (anti-genérico)
 
 Repasado contra las reglas de "AI tells". Lo que se corrigió:
@@ -247,7 +295,7 @@ Repasado contra las reglas de "AI tells". Lo que se corrigió:
   las fotos iban dentro de un arco de medio punto: leía como spa, no como centro deportivo, y
   encajonaba la imagen. Ojo con volver a poner `style="margin:0"` en esas `<figure>`: pisa el
   margen negativo que produce el sangrado (el reset global ya les saca el margen).
-- **Nada de cards repetidas.** Los seis servicios son una lista con hairlines y ritmo alternado
+- **Nada de cards repetidas.** Los nueve servicios son una lista con hairlines y ritmo alternado
   (la foto cambia de lado y de proporción en pares e impares). En `/servicios`, además, el primero
   y el último ocupan el ancho completo y el resto va en dos columnas.
 - **Cajas sólo donde la elevación significa algo.** El equipo y los bloques de aranceles no llevan

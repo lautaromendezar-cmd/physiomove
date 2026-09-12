@@ -15,6 +15,8 @@ export function getStaticPaths() {
 
 const { servicio } = Astro.props;
 const otros = servicios.filter((s) => s.slug !== servicio.slug).slice(0, 3);
+const hayCuerpo = servicio.bloques.length > 0 || Boolean(servicio.atiende);
+const parrafos = (t: string | string[]) => (Array.isArray(t) ? t : [t]);
 ---
 
 <Base
@@ -34,7 +36,9 @@ const otros = servicios.filter((s) => s.slug !== servicio.slug).slice(0, 3);
           <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy)">
             {servicio.nombre}
           </h1>
-          <p class="bajada" data-hero-anima style="margin-top:1.75rem">{servicio.resumen}</p>
+          <div class="parrafos" data-hero-anima style="margin-top:1.75rem">
+            {servicio.texto.map((p) => <p class="bajada">{p}</p>)}
+          </div>
           <div class="hero__acciones" data-hero-anima>
             <a class="btn" href={contacto.whatsappTexto} target="_blank" rel="noopener">
               Agendá tu turno
@@ -55,56 +59,64 @@ const otros = servicios.filter((s) => s.slug !== servicio.slug).slice(0, 3);
             loading="eager"
             fetchpriority="high"
             data-hero-img
+            style={servicio.fotoPosicion ? `object-position:${servicio.fotoPosicion}` : undefined}
           />
         </figure>
       </div>
     </div>
   </section>
 
-  <section class="seccion" style="padding-top:clamp(2rem,5vw,4rem)">
-    <div class="contenedor">
-      <div class="bloques">
-        {
-          servicio.bloques.map((b) => (
-            <div class="bloque rv">
-              <h2>{b.titulo}</h2>
-              <div>
-                {b.texto && <p>{b.texto}</p>}
-                {b.lista && (
-                  <ul>
-                    {b.lista.map((item) => (
-                      <li>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+  {
+    hayCuerpo && (
+      <section class="seccion" style="padding-top:clamp(2rem,5vw,4rem)">
+        <div class="contenedor">
+          <div class="bloques">
+            {servicio.bloques.map((b) => (
+              <div class="bloque rv">
+                <h2>{b.titulo}</h2>
+                <div>
+                  {b.texto && (
+                    <div class="parrafos">
+                      {parrafos(b.texto).map((p) => (
+                        <p>{p}</p>
+                      ))}
+                    </div>
+                  )}
+                  {b.lista && (
+                    <ul>
+                      {b.lista.map((item) => (
+                        <li>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {b.remate && <p class="bloque__remate">{b.remate}</p>}
+                </div>
               </div>
-            </div>
-          ))
-        }
+            ))}
 
-        {
-          servicio.atiende && (
-            <div class="bloque rv">
-              <h2>Quién lo atiende</h2>
-              <div>
-                <p>{servicio.atiende}</p>
-                <p style="margin-top:.75rem">
-                  <a class="enlace" href="/equipo">
-                    Conocé al equipo
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-                      <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5" />
-                    </svg>
-                  </a>
-                </p>
+            {servicio.atiende && (
+              <div class="bloque rv">
+                <h2>Quién lo atiende</h2>
+                <div>
+                  <p>{servicio.atiende}</p>
+                  <p style="margin-top:.75rem">
+                    <a class="enlace" href="/equipo">
+                      Conocé al equipo
+                      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                        <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5" />
+                      </svg>
+                    </a>
+                  </p>
+                </div>
               </div>
-            </div>
-          )
-        }
-      </div>
-    </div>
-  </section>
+            )}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section class="seccion crema">
     <Deco variante="suave" />

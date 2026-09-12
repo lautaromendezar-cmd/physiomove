@@ -1,25 +1,57 @@
 /**
  * Única fuente de textos del sitio.
- * Todo lo que hay acá sale de material-drive/physiomove-material.docx.
- * Los campos que el cliente dejó vacíos o con el placeholder de la plantilla
- * NO se completan: se omiten. Ver README.md > "Contenido pendiente".
+ * Base: material-drive/physiomove-material.docx (ago 2026).
+ * 12/9/2026: el cliente mandó "PhysioMove — Textos web actualizados" (PDF),
+ * una versión consolidada que reescribe casi todo y pasa de 6 a 9 servicios.
+ * Los textos de acá son los de ese PDF, tal cual, salvo tildes evidentes.
+ * Los campos que el cliente dejó vacíos NO se completan: se omiten.
+ * Ver README.md > "Contenido pendiente".
  */
 
 export const centro = {
   nombre: 'PHYSIOMOVE',
   bajada: 'Centro Deportivo Especializado',
   frase: 'Donde volvés al deporte',
+  lema: 'Evaluar. Planificar. Acompañar.',
   apertura: 2023,
-  origen:
-    'PhysioMove se forma de la idea de Marcos y Sofía, dos hermanos kinesiólogos deportistas nacidos en Río Gallegos y graduados en Córdoba, en la UNC, que dieron sus primeros pasos creyendo que la recuperación de lesiones debía ser de la misma manera en que se producen en la mayoría de los casos: en movimiento.',
-  diferencial:
-    'PhysioMove se destaca principalmente por sus profesionales altamente capacitados y comprometidos con la actualización permanente, siendo el razonamiento clínico aplicado en la evaluación inicial de todos los procesos.',
-  pacientes:
-    'Nuestro centro deportivo tiene sus puertas abiertas para todo aquel paciente que desea recuperarse a través del ejercicio. Trabajamos tanto con selecciones, equipos y gimnasios, hasta deportistas profesionales, amateurs, recreacionales, pequeños deportistas en formación y adultos mayores, entre otros.',
-  postura:
-    'Creemos en el movimiento como herramienta para transformar. Pero entendemos que cada persona, cada lesión y cada objetivo tienen su propio contexto. Por eso proponemos una mirada integral, combinando kinesiología, nutrición y acondicionamiento físico para acompañar cada proceso de manera individualizada.',
-  espacio:
-    'Actualmente contamos con tres box privados, un baño de damas y otro para caballeros, y un gimnasio de uso exclusivo para pacientes que eligen recuperarse bajo nuestro seguimiento profesional.',
+  /** Sección "Cómo nació PhysioMove" (home). */
+  origen: [
+    'PhysioMove nace de la idea de Marcos y Sofía, hermanos kinesiólogos de Río Gallegos graduados en la Universidad Nacional de Córdoba, enfocados en que la recuperación de una lesión debía darse a través del movimiento.',
+    'A fines de 2023 se suma Agustín, también kinesiólogo graduado en la UNC, fortaleciendo un proyecto que continúa creciendo desde la Patagonia y ampliando su mirada sobre la rehabilitación, el entrenamiento y el deporte.',
+  ],
+  /** Sección "¿Qué nos diferencia?" (home) y description del JSON-LD. */
+  diferencial: [
+    'Principalmente el grupo humano de cada profesional. En PhysioMove se combina actualización constante, evidencia científica y criterio profesional, entendiendo que cada persona, cada proceso y cada objetivo tiene un contexto diferente.',
+    'Trabajamos de manera interdisciplinaria, integrando kinesiología, entrenamiento y nutrición para evaluar, planificar y acompañar cada proceso.',
+  ],
+  /** Clave 01 de esa sección: "A quiénes acompañamos". */
+  pacientes: [
+    'Personas que buscan recuperarse, mejorar su rendimiento, desarrollar sus capacidades físicas o ganar independencia y calidad de vida.',
+    'Trabajamos con deportistas, equipos y selecciones deportivas, niños y adolescentes en etapas formativas, adultos y adultos mayores.',
+  ],
+  /** Clave 02: "Nuestra forma de trabajar". */
+  postura: [
+    'Cada proceso parte de comprender a la persona, realizar una evaluación, establecer objetivos y desarrollar una planificación adaptada a sus necesidades.',
+    'Cuando el proceso lo requiere, integramos distintas áreas para ofrecer un abordaje coordinado e interdisciplinario.',
+  ],
+  /** Cabecera de /servicios: "Distintas áreas. Una misma forma de trabajar." */
+  formaDeTrabajar: [
+    'Cada proceso comienza por comprender a la persona, su contexto y sus objetivos. A partir de ahí se evalúa, planifica y acompaña su evolución desde el área que corresponda.',
+    'Movimiento, seguimiento, actualización constante y trabajo profesional coordinado en cada etapa.',
+  ],
+  /** Sección "El centro" (galería de la home). */
+  espacio: [
+    'PhysioMove cuenta con espacios preparados para desarrollar procesos de rehabilitación, evaluación y entrenamiento.',
+    'Un entorno pensado para trabajar de manera activa, progresiva e individualizada, desde las primeras etapas de recuperación hasta el entrenamiento y el retorno al deporte.',
+  ],
+  /** Sección "Quiénes te atienden" (home y /equipo). */
+  equipo: [
+    'PhysioMove está formado por profesionales que ofrecen distintos servicios pero comparten una misma forma de trabajar: evaluar, planificar y acompañar cada proceso de manera individualizada.',
+    'La actualización constante, el trabajo interdisciplinario y la comunicación entre profesionales forman parte de nuestra manera de entender la salud, el movimiento y el deporte.',
+  ],
+  areas: ['Kinesiología', 'Entrenamiento', 'Nutrición'],
+  /** Banda de cierre de la home. */
+  cierre: 'Movimiento, ciencia y trabajo interdisciplinario para acompañarte en cada etapa.',
 };
 
 /** Métricas del hero. Datos reales pasados por el cliente (ago 2026). */
@@ -57,72 +89,79 @@ export const contacto = {
     'https://www.google.com/maps/search/?api=1&query=PHYSIOMOVE+Kinesiologia+deportiva+Santiago+del+Estero+80+R%C3%ADo+Gallegos',
 };
 
-export type Bloque = { titulo: string; texto?: string; lista?: string[] };
+/**
+ * Bloque de la página de un servicio.
+ * texto: uno o varios párrafos. remate: una línea final en tipografía de
+ * etiqueta (ej. "Rendimiento · Prevención · Seguimiento · Alta deportiva").
+ */
+export type Bloque = {
+  titulo: string;
+  texto?: string | string[];
+  lista?: string[];
+  remate?: string;
+};
 
 export type Servicio = {
   slug: string;
   nombre: string;
+  /** Etiqueta corta para el índice del panel pineado de la home. */
+  corto: string;
   numero: string;
+  /** Una o dos líneas para las cards (home, /servicios, JSON-LD). */
   resumen: string;
+  /** Texto completo del PDF del cliente: cabecera de la página del servicio. */
+  texto: string[];
   metaDescription: string;
   foto: string;
   fotoAlt: string;
+  /** object-position de la foto cuando el encuadre centrado corta algo (ej. una cabeza). */
+  fotoPosicion?: string;
   bloques: Bloque[];
   atiende?: string;
 };
 
+/*
+  12/9/2026: los nueve servicios y sus textos salen del PDF del cliente. Las
+  páginas viejas (seis) tenían bloques "Qué es / Para quién sirve / Por qué"
+  dictados en agosto con otro tono; el PDF los reemplaza. De lo viejo quedó
+  sólo la información práctica que el PDF no contradice (cómo es una sesión,
+  clases y horarios). Cinco slugs cambiaron con el nombre: las URL viejas
+  redirigen desde vercel.json.
+*/
 export const servicios: Servicio[] = [
   {
-    slug: 'consulta',
-    nombre: 'Consulta',
+    slug: 'consulta-y-evaluacion-inicial',
+    nombre: 'Consulta y Evaluación Inicial',
+    corto: 'Consulta y evaluación inicial',
     numero: '01',
     resumen:
-      'La primera sesión uno a uno: anamnesis, evaluación funcional y recolección de datos para planificar el tratamiento.',
+      'El punto de partida para conocer a la persona, su contexto, antecedentes, necesidades y objetivos.',
+    texto: [
+      'El punto de partida para conocer a la persona, su contexto, antecedentes, necesidades y objetivos.',
+    ],
     metaDescription:
-      'Primera consulta de kinesiología en PhysioMove, Río Gallegos: anamnesis, evaluación funcional y recolección de datos para planificar tu tratamiento.',
+      'Consulta y evaluación inicial en PhysioMove, Río Gallegos: el punto de partida para conocer a la persona, su contexto, antecedentes, necesidades y objetivos.',
     foto: 'consulta-evaluacion',
     fotoAlt:
       'Kinesiólogo de PhysioMove evaluando la rodilla de un paciente recostado en la camilla del box',
-    bloques: [
-      {
-        titulo: 'Qué es',
-        texto:
-          'Es la primera sesión uno a uno en la que se realiza una anamnesis, una evaluación funcional, exploración de signos o síntomas y la recolección de datos para la planificación del tratamiento.',
-      },
-      {
-        titulo: 'Para quién sirve',
-        texto:
-          'Sirve para determinar el mejor tratamiento en base a los objetivos del paciente y del profesional, para confirmar el diagnóstico médico y para visualizar antiguas lesiones o cirugías que puedan tener relación con la problemática actual.',
-      },
-      {
-        titulo: 'Por qué es necesaria',
-        texto:
-          'Es necesaria para educar al paciente, que recuerde que el movimiento es el mejor antiinflamatorio y que el reposo no es sinónimo de cura, entendiendo que nuestro equipo siempre es pro del movimiento o del ejercicio, siempre y cuando el contexto acompañe.',
-      },
-    ],
+    bloques: [],
   },
   {
-    slug: 'kinesiologia-deportiva',
-    nombre: 'Kinesiología Deportiva',
+    slug: 'kinesiologia-deportiva-y-traumatologica',
+    nombre: 'Kinesiología Deportiva y Traumatológica',
+    corto: 'Kinesiología deportiva',
     numero: '02',
     resumen:
-      'Entrevista inicial, tests clínicos y funcionales, y una planificación acorde a las capacidades físicas de cada paciente.',
+      'Procesos de rehabilitación activos, individualizados y orientados a recuperar capacidades y volver progresivamente a la vida diaria, el entrenamiento o el deporte.',
+    texto: [
+      'Procesos de rehabilitación activos, individualizados y orientados a recuperar capacidades y volver progresivamente a las actividades de la vida diaria, el entrenamiento o el deporte.',
+    ],
     metaDescription:
-      'Kinesiología deportiva en Río Gallegos: entrevista inicial, tests clínicos y funcionales, y ejercicio planificado y guiado por kinesiólogos deportivos.',
+      'Kinesiología deportiva y traumatológica en Río Gallegos: rehabilitación activa e individualizada para volver a la vida diaria, al entrenamiento o al deporte.',
     foto: 'kinesiologia-deportiva',
     fotoAlt:
       'El equipo de PhysioMove junto a un plantel de básquet bajo el cartel Kinesiología Deportiva del centro',
     bloques: [
-      {
-        titulo: 'Qué es',
-        texto:
-          'Una modalidad de trabajo que comienza a través de una entrevista inicial, seguida de tests clínicos y funcionales para realizar una adecuada lectura sobre su lesión o diagnóstico, y posteriormente una planificación acorde a las capacidades físicas de cada paciente.',
-      },
-      {
-        titulo: 'Para quién sirve',
-        texto:
-          'Para toda aquella persona que desea recuperarse a través del ejercicio planificado y guiado por profesionales.',
-      },
       {
         titulo: 'Cómo es una sesión',
         lista: [
@@ -133,174 +172,90 @@ export const servicios: Servicio[] = [
           'Aplicación de agentes físicos, según corresponda',
         ],
       },
-      {
-        titulo: 'Cuántas sesiones',
-        texto:
-          'No existe una temporalidad exacta: se trabaja y se testea para lograr parámetros que disminuyan las probabilidades de lesión o recidiva.',
-      },
     ],
     atiende: 'Todos los kinesiólogos del staff',
   },
   {
-    slug: 'evaluaciones-de-rendimiento',
-    nombre: 'Evaluaciones de rendimiento deportivo',
+    slug: 'readaptacion-deportiva',
+    nombre: 'Readaptación Deportiva',
+    corto: 'Readaptación deportiva',
     numero: '03',
     resumen:
-      'Tecnología IVOLUTION para medir, controlar y gestionar el rendimiento físico con datos objetivos.',
-    metaDescription:
-      'Evaluaciones de rendimiento deportivo en Río Gallegos con tecnología IVOLUTION: dinamometría y plataformas de fuerza para medir y gestionar el rendimiento.',
-    foto: 'evaluacion-plataforma',
-    fotoAlt:
-      'Deportista sobre la plataforma de fuerza mientras una kinesióloga registra los datos de la evaluación en PhysioMove',
-    bloques: [
-      {
-        titulo: 'Qué es',
-        texto:
-          'La tecnología IVOLUTION se utiliza para medir, controlar y gestionar el rendimiento físico en docenas de deportes diferentes: de pista, de campo, atletismo, individuales y de equipo.',
-      },
-      {
-        titulo: 'Para quién sirve',
-        texto:
-          'Es aplicable en selecciones, equipos de élite o en formación, gimnasios privados, o incluso en el deportista individual que desea conocer las métricas de su cuerpo y llevarlas al límite con esta nueva tecnología.',
-      },
-      {
-        titulo: 'Cómo es una sesión',
-        texto: 'Se realizan tests de movilidad articular, flexibilidad y fuerza.',
-      },
-      {
-        titulo: 'Cada cuánto se testea',
-        texto: 'Se suele testear cada 8 a 12 semanas.',
-      },
-      {
-        titulo: 'Para qué sirven los resultados',
-        lista: [
-          'Establecer un nivel base específico para cada sujeto',
-          'Monitorear el progreso en una rehabilitación o entrenamiento',
-          'Medir el resultado de un plan específico',
-          'Desarrollar programas de prevención de lesiones y rehabilitación',
-        ],
-      },
-      {
-        titulo: 'Aparatología y técnicas',
-        lista: ['Tecnología IVOLUTION', 'Dinamometría', 'Plataformas de fuerza'],
-      },
+      'La transición entre la rehabilitación y el regreso al entrenamiento y la competencia, progresiva y planificada.',
+    texto: [
+      'Se acompaña la transición entre la rehabilitación y el regreso al entrenamiento y la competencia. Trabajamos sobre las capacidades físicas y las demandas específicas del deporte para lograr una vuelta progresiva y planificada.',
     ],
+    metaDescription:
+      'Readaptación deportiva en Río Gallegos: la transición entre la rehabilitación y la vuelta al entrenamiento y la competencia, progresiva y planificada.',
+    foto: 'hero-entrenamiento',
+    fotoAlt:
+      'Deportista haciendo una sentadilla con banda elástica sobre la pista azul del gimnasio de PhysioMove',
+    bloques: [],
   },
   {
-    slug: 'fisioterapia-invasiva-mep',
-    nombre: 'Fisioterapia Invasiva MEP',
+    slug: 'evaluaciones-deportivas',
+    nombre: 'Evaluaciones Deportivas',
+    corto: 'Evaluaciones deportivas',
     numero: '04',
     resumen:
-      'Una técnica mínimamente invasiva para tendinopatías y lesiones musculares crónicas.',
-    metaDescription:
-      'Fisioterapia invasiva MEP en Río Gallegos: técnica mínimamente invasiva para tendinopatías y lesiones musculares crónicas, con corriente galvánica.',
-    foto: 'fisioterapia-invasiva',
-    fotoAlt:
-      'Primer plano de una aguja de punción seca aplicada en la rodilla de un paciente, en un box de PhysioMove',
-    bloques: [
-      {
-        titulo: 'Qué es',
-        texto:
-          'Es una técnica innovadora, mínimamente invasiva, que revolucionó la kinesiología deportiva.',
-      },
-      {
-        titulo: 'Para quién sirve',
-        texto:
-          'Sumamente utilizada en pacientes que presentan tendinopatías o lesiones musculares crónicas.',
-      },
-      {
-        titulo: 'Cómo es una sesión',
-        texto:
-          'Se localiza el tendón lesionado, se esteriliza la zona y se introduce una aguja de acupuntura durante unos minutos; luego se retira y se descarta.',
-      },
-      { titulo: 'Cuántas sesiones', texto: 'Se recomienda entre 2 y 3 sesiones.' },
-      {
-        titulo: 'Aparatología y técnicas',
-        texto: 'Agente físico Sveltia, de emisión de corriente galvánica.',
-      },
+      'Evaluaciones y tecnología aplicada para obtener información objetiva sobre diferentes capacidades físicas.',
+    texto: [
+      'Se utilizan evaluaciones y tecnología aplicada para obtener información objetiva sobre diferentes capacidades físicas.',
     ],
-  },
-  {
-    slug: 'recovery-post-competencia',
-    nombre: 'Sesión Recovery Post Competencia',
-    numero: '05',
-    resumen:
-      'Masoterapia, presoterapia y restricción del flujo sanguíneo para eliminar toxinas de forma inmediata.',
     metaDescription:
-      'Sesión Recovery post competencia en Río Gallegos: masoterapia, presoterapia, contraste térmico y neuromodulación para recuperar después de competir.',
-    foto: 'recovery-presoterapia',
+      'Evaluaciones deportivas en Río Gallegos con tecnología IVOLUTION: rendimiento, prevención, seguimiento y alta deportiva, con datos objetivos sobre las capacidades físicas.',
+    foto: 'evaluacion-ivolution',
+    fotoPosicion: '50% 12%',
     fotoAlt:
-      'Botas de presoterapia sobre la camilla del box de recuperación de PhysioMove',
+      'Deportista sobre la plataforma de fuerza IVOLUTION mientras una kinesióloga de PhysioMove registra los datos en la laptop, bajo el lema Medir para mejorar',
     bloques: [
       {
-        titulo: 'Qué es',
-        texto:
-          'Es una excelente opción durante o luego de una competencia de alta intensidad. Masoterapia, presoterapia y restricción del flujo sanguíneo la hacen una sesión completa para eliminar toxinas de forma inmediata.',
-      },
-      {
-        titulo: 'Para quién sirve',
-        texto:
-          'Es una herramienta innovadora para cuidar tu cuerpo. Quienes se han recuperado con nosotros entienden que no lesionarse es posible, y en gran parte es tu responsabilidad.',
-      },
-      {
-        titulo: 'Cómo es una sesión',
+        titulo: 'Qué incluye',
         lista: [
-          'Movilidad y liberación miofascial',
-          'Terapia compresiva neumática intermitente',
-          'Contraste térmico o inmersión',
-          'Neuromodulación y nutrición periférica',
+          'Evaluaciones de rendimiento deportivo: para conocer el perfil físico del deportista y orientar su entrenamiento.',
+          'Evaluaciones preventivas: para identificar capacidades a mejorar y orientar estrategias de trabajo.',
+          'Evaluaciones de seguimiento: para medir cambios y monitorear la evolución durante procesos de rehabilitación o entrenamiento.',
+          'Evaluaciones para alta deportiva: para aportar criterios objetivos durante el proceso de retorno al entrenamiento y a la competencia.',
         ],
       },
       {
-        titulo: 'Efectos fisiológicos',
-        lista: [
-          'Modulación del sistema nervioso autónomo',
-          'Disminuye la respuesta inflamatoria',
-          'Aporte de sustratos energéticos',
-          'Disminuye marcadores de daño muscular',
-          'Barrido de lactato y sustancias tóxicas',
+        titulo: 'Medir para tomar mejores decisiones',
+        texto:
+          'Esta información nos permite conocer el punto de partida, orientar la planificación, monitorear cambios y acompañar decisiones durante procesos de rehabilitación, prevención, entrenamiento, rendimiento y retorno al deporte.',
+        remate: 'Rendimiento · Prevención · Seguimiento · Alta deportiva',
+      },
+      {
+        titulo: 'Tecnología IVOLUTION',
+        texto: [
+          'En PhysioMove se utiliza tecnología IVOLUTION para evaluar de manera objetiva diferentes variables relacionadas con la fuerza, la potencia y el rendimiento neuromuscular.',
+          'Los datos obtenidos complementan la evaluación profesional y nos permiten medir, comparar y monitorear la evolución, aportando información para la toma de decisiones durante cada proceso.',
         ],
       },
     ],
   },
   /*
     Renombrado el 2/9/2026 (era "Iniciación a la performance deportiva en
-    niños"): texto nuevo dictado por el cliente. El slug cambia con el nombre;
-    la URL vieja redirige via vercel.json. Los bloques de clases y horarios se
-    conservaron porque el texto nuevo no los reemplaza (son info práctica).
+    niños") y otra vez el 12/9 con el PDF. El slug se mantiene desde el 2/9
+    para no encadenar redirecciones; la URL original redirige via vercel.json.
+    Los bloques de clases y horarios se conservan: son info práctica que el
+    texto nuevo no reemplaza.
   */
   {
     slug: 'entrenamiento-fuerza-infanto-juvenil',
-    nombre: 'Entrenamiento de Fuerza Infanto-Juvenil',
-    numero: '06',
+    nombre: 'Desarrollo Físico y Entrenamiento de Fuerza Infanto-Juvenil',
+    corto: 'Fuerza infanto-juvenil',
+    numero: '05',
     resumen:
-      'En PhysioMove buscamos construir una base sólida para el desarrollo físico y deportivo de cada niño, niña y adolescente, utilizando la fuerza como una capacidad fundamental y como base para el desarrollo de las demás capacidades condicionales.',
+      'Acompañamos el desarrollo de niños y adolescentes con propuestas de entrenamiento adaptadas a su edad, experiencia y etapa de crecimiento.',
+    texto: [
+      'Se acompaña el desarrollo de niños y adolescentes mediante propuestas de entrenamiento adaptadas a su edad, experiencia y etapa de crecimiento. Trabajamos fuerza, coordinación, movilidad, control motor y diferentes habilidades físicas, promoviendo un desarrollo progresivo y una relación saludable con el entrenamiento.',
+    ],
     metaDescription:
-      'Entrenamiento de fuerza infanto-juvenil en Río Gallegos: evaluación inicial con la plataforma de fuerza IVOLUTION, planificación individualizada y seguimiento periódico.',
+      'Desarrollo físico y entrenamiento de fuerza infanto-juvenil en Río Gallegos: fuerza, coordinación, movilidad y control motor adaptados a la edad y la etapa de crecimiento.',
     foto: 'infanto-juvenil',
     fotoAlt:
       'El profe hablando con tres chicos sentados sobre la pista de césped del gimnasio de PhysioMove',
     bloques: [
-      {
-        titulo: 'Cómo trabajamos',
-        texto:
-          'El proceso comienza con una evaluación inicial, donde analizamos aspectos como la movilidad, flexibilidad y control motor. Además, mediante la plataforma de fuerza IVOLUTION, evaluamos la capacidad de producir fuerza de los miembros inferiores, la velocidad con la que se genera y diferentes variables relacionadas con el salto y su eficiencia.',
-      },
-      {
-        titulo: 'Planificación individualizada',
-        texto:
-          'A partir de estos resultados, diseñamos una planificación individualizada, estableciendo un punto de partida y objetivos claros para cada persona.',
-      },
-      {
-        titulo: 'Evaluaciones y seguimiento',
-        texto:
-          'El proceso incluye evaluaciones y seguimientos periódicos, que nos permiten observar los cambios, medir las mejoras y ajustar la planificación de acuerdo con la evolución y las necesidades de cada deportista.',
-      },
-      {
-        titulo: 'Nuestra filosofía',
-        texto:
-          'Evaluar para conocer desde dónde partimos. Planificar para saber hacia dónde vamos. Revaluar para visualizar nuestro progreso.',
-      },
       { titulo: 'Cuántas clases al mes', texto: 'Habitualmente son ocho clases por mes.' },
       {
         titulo: 'Horarios',
@@ -313,6 +268,92 @@ export const servicios: Servicio[] = [
       },
     ],
     atiende: 'Profe. Nicolás Ovando',
+  },
+  {
+    slug: 'nutricion-deportiva',
+    nombre: 'Nutrición Deportiva',
+    corto: 'Nutrición deportiva',
+    numero: '06',
+    resumen:
+      'Evaluación y acompañamiento nutricional adaptado a las necesidades, objetivos y contexto de cada persona.',
+    texto: [
+      'Evaluación y acompañamiento nutricional adaptado a las necesidades, objetivos y contexto de cada persona. La nutrición forma parte del proceso de salud, recuperación, entrenamiento y rendimiento.',
+    ],
+    metaDescription:
+      'Nutrición deportiva en Río Gallegos: evaluación y acompañamiento nutricional adaptado a las necesidades, objetivos y contexto de cada persona.',
+    foto: 'nutricion-deportiva',
+    fotoAlt: 'Lucía Fernández, licenciada en Nutrición de PhysioMove, en el gimnasio del centro',
+    bloques: [],
+  },
+  {
+    slug: 'ejercicio-fisico-adaptado',
+    nombre: 'Ejercicio Físico Adaptado',
+    corto: 'Ejercicio físico adaptado',
+    numero: '07',
+    resumen:
+      'Programas de ejercicio individualizados para mejorar fuerza, movilidad, equilibrio, capacidad física, autonomía e independencia.',
+    texto: [
+      'Programas de ejercicio individualizados orientados a mejorar fuerza, movilidad, equilibrio, capacidad física, autonomía e independencia. Especialmente pensado para adultos y adultos mayores que buscan mantenerse activos y mejorar su calidad de vida.',
+    ],
+    metaDescription:
+      'Ejercicio físico adaptado en Río Gallegos: programas individualizados de fuerza, movilidad y equilibrio para adultos y adultos mayores que buscan mantenerse activos.',
+    foto: 'ejercicio-adaptado',
+    fotoAlt:
+      'Kinesiólogo de PhysioMove guiando un ejercicio de movilidad sobre la pista del gimnasio',
+    bloques: [],
+  },
+  {
+    slug: 'recovery-y-recuperacion-deportiva',
+    nombre: 'Recovery y Recuperación Deportiva',
+    corto: 'Recovery',
+    numero: '08',
+    resumen:
+      'Estrategias para acompañar la recuperación luego del entrenamiento y la competencia, adaptadas a cada deportista.',
+    texto: [
+      'Estrategias orientadas a acompañar la recuperación luego del entrenamiento y la competencia, adaptadas a las necesidades y demandas de cada deportista.',
+    ],
+    metaDescription:
+      'Recovery y recuperación deportiva en Río Gallegos: estrategias adaptadas a cada deportista para recuperarse después del entrenamiento y la competencia.',
+    foto: 'recovery-presoterapia',
+    fotoAlt:
+      'Botas de presoterapia sobre la camilla del box de recuperación de PhysioMove',
+    bloques: [
+      {
+        titulo: 'Cómo es una sesión',
+        lista: [
+          'Movilidad y liberación miofascial',
+          'Terapia compresiva neumática intermitente',
+          'Contraste térmico o inmersión',
+          'Neuromodulación y nutrición periférica',
+        ],
+      },
+    ],
+  },
+  /*
+    12/9/2026: el PDF pide reemplazar "Fisioterapia invasiva / Terapias
+    alternativas" por "Técnicas complementarias". Era "Fisioterapia Invasiva MEP".
+  */
+  {
+    slug: 'tecnicas-complementarias',
+    nombre: 'Técnicas Complementarias',
+    corto: 'Técnicas complementarias',
+    numero: '09',
+    resumen:
+      'Herramientas terapéuticas que se suman como complemento dentro de un proceso de rehabilitación: MEP Sport, punción seca y acupuntura deportiva.',
+    texto: [
+      'Herramientas terapéuticas que pueden incorporarse como complemento dentro de un proceso de rehabilitación, según la evaluación y las necesidades de cada persona.',
+    ],
+    metaDescription:
+      'Técnicas complementarias en PhysioMove, Río Gallegos: MEP Sport, punción seca y acupuntura deportiva como complemento dentro de un proceso de rehabilitación.',
+    foto: 'fisioterapia-invasiva',
+    fotoAlt:
+      'Primer plano de una aguja de punción seca aplicada en la rodilla de un paciente, en un box de PhysioMove',
+    bloques: [
+      {
+        titulo: 'Técnicas',
+        lista: ['MEP Sport', 'Punción seca', 'Acupuntura deportiva'],
+      },
+    ],
   },
 ];
 
@@ -330,9 +371,11 @@ export type Profesional = {
   fichaCompleta: boolean;
 };
 
+/* 12/9/2026: el cliente pidió quitar los segundos nombres (Exequiel,
+   Alejandra) y el primero de Agustín (Eduardo). */
 export const profesionales: Profesional[] = [
   {
-    nombre: 'Marcos Exequiel Anaquín',
+    nombre: 'Marcos Anaquín',
     iniciales: 'MA',
     retrato: 'retrato-marcos',
     titulo: 'Licenciado en Kinesiología y Fisioterapia',
@@ -347,7 +390,7 @@ export const profesionales: Profesional[] = [
     fichaCompleta: true,
   },
   {
-    nombre: 'Sofía Alejandra Anaquín',
+    nombre: 'Sofía Anaquín',
     iniciales: 'SA',
     retrato: 'retrato-sofia',
     titulo: 'Licenciada en Kinesiología y Fisioterapia',
@@ -361,8 +404,8 @@ export const profesionales: Profesional[] = [
     fichaCompleta: true,
   },
   {
-    nombre: 'Eduardo Agustín Guiguet',
-    iniciales: 'EG',
+    nombre: 'Agustín Guiguet',
+    iniciales: 'AG',
     retrato: 'retrato-agustin',
     titulo: 'Licenciado en Kinesiología y Fisioterapia',
     matricula: 'LK MP 385',
@@ -409,11 +452,11 @@ export const profesionales: Profesional[] = [
  * `logo` es el nombre del archivo en src/assets/logos (sin extension).
  * Las que no lo tienen se muestran con el nombre en texto, en la misma celda.
  * La procedencia de cada logo esta en src/assets/logos/ORIGEN.md.
+ * 12/9/2026: el cliente pidió sacar la Caja de Servicios Sociales (CSS).
  */
 export type ObraSocial = { nombre: string; copago: boolean; logo?: string };
 
 export const obrasSociales: ObraSocial[] = [
-  { nombre: 'Caja de Servicios Sociales', copago: true },
   { nombre: 'Avalian', copago: true, logo: 'avalian' },
   { nombre: 'Dasuten', copago: true },
   { nombre: 'IOSFA', copago: true, logo: 'iosfa' },

@@ -40,8 +40,8 @@ Nada de esto corre en el build: los PNG ya procesados entran al repo y Astro los
 
 Estas se muestran con el nombre en texto, en la misma celda y con el mismo peso:
 
-- **Caja de Servicios Sociales** y **Poder Judicial** — son de Santa Cruz; no tienen un logo web
-  usable.
+- **Poder Judicial** — es de Santa Cruz; no tiene un logo web usable. (La **Caja de Servicios
+  Sociales**, en la misma situación, se sacó del listado a pedido del cliente el 12-sep-2026.)
 - **OSPE**, **OSPTV**, **OSPSA** y **Dasuten** — la sigla la comparten varias obras sociales
   distintas (OSPE puede ser la de petroleros, OSPEGAP, OSPECOR...). **No se adivinó ninguna**:
   poner el logo de otra entidad en el sitio de un centro de salud es peor que dejar el texto.

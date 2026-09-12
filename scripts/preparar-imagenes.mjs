@@ -29,6 +29,11 @@ const FOTOS_MAP = {
   'ninos-entrenamiento':     'IMG_2272.jpg',
   'ninos-evaluacion':        'IMG_4453.jpg',
   'equipo-hexagonos':        'IMG_5920.jpg',
+  // 12/9/2026: fotos para los servicios nuevos del PDF y la de IVOLUTION
+  // (el cliente pidio una foto real de la sede con la plataforma).
+  'evaluacion-ivolution':    '5cd9806b-3691-4e2c-98c5-6f79e0834def.jpg',
+  'ejercicio-adaptado':      'IMG_2060.jpg',
+  'nutricion-deportiva':     'IMG_5922.jpg',
 };
 
 const LADO_MAX = 1800;

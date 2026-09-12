@@ -22,7 +22,7 @@ import {
 
 <Base
   titulo="PhysioMove | Kinesiología deportiva en Río Gallegos"
-  descripcion="Centro deportivo especializado en Río Gallegos: kinesiología deportiva, evaluaciones de rendimiento con tecnología IVOLUTION, fisioterapia invasiva MEP y recovery. Donde volvés al deporte."
+  descripcion="Centro deportivo especializado en Río Gallegos: kinesiología deportiva y traumatológica, readaptación, evaluaciones con tecnología IVOLUTION, nutrición deportiva y recovery. Donde volvés al deporte."
   ruta="/"
 >
   <!-- ============================================================ HERO -->
@@ -122,11 +122,13 @@ import {
           <p class="origen__cita" data-lineas>
             La recuperación de una lesión debía ser <em>en movimiento</em>.
           </p>
-          <p class="bajada rv">{centro.origen}</p>
+          <div class="parrafos">
+            {centro.origen.map((p) => <p class="bajada rv">{p}</p>)}
+          </div>
           <div class="origen__dato rv">
             <strong>{centro.apertura}</strong>
             <span class="bajada" style="font-size:.95rem"
-              >Año en que abrimos las puertas en {contacto.localidad}, {contacto.provincia}.</span
+              >Año en que abrimos nuestras puertas en {contacto.localidad}, {contacto.provincia}.</span
             >
           </div>
         </div>
@@ -140,20 +142,28 @@ import {
     <div class="contenedor">
       <div class="dif__grid">
         <div>
-          <p class="volanta">Qué hacemos distinto?</p>
+          <p class="volanta">¿Qué nos diferencia?</p>
           <h2 class="dif__titulo" data-lineas>
-            Razonamiento clínico y <em>ejercicio planificado</em>
+            Una mirada integral, <em>basada en evidencia</em>.
           </h2>
-          <p class="dif__texto rv">{centro.diferencial}</p>
+          <div class="parrafos">
+            {centro.diferencial.map((p) => <p class="dif__texto rv">{p}</p>)}
+          </div>
 
           <div class="dif__claves">
             <div class="dif__clave rv">
               <span>01</span>
-              <p><b>A quiénes atendemos.</b> {centro.pacientes}</p>
+              <div class="parrafos">
+                <p><b>A quiénes acompañamos.</b> {centro.pacientes[0]}</p>
+                {centro.pacientes.slice(1).map((p) => <p>{p}</p>)}
+              </div>
             </div>
             <div class="dif__clave rv">
               <span>02</span>
-              <p><b>Nuestra postura.</b> {centro.postura}</p>
+              <div class="parrafos">
+                <p><b>Nuestra forma de trabajar.</b> {centro.postura[0]}</p>
+                {centro.postura.slice(1).map((p) => <p>{p}</p>)}
+              </div>
             </div>
           </div>
         </div>
@@ -190,21 +200,21 @@ import {
       <div class="svc__grid">
         <div class="svc__panel" data-svc-panel>
           <p class="volanta">Servicios</p>
-          <h2 class="titulo-l" data-lineas>Qué hacemos<br />en el centro</h2>
+          <h2 class="titulo-l" data-lineas>Qué hacemos<br />en PhysioMove</h2>
           <ol class="svc__indice" data-svc-indice>
             {
               servicios.map((s, i) => (
                 <li data-activo={i === 0 ? 'true' : 'false'}>
                   <span>{s.numero}</span>
-                  {s.nombre}
+                  {s.corto}
                 </li>
               ))
             }
           </ol>
           <div class="svc__progreso"><i data-svc-progreso></i></div>
           <p class="bajada rv" style="margin-top:2rem;font-size:.95rem">
-            Cada servicio tiene su página con el detalle completo: qué es, para quién sirve y
-            cómo es una sesión.
+            Cada servicio tiene su página con el detalle completo. Entrá en el que te corresponda
+            o escribinos y lo vemos juntos.
           </p>
         </div>
 
@@ -220,6 +230,7 @@ import {
                     sizes="(max-width: 640px) 100vw, 26vw"
                     alt={s.fotoAlt}
                     loading="lazy"
+                    style={s.fotoPosicion ? `object-position:${s.fotoPosicion}` : undefined}
                   />
                 </figure>
                 <div class="svc__card__cuerpo">
@@ -245,10 +256,12 @@ import {
   <section class="galeria oscuro" data-galeria>
     <div class="contenedor galeria__cabecera">
       <div>
-        <p class="volanta">El centro por dentro</p>
-        <h2 class="titulo-l" data-lineas>Tres box privados<br />y un gimnasio propio</h2>
+        <p class="volanta">El centro</p>
+        <h2 class="titulo-l" data-lineas>Un espacio pensado<br />para moverse</h2>
       </div>
-      <p class="bajada" style="max-width:38ch">{centro.espacio}</p>
+      <div class="parrafos" style="max-width:38ch">
+        {centro.espacio.map((p) => <p class="bajada">{p}</p>)}
+      </div>
     </div>
 
     <div class="galeria__pista" data-galeria-pista>
@@ -278,8 +291,10 @@ import {
         style="display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap"
       >
         <div>
-          <p class="volanta">Equipo profesional</p>
-          <h2 class="titulo-l" data-lineas>Quiénes<br />te atienden</h2>
+          <p class="volanta">Quiénes te atienden</p>
+          <h2 class="titulo-l" data-lineas>
+            Un equipo.<br />Diferentes miradas.<br />Un mismo objetivo.
+          </h2>
         </div>
         <a class="enlace" href="/equipo">
           Ver las fichas completas
@@ -287,6 +302,13 @@ import {
             <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5"></path>
           </svg>
         </a>
+      </div>
+
+      <div class="equipo__intro">
+        <div class="parrafos">
+          {centro.equipo.map((p) => <p class="bajada rv">{p}</p>)}
+        </div>
+        <p class="numeral rv equipo__areas">Áreas: {centro.areas.join(' · ')}</p>
       </div>
 
       <div class="equipo__grid" style={`--cols:${profesionales.length}`}>
@@ -382,5 +404,5 @@ import {
     </div>
   </section>
 
-  <Cierre />
+  <Cierre titulo={centro.lema} texto={centro.cierre} />
 </Base>

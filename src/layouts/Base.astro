@@ -23,7 +23,7 @@ const schema = {
   name: `${centro.nombre} — ${centro.bajada}`,
   alternateName: 'PhysioMove Río Gallegos',
   slogan: centro.frase,
-  description: centro.diferencial,
+  description: centro.diferencial.join(' '),
   url: new URL('/', Astro.site).href,
   image: og,
   logo: new URL('/favicon-512.png', Astro.site).href,

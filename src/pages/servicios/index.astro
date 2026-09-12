@@ -4,25 +4,26 @@ import Base from '../../layouts/Base.astro';
 import Deco from '../../components/Deco.astro';
 import Cierre from '../../components/Cierre.astro';
 import { foto } from '../../data/fotos';
-import { servicios, contacto } from '../../data/contenido';
+import { servicios, contacto, centro } from '../../data/contenido';
 ---
 
 <Base
   titulo="Servicios | PhysioMove Río Gallegos"
-  descripcion="Consulta, kinesiología deportiva, evaluaciones de rendimiento con IVOLUTION, fisioterapia invasiva MEP, recovery post competencia y entrenamiento de fuerza infanto-juvenil."
+  descripcion="Consulta y evaluación inicial, kinesiología deportiva y traumatológica, readaptación, evaluaciones con IVOLUTION, fuerza infanto-juvenil, nutrición, ejercicio adaptado, recovery y técnicas complementarias."
   ruta="/servicios"
 >
   <section class="cabecera">
     <Deco variante="hero" />
     <div class="contenedor">
       <p class="miga"><a href="/">Inicio</a> / Servicios</p>
-      <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy);max-width:16ch">
-        Seis servicios, una misma forma de trabajar
+      <p class="volanta" data-hero-anima>Nuestra forma de trabajar</p>
+      <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy);max-width:26ch">
+        Distintas áreas.<br />Una misma forma de trabajar.
       </h1>
-      <p class="bajada" data-hero-anima style="margin-top:1.75rem;max-width:56ch">
-        Todo empieza con una evaluación y un razonamiento clínico. Después, ejercicio guiado,
-        planificado y dosificado. Entrá en cada servicio para ver el detalle.
-      </p>
+      <div class="parrafos" data-hero-anima style="margin-top:1.75rem;max-width:56ch">
+        {centro.formaDeTrabajar.map((p) => <p class="bajada">{p}</p>)}
+      </div>
+      <p class="lema" data-hero-anima>{centro.lema}</p>
     </div>
   </section>
 
@@ -40,6 +41,7 @@ import { servicios, contacto } from '../../data/contenido';
                   sizes="(max-width: 760px) 100vw, 46vw"
                   alt={s.fotoAlt}
                   loading="lazy"
+                  style={s.fotoPosicion ? `object-position:${s.fotoPosicion}` : undefined}
                 />
               </figure>
               <div class="svc__card__cuerpo">

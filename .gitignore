@@ -11,3 +11,6 @@ capturas/
 fotos-marcos/
 .vercel
 .env*
+
+# Material fuente del cliente (PDF de textos, etc.): no viaja en el repo
+modificaciones-*/

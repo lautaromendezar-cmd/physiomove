@@ -14,7 +14,7 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
 
 <Base
   titulo="Equipo profesional | PhysioMove Río Gallegos"
-  descripcion="Kinesiólogos deportivos matriculados de PhysioMove: formación, especialidad y experiencia de cada profesional del centro en Río Gallegos."
+  descripcion="Kinesiólogos, entrenador y nutricionista de PhysioMove: un equipo interdisciplinario matriculado en Río Gallegos, con la formación y la experiencia de cada profesional."
   ruta="/equipo"
 >
   <section class="cabecera">
@@ -23,14 +23,20 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
       <p class="miga"><a href="/">Inicio</a> / Equipo</p>
       <div class="cabecera__grid">
         <div>
-          <p class="volanta" data-hero-anima>Equipo profesional</p>
+          <p class="volanta" data-hero-anima>Un equipo. Diferentes miradas. Un mismo objetivo.</p>
           <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy)">
             Quiénes te atienden
           </h1>
-          <p class="bajada" data-hero-anima style="margin-top:1.75rem">
-            {centro.diferencial}
-          </p>
+          <div class="parrafos" data-hero-anima style="margin-top:1.75rem">
+            {centro.equipo.map((p) => <p class="bajada">{p}</p>)}
+          </div>
+          <p class="numeral equipo__areas" data-hero-anima>Áreas: {centro.areas.join(' · ')}</p>
         </div>
+        <!--
+          12/9/2026: el cliente pide que esta foto muestre a todos los
+          profesionales actuales, incluidos Nico y Lucía. No hay ninguna así en
+          el material: queda la de tres hasta que mande una nueva.
+        -->
         <figure class="cabecera__figura" data-hero-figura>
           <Picture
             pictureAttributes={{ class: 'cabecera__marco marco-foto' }}
