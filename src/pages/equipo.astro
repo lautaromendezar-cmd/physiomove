@@ -33,19 +33,20 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
           <p class="numeral equipo__areas" data-hero-anima>Áreas: {centro.areas.join(' · ')}</p>
         </div>
         <!--
-          12/9/2026: el cliente pide que esta foto muestre a todos los
-          profesionales actuales, incluidos Nico y Lucía. No hay ninguna así en
-          el material: queda la de tres hasta que mande una nueva.
+          13/9/2026: la foto que pidio el PDF, con los seis. Va en un marco mas
+          apaisado (3:2) porque estan en fila: con el 5:4 del resto de las
+          cabeceras, el recorte lateral se comia a los de las puntas.
+          Sin nombres en el alt: no se adivina quien es quien.
         -->
         <figure class="cabecera__figura" data-hero-figura>
           <Picture
-            pictureAttributes={{ class: 'cabecera__marco marco-foto' }}
+            pictureAttributes={{ class: 'cabecera__marco cabecera__marco--grupo marco-foto' }}
             data-parallax
-            src={foto('equipo-grupo')}
+            src={foto('equipo-completo')}
             formats={['avif', 'webp']}
-            widths={[520, 800, 1100]}
+            widths={[520, 800, 1100, 1280]}
             sizes="(max-width: 760px) 100vw, 42vw"
-            alt="Tres profesionales de PhysioMove en el gimnasio del centro"
+            alt="El equipo de PhysioMove, seis profesionales, bajo el cartel Kinesiología Deportiva del gimnasio del centro"
             loading="eager"
             fetchpriority="high"
             data-hero-img

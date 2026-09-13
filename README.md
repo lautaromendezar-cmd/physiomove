@@ -220,9 +220,6 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
 | **Ficha de Graciela Sanchez**    | Sin experiencia, Instagram ni bio. Se muestra con título, matrícula, especialidad y formación.                       |
 | **Ficha de Lucía Fernandez**     | Sólo nombre y título. Aparece en la grilla del equipo, sin ficha extendida.                                          |
-| **Foto del equipo completo**     | El PDF del 12-sep pide que la foto de cabecera de `/equipo` muestre a **todos** los profesionales, incluidos Nico y Lucía. No existe ninguna así en el material: sigue la de tres hasta que el cliente la mande. |
-| **Quién atiende**                | El PDF sólo lo dice para kinesiología (todo el staff) e infanto-juvenil (Nico). Los otros siete servicios no lo tienen; nutrición se supone de Lucía, pero no está confirmado. |
-| **Facebook, TikTok y YouTube**   | En el documento estaba el texto de ejemplo de la plantilla, no cuentas reales. Sólo se publica Instagram.            |
 | **Logos de 5 obras sociales**    | OSPE, OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. Detalle en `src/assets/logos/ORIGEN.md`. |
 | **Logo de OSMATA**               | El archivo del sitio oficial dice SMATA (el sindicato), no OSMATA. Conviene que el cliente lo confirme.              |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
@@ -262,6 +259,12 @@ Decisiones que no están en el PDF:
 - **Fotos de los servicios nuevos**, elegidas del material ya optimizado: readaptación usa
   `hero-entrenamiento` (sentadilla con banda), ejercicio adaptado `IMG_2060` (movilidad guiada)
   y nutrición `IMG_5922`, que es la foto de Lucía, la nutricionista.
+- **La foto del equipo completo llegó el 13-sep** (`fotos-marcos/equipo-completo.webp`, 1280×859)
+  y es la cabecera de `/equipo`. Están los seis en fila, así que ese marco va en **3:2** y no en
+  el 5:4 del resto de las cabeceras: con 5:4 el recorte lateral era del 14% por lado y les comía
+  los hombros a los de las puntas; con 3:2 baja al 6% y entran todos (medido de 1920 a 390). Es
+  la clase `.cabecera__marco--grupo`. El alt **no nombra a nadie**: sigue valiendo la regla de no
+  adivinar quién es quién. `equipo-grupo.jpg`, la de tres, queda en el repo sin uso.
 - En la clave "Nuestra forma de trabajar" el PDF trae una línea ("Se cree en el movimiento como
   herramienta para transformar") que está en el texto pero **no se ve en la página**: se omitió.
 

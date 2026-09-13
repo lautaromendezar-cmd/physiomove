@@ -2882,3 +2882,12 @@ html.pm-cargando body {
     margin-bottom: 0;
   }
 }
+
+/* Cabecera de /equipo: la foto de los seis es apaisada y estan en fila, asi
+   que el 5:4 del resto de las cabeceras les comia los hombros a los de las
+   puntas. Con 3:2 el recorte lateral baja de 14% a 7% por lado y entran todos.
+   (La imagen mide 118% del marco por el parallax: el recorte real sale de esa
+   caja, no del aspect-ratio pelado.) */
+.cabecera__marco--grupo {
+  aspect-ratio: 3 / 2;
+}

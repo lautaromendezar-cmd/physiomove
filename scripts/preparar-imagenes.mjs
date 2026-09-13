@@ -59,6 +59,8 @@ const MARCOS_MAP = {
   'infanto-juvenil':        'infanto.jfif',
   'kinesiologia-deportiva': 'kinesiologia-deportiva.jfif',
   'fisioterapia-invasiva':  'fisioterapia-invasiva.jfif',
+  // 13/9/2026: la foto del equipo completo que pidio el PDF (los seis).
+  'equipo-completo':        'equipo-completo.webp',
 };
 
 /*
