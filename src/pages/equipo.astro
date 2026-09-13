@@ -27,8 +27,13 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
           <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy)">
             Quiénes te atienden
           </h1>
+          <!--
+            13/9/2026: el cliente reescribio este parrafo y lo mando titulado
+            "quienes te atienden", que es donde lo veia. Vuelve aca, como estaba
+            antes del PDF. El texto propio del punto 08 sigue en la home.
+          -->
           <div class="parrafos" data-hero-anima style="margin-top:1.75rem">
-            {centro.equipo.map((p) => <p class="bajada">{p}</p>)}
+            {centro.diferencial.map((p) => <p class="bajada">{p}</p>)}
           </div>
           <p class="numeral equipo__areas" data-hero-anima>Áreas: {centro.areas.join(' · ')}</p>
         </div>

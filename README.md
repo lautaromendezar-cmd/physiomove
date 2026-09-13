@@ -237,7 +237,7 @@ material fuente). Lo que cambió y cómo se mapeó cada punto del documento:
 | Punto del PDF | Dónde vive en el sitio |
 | --- | --- |
 | 01 Cómo nació | Sección de origen de la home (`centro.origen`, ahora dos párrafos: se suma Agustín a fines de 2023). |
-| 02 ¿Qué nos diferencia? | Sección oscura de la home: título "Una mirada integral, basada en evidencia", `centro.diferencial`, claves `pacientes` y `postura`. |
+| 02 ¿Qué nos diferencia? | Sección oscura de la home: título "Una mirada integral, basada en evidencia", `centro.diferencial`, claves `pacientes` y `postura`. **El párrafo del PDF quedó viejo: el 13-sep el cliente mandó otra reescritura por WhatsApp y esa es la que vale** (ver abajo). |
 | 03 Servicios | Pasan de 6 a **9**: se suman Readaptación, Nutrición y Ejercicio físico adaptado; "Fisioterapia invasiva MEP" pasa a "Técnicas complementarias". |
 | 04 Nuestra forma de trabajar | **Sección nueva de la home**, oscura, después de Servicios: texto (`centro.formaDeTrabajar`) y el lema en tres palabras grandes numeradas (`centro.pasos`). |
 | 05 Evaluaciones deportivas | **Sección nueva de la home**, crema: texto (`centro.evaluaciones`) y los cuatro tipos como lista numerada (`centro.evaluacionesTipos`), con link al servicio. |
@@ -259,6 +259,13 @@ Decisiones que no están en el PDF:
 - **Fotos de los servicios nuevos**, elegidas del material ya optimizado: readaptación usa
   `hero-entrenamiento` (sentadilla con banda), ejercicio adaptado `IMG_2060` (movilidad guiada)
   y nutrición `IMG_5922`, que es la foto de Lucía, la nutricionista.
+- **`centro.diferencial` va por su tercera versión**: el docx de agosto, el PDF del 12-sep y la que el
+  cliente mandó por WhatsApp el **13-sep**, que es la vigente. La tituló "¿quiénes te atienden?" porque
+  hasta el 12-sep ese párrafo se mostraba bajo ese H1 en `/equipo`; el contenido es el del punto 02.
+  Por eso vive en los dos lados: la sección "¿Qué nos diferencia?" de la home y la cabecera de
+  `/equipo`. El texto propio del punto 08 (`centro.equipo`) se quedó en la sección de equipo de la home.
+  La bajada de `/servicios` tomaba el segundo párrafo del diferencial y ahora empieza con "Por eso":
+  suelto quedaba colgado, así que pasó a `centro.equipo[0]`.
 - **La foto del equipo completo llegó el 13-sep** (`fotos-marcos/equipo-completo.webp`, 1280×859)
   y es la cabecera de `/equipo`. Están los seis en fila, así que ese marco va en **3:2** y no en
   el 5:4 del resto de las cabeceras: con 5:4 el recorte lateral era del 14% por lado y les comía

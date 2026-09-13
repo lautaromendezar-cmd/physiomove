@@ -19,10 +19,16 @@ export const centro = {
     'PhysioMove nace de la idea de Marcos y Sofía, hermanos kinesiólogos de Río Gallegos graduados en la Universidad Nacional de Córdoba, enfocados en que la recuperación de una lesión debía darse a través del movimiento.',
     'A fines de 2023 se suma Agustín, también kinesiólogo graduado en la UNC, fortaleciendo un proyecto que continúa creciendo desde la Patagonia y ampliando su mirada sobre la rehabilitación, el entrenamiento y el deporte.',
   ],
-  /** Sección "¿Qué nos diferencia?" (home) y description del JSON-LD. */
+  /*
+    Sección "¿Qué nos diferencia?" (home), cabecera de /equipo y description
+    del JSON-LD. Tercera version de este parrafo: el docx de agosto, el PDF del
+    12/9 y esta, que el cliente mando por WhatsApp el 13/9 y es la que vale.
+    La titulo "quienes te atienden" porque hasta el 12/9 se mostraba bajo ese
+    H1 en /equipo; el contenido es el del punto 02 del PDF.
+  */
   diferencial: [
-    'Principalmente el grupo humano de cada profesional. En PhysioMove se combina actualización constante, evidencia científica y criterio profesional, entendiendo que cada persona, cada proceso y cada objetivo tiene un contexto diferente.',
-    'Trabajamos de manera interdisciplinaria, integrando kinesiología, entrenamiento y nutrición para evaluar, planificar y acompañar cada proceso.',
+    'PhysioMove se destaca principalmente por sus profesionales altamente capacitados y comprometidos con la actualización permanente, el trabajo basado en evidencia científica y el criterio profesional, entendiendo que cada persona tiene un contexto, objetivos y necesidades diferentes.',
+    'Por eso trabajamos de manera integral e interdisciplinaria, articulando kinesiología, entrenamiento y nutrición para acompañar cada proceso.',
   ],
   /** Clave 01 de esa sección: "A quiénes acompañamos". */
   pacientes: [
