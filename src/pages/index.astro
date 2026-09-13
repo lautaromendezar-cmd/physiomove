@@ -421,17 +421,29 @@ const evaluaciones = servicios.find((s) => s.slug === 'evaluaciones-deportivas')
         <p class="numeral rv equipo__areas">Áreas: {centro.areas.join(' · ')}</p>
       </div>
 
+      <!--
+        13/9/2026: el cliente pidio que al hacer click en un profesional se
+        vaya directo a su descripcion. Cada uno enlaza a su ficha de /equipo
+        por su ancla; los dos que todavia no tienen ficha larga caen en el
+        bloque "Tambien en el centro" de esa misma pagina.
+      -->
       <div class="equipo__grid" style={`--cols:${profesionales.length}`}>
         {
           profesionales.map((p) => (
-            <article class="persona rv">
+            <a class="persona persona--link rv" href={`/equipo#${p.ancla}`}>
               <Retrato iniciales={p.iniciales} nombre={p.nombre} foto={retrato(p.retrato)} />
               <div class="persona__cuerpo">
                 <h3>{p.nombre}</h3>
                 <p class="persona__titulo">{p.titulo}</p>
                 {p.matricula && <p class="persona__mp">{p.matricula}</p>}
+                <span class="persona__mas">
+                  Ver su perfil
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                    <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                </span>
               </div>
-            </article>
+            </a>
           ))
         }
       </div>

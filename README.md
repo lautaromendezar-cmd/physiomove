@@ -266,6 +266,17 @@ Decisiones que no están en el PDF:
   `/equipo`. El texto propio del punto 08 (`centro.equipo`) se quedó en la sección de equipo de la home.
   La bajada de `/servicios` tomaba el segundo párrafo del diferencial y ahora empieza con "Por eso":
   suelto quedaba colgado, así que pasó a `centro.equipo[0]`.
+- **La grilla de equipo de la home lleva a la ficha de cada uno** (pedido del 13-sep). Cada
+  persona es un enlace a `/equipo#<ancla>`; el ancla es fija y vive en `profesionales`, así que
+  cambiar un nombre no rompe el link. Los dos que todavía no tienen ficha larga caen en el
+  bloque "También en el centro" de esa misma página.
+  **El salto no funcionaba y no era por el ancla**: el root tiene `scroll-behavior: smooth` y
+  eso alcanza también al salto de la carga inicial, que Chrome empieza y el trabajo de la
+  página cancela (se confirma así: sin JavaScript salta perfecto, con JavaScript se queda
+  arriba). Lo resuelve el script inline del `<head>` de `Base.astro`: apaga `scroll-behavior`
+  el tiempo justo, salta con `scrollTo` y lo repite cuando cargan las fuentes, que corren el
+  destino unos px. Si el usuario ya scrolleó, no se le toca el scroll. El desplazamiento por
+  el header sticky sale del `scroll-margin-top` del CSS: no está repetido en el JS.
 - **La foto del equipo completo llegó el 13-sep** (`fotos-marcos/equipo-completo.webp`, 1280×859)
   y es la cabecera de `/equipo`. Están los seis en fila, así que ese marco va en **3:2** y no en
   el 5:4 del resto de las cabeceras: con 5:4 el recorte lateral era del 14% por lado y les comía

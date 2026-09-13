@@ -124,6 +124,44 @@ const schema = {
         try {
           sessionStorage.setItem('pm-visto', '1');
         } catch (e) {}
+
+        // Salto al #hash a mano. El root tiene scroll-behavior:smooth y con eso
+        // Chrome no completa el salto de la carga inicial: arranca el scroll
+        // animado y el trabajo de la pagina lo cancela (medido: sin JS salta,
+        // con JS se queda arriba). Va instantaneo y se repite cuando cargan las
+        // fuentes, que corren el destino unos px. Si el usuario ya scrolleo por
+        // su cuenta no se le toca nada.
+        if (location.hash.length > 1) {
+          var ultimo = -1;
+          var saltar = function () {
+            // Si el usuario ya movio la pagina por su cuenta, no se le toca.
+            if (ultimo >= 0 && Math.abs(window.scrollY - ultimo) > 4) return;
+            var destino;
+            try {
+              destino = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+            } catch (e) {}
+            if (!destino) return;
+            // El margen sale del CSS (scroll-margin-top), que ya tiene en cuenta
+            // el header sticky: no se repite el numero aca.
+            var margen = parseFloat(getComputedStyle(destino).scrollMarginTop) || 0;
+            var y = destino.getBoundingClientRect().top + window.scrollY - margen;
+            // El root tiene scroll-behavior:smooth y eso alcanza a todo scroll
+            // programatico, scrollIntoView incluido. Se apaga el tiempo justo:
+            // con la animacion andando, el reintento de las fuentes la cancelaba
+            // a mitad de camino y la primera ficha se quedaba sin saltar.
+            var estilo = document.documentElement.style;
+            var previo = estilo.scrollBehavior;
+            estilo.scrollBehavior = 'auto';
+            window.scrollTo(0, Math.max(0, y));
+            estilo.scrollBehavior = previo;
+            ultimo = window.scrollY;
+          };
+          window.addEventListener('load', function () {
+            saltar();
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(saltar);
+            setTimeout(saltar, 400);
+          });
+        }
       })();
     </script>
   </head>

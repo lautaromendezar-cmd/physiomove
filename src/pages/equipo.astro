@@ -65,7 +65,7 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
     <div class="contenedor">
       {
         conFicha.map((p) => (
-          <article class="ficha rv">
+          <article class="ficha rv" id={p.ancla}>
             <div>
               <Retrato iniciales={p.iniciales} nombre={p.nombre} foto={retrato(p.retrato)} clase="ficha__retrato" />
               {p.matricula && (
@@ -117,7 +117,7 @@ const sinFicha = profesionales.filter((p) => !p.fichaCompleta);
           <h2 class="titulo-l" data-lineas>Equipo interdisciplinario</h2>
           <div class="equipo__grid equipo__grid--pocos">
             {sinFicha.map((p) => (
-              <article class="persona rv">
+              <article class="persona rv" id={p.ancla}>
                 <Retrato iniciales={p.iniciales} nombre={p.nombre} foto={retrato(p.retrato)} />
                 <div class="persona__cuerpo">
                   <h3>{p.nombre}</h3>

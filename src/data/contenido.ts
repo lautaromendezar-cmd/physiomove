@@ -365,6 +365,12 @@ export const servicios: Servicio[] = [
 
 export type Profesional = {
   nombre: string;
+  /**
+   * Ancla de su ficha en /equipo. La grilla de la home enlaza ahi, para que un
+   * click en la persona lleve directo a su descripcion (pedido del 13/9/2026).
+   * Es fija a proposito: si algun dia cambia el nombre, el link no se rompe.
+   */
+  ancla: string;
   iniciales: string;
   titulo: string;
   matricula?: string;
@@ -382,6 +388,7 @@ export type Profesional = {
 export const profesionales: Profesional[] = [
   {
     nombre: 'Marcos Anaquín',
+    ancla: 'marcos-anaquin',
     iniciales: 'MA',
     retrato: 'retrato-marcos',
     titulo: 'Licenciado en Kinesiología y Fisioterapia',
@@ -397,6 +404,7 @@ export const profesionales: Profesional[] = [
   },
   {
     nombre: 'Sofía Anaquín',
+    ancla: 'sofia-anaquin',
     iniciales: 'SA',
     retrato: 'retrato-sofia',
     titulo: 'Licenciada en Kinesiología y Fisioterapia',
@@ -411,6 +419,7 @@ export const profesionales: Profesional[] = [
   },
   {
     nombre: 'Agustín Guiguet',
+    ancla: 'agustin-guiguet',
     iniciales: 'AG',
     retrato: 'retrato-agustin',
     titulo: 'Licenciado en Kinesiología y Fisioterapia',
@@ -425,6 +434,7 @@ export const profesionales: Profesional[] = [
   },
   {
     nombre: 'Graciela Sánchez',
+    ancla: 'graciela-sanchez',
     iniciales: 'GS',
     retrato: 'retrato-graciela',
     titulo: 'Licenciada en Kinesiología y Fisioterapia',
@@ -436,6 +446,7 @@ export const profesionales: Profesional[] = [
   },
   {
     nombre: 'Lucía Fernández',
+    ancla: 'lucia-fernandez',
     iniciales: 'LF',
     retrato: 'retrato-lucia',
     titulo: 'Licenciada en Nutrición',
@@ -446,6 +457,7 @@ export const profesionales: Profesional[] = [
   // cuando la mande, se completan los campos y pasa a fichaCompleta.
   {
     nombre: 'Nicolás Ovando',
+    ancla: 'nicolas-ovando',
     iniciales: 'NO',
     retrato: 'retrato-nicolas',
     titulo: 'Profesor',

@@ -2891,3 +2891,71 @@ html.pm-cargando body {
 .cabecera__marco--grupo {
   aspect-ratio: 3 / 2;
 }
+
+/* ---------- 13/9/2026: del equipo de la home a la ficha de cada uno ---------- */
+
+/* La tarjeta de la home pasa a ser un link. Mismo gesto que las de servicios:
+   la foto se acerca un poco y el nombre se oscurece. */
+.persona--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.persona--link .persona__retrato img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.persona--link:hover .persona__retrato img {
+  transform: scale(1.04);
+}
+
+.persona--link:hover h3 {
+  color: var(--profundo);
+}
+
+.persona--link:active {
+  opacity: 0.75;
+  transition-duration: 0.08s;
+}
+
+.persona__mas {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  color: var(--acero-texto);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-top: 0.35rem;
+}
+
+/* El enlace se pega al piso de la tarjeta para que los seis queden alineados:
+   Nicolas no tiene matricula y, sin esto, el suyo subia a la altura de las
+   matriculas de los demas. Cuando si hay matricula, es ella la que baja y el
+   enlace va pegado abajo. */
+.persona__mas {
+  margin-top: auto;
+}
+
+.persona__mp + .persona__mas {
+  margin-top: 0;
+}
+
+.persona--link:hover .persona__mas {
+  color: var(--navy);
+}
+
+.persona--link:hover .persona__mas svg {
+  transform: translateX(3px);
+}
+
+.persona__mas svg {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* El header es sticky: sin esto, saltar a una ficha la deja tapada debajo. */
+.ficha[id],
+.persona[id] {
+  scroll-margin-top: 7.5rem;
+}
