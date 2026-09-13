@@ -212,15 +212,14 @@ eager y se llevaría al build cualquier retrato que todavía no use nadie.
 ## Contenido pendiente del cliente
 
 El documento fuente tiene campos vacíos o con el placeholder de la plantilla. **Eso no se
-inventó: se omitió.** Lo que falta para completar el sitio:
+inventó: se omitió.** Lo que sigue abierto, al 13-sep-2026 (las páginas de servicio cortas y la
+ficha de la nutricionista **no** están en esta lista: son una decisión tomada, ver arriba):
 
 | Qué                              | Estado                                                                                                            |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **Ficha de Nicolás Ovando**      | Está en la grilla del equipo con retrato (2-sep) y como "Profe." en el servicio infanto-juvenil, pero no hay título, especialidad ni bio: la ficha extendida no se emite ni se inventa. |
 | **Sección de videos**            | Punto 6 del documento sin definir. No se construyó; queda el comentario en `PieDePagina.astro`.                     |
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
-| **Ficha de Graciela Sanchez**    | Sin experiencia, Instagram ni bio. Se muestra con título, matrícula, especialidad y formación.                       |
-| **Ficha de Lucía Fernandez**     | Sólo nombre y título. Aparece en la grilla del equipo, sin ficha extendida.                                          |
 | **Logos de 4 obras sociales**    | OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. **OSPE salió de esta lista el 13-sep**, cuando el cliente mandó el archivo. Detalle en `src/assets/logos/ORIGEN.md`. |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
 | **Foto del salto en la banda**   | `evaluacion-plataforma` es la más floja de las siete del hero: el original ya viene con la cabeza fuera de cuadro. Sirve, pero es la primera a reemplazar cuando el cliente mande fotos nuevas. |
@@ -283,6 +282,18 @@ Decisiones que no están en el PDF:
   los hombros a los de las puntas; con 3:2 baja al 6% y entran todos (medido de 1920 a 390). Es
   la clase `.cabecera__marco--grupo`. El alt **no nombra a nadie**: sigue valiendo la regla de no
   adivinar quién es quién. `equipo-grupo.jpg`, la de tres, queda en el repo sin uso.
+- **13-sep-2026: el alcance quedó cerrado acá.** Lo publicado es el PDF consolidado más las
+  correcciones que el cliente fue mandando por WhatsApp, y nada más. Apareció también el
+  **cuestionario original con sus respuestas escritas debajo** —el material del que salió ese
+  consolidado, más largo: traía "Incluye" y "Beneficios" de cada servicio, la formación de la
+  nutricionista y un bloque de preguntas y respuestas de nutrición—. **Se decidió NO usarlo**: el
+  consolidado es posterior y es lo que el cliente quiere publicar. Por eso cuatro páginas de
+  servicio (01, 03, 06 y 07) se quedan con un solo párrafo, y la ficha de Lucía Fernández con
+  nombre, título y matrícula. **No es un pendiente: es la decisión.** Si alguna vez se reabre, el
+  material está en ese documento, que el cliente tiene.
+- La numeración de ese cuestionario **no** es la del sitio (ahí nutrición era el 8 y ejercicio
+  adaptado el 7). De ahí sale el "ocho servicios" que el cliente mencionó: contó sobre el
+  documento viejo. El orden bueno es el del consolidado, 01 a 09.
 - En la clave "Nuestra forma de trabajar" el PDF trae una línea ("Se cree en el movimiento como
   herramienta para transformar") que está en el texto pero **no se ve en la página**: se omitió.
 
