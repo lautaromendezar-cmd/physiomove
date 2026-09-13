@@ -486,7 +486,7 @@ export const obrasSociales: ObraSocial[] = [
   { nombre: 'OSPEDYC', copago: true, logo: 'ospedyc' },
   { nombre: 'OSMATA', copago: false, logo: 'osmata' },
   { nombre: 'OSPTV', copago: true },
-  { nombre: 'OSPE', copago: true },
+  { nombre: 'OSPE', copago: true, logo: 'ospe' },
   { nombre: 'OSPSA', copago: true },
   { nombre: 'OSUTHGRA', copago: true, logo: 'osuthgra' },
   { nombre: 'PAMI', copago: false, logo: 'pami' },

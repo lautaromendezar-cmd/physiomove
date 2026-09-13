@@ -118,8 +118,9 @@ Para volver a tener el pipeline completo hay que copiar la carpeta `material-dri
 
 ### Logos de las obras sociales
 
-13 de las 19 coberturas se muestran con el logo oficial, bajado **del sitio de cada obra social**
-(no de Google Imágenes) y verificado uno por uno. La URL exacta de cada uno está en
+14 de las 18 coberturas se muestran con el logo oficial, bajado **del sitio de cada obra social**
+(no de Google Imágenes) y verificado uno por uno. La excepción es OSPE, que lo pasó el cliente el
+13-sep-2026: venía con el fondo blanco horneado y se le reconstruyó la transparencia. La URL exacta de cada uno está en
 **`src/assets/logos/ORIGEN.md`**, junto con el detalle de las 6 que quedan en texto y por qué.
 
 Los sitios que arman el logo con JavaScript (Galeno, Medicus, Sancor, OSDEPYM, OSPEDYC) no lo
@@ -220,8 +221,7 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
 | **Ficha de Graciela Sanchez**    | Sin experiencia, Instagram ni bio. Se muestra con título, matrícula, especialidad y formación.                       |
 | **Ficha de Lucía Fernandez**     | Sólo nombre y título. Aparece en la grilla del equipo, sin ficha extendida.                                          |
-| **Logos de 5 obras sociales**    | OSPE, OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. Detalle en `src/assets/logos/ORIGEN.md`. |
-| **Logo de OSMATA**               | El archivo del sitio oficial dice SMATA (el sindicato), no OSMATA. Conviene que el cliente lo confirme.              |
+| **Logos de 4 obras sociales**    | OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. **OSPE salió de esta lista el 13-sep**, cuando el cliente mandó el archivo. Detalle en `src/assets/logos/ORIGEN.md`. |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
 | **Foto del salto en la banda**   | `evaluacion-plataforma` es la más floja de las siete del hero: el original ya viene con la cabeza fuera de cuadro. Sirve, pero es la primera a reemplazar cuando el cliente mande fotos nuevas. |
 
