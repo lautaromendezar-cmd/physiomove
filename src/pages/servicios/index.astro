@@ -16,14 +16,13 @@ import { servicios, contacto, centro } from '../../data/contenido';
     <Deco variante="hero" />
     <div class="contenedor">
       <p class="miga"><a href="/">Inicio</a> / Servicios</p>
-      <p class="volanta" data-hero-anima>Nuestra forma de trabajar</p>
-      <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy);max-width:26ch">
-        Distintas áreas.<br />Una misma forma de trabajar.
+      <p class="volanta" data-hero-anima>Servicios</p>
+      <h1 class="titulo-xl" data-hero-titulo style="color:var(--navy);max-width:16ch">
+        Qué hacemos en PhysioMove
       </h1>
-      <div class="parrafos" data-hero-anima style="margin-top:1.75rem;max-width:56ch">
-        {centro.formaDeTrabajar.map((p) => <p class="bajada">{p}</p>)}
-      </div>
-      <p class="lema" data-hero-anima>{centro.lema}</p>
+      <p class="bajada" data-hero-anima style="margin-top:1.75rem;max-width:56ch">
+        {centro.diferencial[1]}
+      </p>
     </div>
   </section>
 

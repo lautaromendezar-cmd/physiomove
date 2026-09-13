@@ -18,6 +18,8 @@ import {
   bandaHero,
   metricas,
 } from '../data/contenido';
+
+const evaluaciones = servicios.find((s) => s.slug === 'evaluaciones-deportivas');
 ---
 
 <Base
@@ -99,7 +101,7 @@ import {
     </div>
   </section>
 
-  <!-- ========================================================== ORIGEN -->
+  <!-- ====================================================== 01 ORIGEN -->
   <section class="seccion crema">
     <Deco variante="suave" />
     <div class="contenedor">
@@ -136,7 +138,7 @@ import {
     </div>
   </section>
 
-  <!-- ==================================================== DIFERENCIAL -->
+  <!-- ================================================ 02 DIFERENCIAL -->
   <section class="seccion dif oscuro">
     <Deco variante="oscura" />
     <div class="contenedor">
@@ -194,7 +196,7 @@ import {
     </div>
   </section>
 
-  <!-- ======================================================= SERVICIOS -->
+  <!-- =================================================== 03 SERVICIOS -->
   <section class="seccion" data-svc>
     <div class="contenedor">
       <div class="svc__grid">
@@ -252,7 +254,115 @@ import {
     </div>
   </section>
 
-  <!-- ========================================================= GALERIA -->
+  <!--
+    04, 05 y 06 son secciones nuevas (PDF del 12/9/2026). El documento sigue la
+    home de arriba abajo y estas tres van entre los servicios y "El centro".
+  -->
+  <!-- ========================================= 04 FORMA DE TRABAJAR -->
+  <section class="seccion oscuro metodo">
+    <Deco variante="oscura" />
+    <div class="contenedor">
+      <div class="metodo__grid">
+        <div>
+          <p class="volanta">Nuestra forma de trabajar</p>
+          <h2 class="titulo-l" data-lineas>
+            Distintas áreas.<br />Una misma forma<br />de trabajar.
+          </h2>
+        </div>
+        <div class="parrafos">
+          {centro.formaDeTrabajar.map((p) => <p class="bajada rv">{p}</p>)}
+        </div>
+      </div>
+
+      <ol class="metodo__pasos" role="list" aria-label={centro.lema}>
+        {
+          centro.pasos.map((paso, i) => (
+            <li class="rv">
+              <span class="numeral">0{i + 1}</span>
+              {paso}.
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================ 05 EVALUACIONES -->
+  <section class="seccion crema medir">
+    <Deco variante="suave" />
+    <div class="contenedor">
+      <div class="medir__grid">
+        <div>
+          <p class="volanta">Evaluaciones deportivas</p>
+          <h2 class="titulo-l" data-lineas>Medir para tomar<br />mejores decisiones.</h2>
+          <div class="parrafos" style="margin-top:1.75rem">
+            {centro.evaluaciones.map((p) => <p class="bajada rv">{p}</p>)}
+          </div>
+        </div>
+
+        <div>
+          <ol class="medir__lista" role="list">
+            {
+              centro.evaluacionesTipos.map((tipo, i) => (
+                <li class="rv">
+                  <span>0{i + 1}</span>
+                  {tipo}
+                </li>
+              ))
+            }
+          </ol>
+          {
+            evaluaciones && (
+              <p class="rv medir__enlace">
+                <a class="enlace" href={`/servicios/${evaluaciones.slug}`}>
+                  Ver el servicio
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                    <path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                </a>
+              </p>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== 06 TECNOLOGIA -->
+  <section class="seccion tecnologia">
+    <div class="contenedor">
+      <div class="cabecera__grid">
+        <div>
+          <p class="volanta">Tecnología IVOLUTION</p>
+          <h2 class="titulo-l" data-lineas>Tecnología aplicada<br />a la evaluación.</h2>
+          <div class="parrafos" style="margin-top:1.75rem">
+            {centro.tecnologia.map((p) => <p class="bajada rv">{p}</p>)}
+          </div>
+        </div>
+
+        <!--
+          El PDF pide una foto real de la sede con IVOLUTION. Esta es el test
+          con dinamometro: la cinta en la pierna y la app con la curva en la
+          laptop. Es 3:4 y el marco 5:4: se encuadra abajo, donde esta la pantalla.
+        -->
+        <figure class="cabecera__figura rv">
+          <Picture
+            pictureAttributes={{ class: 'cabecera__marco marco-foto' }}
+            data-parallax
+            src={foto('evaluacion-dinamometro')}
+            formats={['avif', 'webp']}
+            widths={[520, 800, 1100]}
+            sizes="(max-width: 760px) 100vw, 42vw"
+            alt="Test de fuerza con dinamómetro IVOLUTION en PhysioMove: el deportista en la colchoneta con la cinta en la pierna y la curva del test en la laptop"
+            loading="lazy"
+            style="object-position:50% 72%"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== 07 EL CENTRO -->
   <section class="galeria oscuro" data-galeria>
     <div class="contenedor galeria__cabecera">
       <div>
@@ -283,7 +393,7 @@ import {
     </div>
   </section>
 
-  <!-- ========================================================== EQUIPO -->
+  <!-- ====================================================== 08 EQUIPO -->
   <section class="seccion crema">
     <Deco variante="suave" />
     <div class="contenedor">
@@ -328,7 +438,7 @@ import {
     </div>
   </section>
 
-  <!-- ================================================== OBRAS SOCIALES -->
+  <!-- ============================================== 09 OBRAS SOCIALES -->
   <section class="seccion">
     <div class="contenedor">
       <div

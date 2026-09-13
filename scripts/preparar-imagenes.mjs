@@ -34,6 +34,7 @@ const FOTOS_MAP = {
   'evaluacion-ivolution':    '5cd9806b-3691-4e2c-98c5-6f79e0834def.jpg',
   'ejercicio-adaptado':      'IMG_2060.jpg',
   'nutricion-deportiva':     'IMG_5922.jpg',
+  'evaluacion-dinamometro':  'IMG_6369.jpg',
 };
 
 const LADO_MAX = 1800;

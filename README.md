@@ -233,7 +233,8 @@ inventó: se omitió.** Lo que falta para completar el sitio:
 ## Textos del 12-sep-2026 (PDF del cliente)
 
 El cliente mandó **"PhysioMove — Textos web actualizados"**, una versión consolidada que
-reescribe casi todo el sitio. El PDF queda en `modificaciones-12-09-2026/` (gitignoreado: es
+reescribe casi todo el sitio. **El documento sigue la home de arriba abajo**: los puntos 01 a 09
+son secciones de la home (03 es la lista de servicios), y 04, 05 y 06 no existían: se crearon. El PDF queda en `modificaciones-12-09-2026/` (gitignoreado: es
 material fuente). Lo que cambió y cómo se mapeó cada punto del documento:
 
 | Punto del PDF | Dónde vive en el sitio |
@@ -241,8 +242,9 @@ material fuente). Lo que cambió y cómo se mapeó cada punto del documento:
 | 01 Cómo nació | Sección de origen de la home (`centro.origen`, ahora dos párrafos: se suma Agustín a fines de 2023). |
 | 02 ¿Qué nos diferencia? | Sección oscura de la home: título "Una mirada integral, basada en evidencia", `centro.diferencial`, claves `pacientes` y `postura`. |
 | 03 Servicios | Pasan de 6 a **9**: se suman Readaptación, Nutrición y Ejercicio físico adaptado; "Fisioterapia invasiva MEP" pasa a "Técnicas complementarias". |
-| 04 Nuestra forma de trabajar | Cabecera de `/servicios` (`centro.formaDeTrabajar` + `centro.lema`). |
-| 05 Evaluaciones deportivas y 06 Tecnología IVOLUTION | Bloques de la página `/servicios/evaluaciones-deportivas`. El PDF pide ahí una foto real de la sede con IVOLUTION: se usó la del deportista sobre la plataforma con la kinesióloga en la laptop (`evaluacion-ivolution`). |
+| 04 Nuestra forma de trabajar | **Sección nueva de la home**, oscura, después de Servicios: texto (`centro.formaDeTrabajar`) y el lema en tres palabras grandes numeradas (`centro.pasos`). |
+| 05 Evaluaciones deportivas | **Sección nueva de la home**, crema: texto (`centro.evaluaciones`) y los cuatro tipos como lista numerada (`centro.evaluacionesTipos`), con link al servicio. |
+| 06 Tecnología IVOLUTION | **Sección nueva de la home**, blanca, con la foto sangrando al borde como en las cabeceras interiores (`centro.tecnologia`). El PDF pide una foto real de la sede con IVOLUTION: se usó la del test con dinamómetro y la app en la laptop (`evaluacion-dinamometro`). La página del servicio lleva la de la plataforma (`evaluacion-ivolution`). |
 | 07 El centro | Cabecera de la galería de la home (`centro.espacio`). |
 | 08 Quiénes te atienden | Home (texto nuevo entre el título y la grilla) y cabecera de `/equipo` (`centro.equipo`, `centro.areas`). |
 | 09 Obras sociales | Se saca la Caja de Servicios Sociales (quedan 18). |

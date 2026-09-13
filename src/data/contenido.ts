@@ -34,10 +34,23 @@ export const centro = {
     'Cada proceso parte de comprender a la persona, realizar una evaluación, establecer objetivos y desarrollar una planificación adaptada a sus necesidades.',
     'Cuando el proceso lo requiere, integramos distintas áreas para ofrecer un abordaje coordinado e interdisciplinario.',
   ],
-  /** Cabecera de /servicios: "Distintas áreas. Una misma forma de trabajar." */
+  /** Sección 04 de la home, "Nuestra forma de trabajar". */
   formaDeTrabajar: [
     'Cada proceso comienza por comprender a la persona, su contexto y sus objetivos. A partir de ahí se evalúa, planifica y acompaña su evolución desde el área que corresponda.',
     'Movimiento, seguimiento, actualización constante y trabajo profesional coordinado en cada etapa.',
+  ],
+  /** El lema, palabra por palabra, para la fila grande de esa sección. */
+  pasos: ['Evaluar', 'Planificar', 'Acompañar'],
+  /** Sección 05 de la home, "Evaluaciones deportivas". */
+  evaluaciones: [
+    'Se utilizan evaluaciones y tecnología aplicada para obtener datos objetivos sobre diferentes capacidades físicas.',
+    'Esta información nos permite conocer el punto de partida, orientar la planificación, monitorear cambios y acompañar decisiones durante procesos de rehabilitación, prevención, entrenamiento, rendimiento y retorno al deporte.',
+  ],
+  evaluacionesTipos: ['Rendimiento', 'Prevención', 'Seguimiento', 'Alta deportiva'],
+  /** Sección 06 de la home, "Tecnología IVOLUTION". */
+  tecnologia: [
+    'En PhysioMove se utiliza tecnología IVOLUTION para evaluar de manera objetiva diferentes variables relacionadas con la fuerza, la potencia y el rendimiento neuromuscular.',
+    'Los datos obtenidos complementan la evaluación profesional y nos permiten medir, comparar y monitorear la evolución, aportando información para la toma de decisiones durante cada proceso.',
   ],
   /** Sección "El centro" (galería de la home). */
   espacio: [
@@ -216,19 +229,6 @@ export const servicios: Servicio[] = [
           'Evaluaciones preventivas: para identificar capacidades a mejorar y orientar estrategias de trabajo.',
           'Evaluaciones de seguimiento: para medir cambios y monitorear la evolución durante procesos de rehabilitación o entrenamiento.',
           'Evaluaciones para alta deportiva: para aportar criterios objetivos durante el proceso de retorno al entrenamiento y a la competencia.',
-        ],
-      },
-      {
-        titulo: 'Medir para tomar mejores decisiones',
-        texto:
-          'Esta información nos permite conocer el punto de partida, orientar la planificación, monitorear cambios y acompañar decisiones durante procesos de rehabilitación, prevención, entrenamiento, rendimiento y retorno al deporte.',
-        remate: 'Rendimiento · Prevención · Seguimiento · Alta deportiva',
-      },
-      {
-        titulo: 'Tecnología IVOLUTION',
-        texto: [
-          'En PhysioMove se utiliza tecnología IVOLUTION para evaluar de manera objetiva diferentes variables relacionadas con la fuerza, la potencia y el rendimiento neuromuscular.',
-          'Los datos obtenidos complementan la evaluación profesional y nos permiten medir, comparar y monitorear la evolución, aportando información para la toma de decisiones durante cada proceso.',
         ],
       },
     ],
