@@ -315,9 +315,15 @@ export const servicios: Servicio[] = [
     ],
     metaDescription:
       'Ejercicio físico adaptado en Río Gallegos: programas individualizados de fuerza, movilidad y equilibrio para adultos y adultos mayores que buscan mantenerse activos.',
-    foto: 'ejercicio-adaptado',
+    foto: 'ejercicio-fisico-adaptado',
+    /* Los dos estan enteros en el original, pero de pies a cabeza ocupan mas
+       alto del que entra en el marco apaisado: algo se corta si o si. Se corta
+       abajo, debajo de las rodillas, y quedan las dos caras y el gesto de la
+       correccion, que es de lo que habla la pagina. A 60% ya se pierde la
+       cabeza del senor en las dos medidas; a 20% sobra techo. */
+    fotoPosicion: '50% 40%',
     fotoAlt:
-      'Kinesiólogo de PhysioMove guiando un ejercicio de movilidad sobre la pista del gimnasio',
+      'Un adulto mayor trabajando con banda elástica sobre la pista del gimnasio, acompañado por una kinesióloga de PhysioMove que le corrige la postura',
     bloques: [],
   },
   {

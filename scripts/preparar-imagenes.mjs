@@ -71,6 +71,11 @@ const MARCOS_MAP = {
      original sigue mapeado desde _work/full mas arriba, asi que un
      "npm run assets" en una maquina que lo tenga volveria a la foto vieja. */
   'evaluaciones-deportivas': 'evaluaciones-deportivas.jpg',
+  /* 18/9/2026: foto propia para Ejercicio fisico adaptado (07). La que habia
+     (ejercicio-adaptado) era una movilidad guiada generica; esta muestra a un
+     adulto mayor, que es a quien apunta el servicio. Nombre nuevo por lo mismo
+     que arriba: ejercicio-adaptado sigue mapeado desde _work/full. */
+  'ejercicio-fisico-adaptado': 'ejercicio-fisico-adaptado.jpg',
 };
 
 /*
