@@ -35,7 +35,8 @@ const conCopago = obrasSociales.filter((o) => o.copago).length;
       <div class="info__grid">
         <div class="info__card info__card--destacada rv">
           <h2>Particulares</h2>
-          <span class="info__precio">$19.500</span>
+          <span class="info__precio">{aranceles.precioParticulares}</span>
+          <p class="info__vigencia">Valor vigente desde {aranceles.vigenciaPrecio}</p>
           <p>{aranceles.particulares}</p>
         </div>
 

@@ -526,11 +526,35 @@ export const obrasSociales: ObraSocial[] = [
   { nombre: 'Sancor Salud', copago: true, logo: 'sancor-salud' },
 ];
 
+/*
+  El valor minimo etico profesional lo fija el colegio, no el centro, y se
+  actualiza cada CUATRO meses: son tres cambios al ano y el aviso sale siempre
+  del cliente, que se entera antes que nosotros.
+
+  El numero vive aca y en ningun otro lado. Hasta el 18/9/2026 estaba escrito
+  DOS veces -en este archivo y suelto en obras-sociales.astro- y las dos se
+  veian en la misma tarjeta, una debajo de la otra: cambiar una sola la dejaba
+  contradiciendose a si misma, en grande y en la pagina donde se habla de
+  plata. Ahora la pagina lee `precioParticulares` y el texto lo interpola.
+
+  La fecha no es decorativa y se cambia JUNTO con el precio: un precio fechado
+  que quedo viejo esta desactualizado, uno sin fecha esta mal. Es lo que hace
+  que llegar tarde con la actualizacion no sea un problema.
+
+  Actualizarlo es cambiar estas dos constantes y publicar (ver "Publicar" en el
+  README). No hay panel a proposito: con tres cambios al ano, un mecanismo se
+  pudre entre usos y el disparador sigue siendo el mensaje del cliente igual.
+*/
+const PRECIO_PARTICULARES = '$19.500';
+const VIGENCIA_PRECIO = 'septiembre de 2026';
+
 export const aranceles = {
   notaCopago:
     'Las obras sociales marcadas con asterisco no alcanzan el mínimo ético profesional, por lo tanto abonan copago.',
+  precioParticulares: PRECIO_PARTICULARES,
+  vigenciaPrecio: VIGENCIA_PRECIO,
   particulares:
-    'Sí. El pago es al comienzo del tratamiento, según el valor mínimo ético profesional: actualmente $19.500 por sesión.',
+    `Sí. El pago es al comienzo del tratamiento, según el valor mínimo ético profesional: actualmente ${PRECIO_PARTICULARES} por sesión.`,
   queTraer: 'Orden médica, credencial digital y autorización, según corresponda.',
   autorizacion:
     'Cuando se requiere autorización, el trámite queda a cargo del paciente.',

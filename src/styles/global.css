@@ -2129,6 +2129,20 @@ p:last-child {
   color: #fff;
 }
 
+/* La fecha del precio va pegada al numero y no suelta en el cuerpo: es una
+   etiqueta del precio, no una frase mas de la tarjeta. Misma etiqueta chica
+   que la miga, en un tono mas apagado que el texto (#9fc0d2 da 5.2:1 sobre el
+   navy, medido: pasa AA para texto chico). El margen negativo le come parte
+   del gap de .info__card, que si no la despega del numero. */
+.info__card--destacada .info__vigencia {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: #9fc0d2;
+  margin-top: -0.4rem;
+}
+
 /* ---------- sede / contacto ---------- */
 
 .sede {

@@ -329,6 +329,35 @@ manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, as
   de dejarlo saltando a la segunda, para no encadenar dos saltos. El bloque de técnicas queda
   igual, con MEP Sport adentro.
 
+### Actualizar el precio de particulares
+
+El **valor mínimo ético profesional** lo fija el colegio, no el centro, y se actualiza **cada
+cuatro meses**: son tres cambios al año. El aviso sale siempre del cliente, que se entera antes
+que nosotros, así que no hay nada que monitorear.
+
+Se cambian **dos constantes** arriba de `aranceles`, en `src/data/contenido.ts`, y se publica:
+
+```ts
+const PRECIO_PARTICULARES = '$19.500';
+const VIGENCIA_PRECIO = 'septiembre de 2026';
+```
+
+**Las dos juntas, siempre.** La fecha se muestra debajo del precio a propósito: un precio fechado
+que quedó viejo está desactualizado, uno sin fecha está mal. Eso es lo que hace que llegar tarde
+con la actualización no sea un problema.
+
+**No hay panel de administración, y es a propósito.** Con tres cambios al año un mecanismo se
+pudre entre usos —cuatro meses alcanzan para que venza un token y esas cosas fallan en silencio,
+como pasó en `cyc`—, el push a `main` acá no despliega, y el disparador sigue siendo el mensaje
+del cliente igual: un panel ahorra los cinco minutos de edición, no la ida y vuelta.
+
+Hasta el 18-09-2026 el número estaba escrito **dos veces**, en `contenido.ts` y suelto en
+`obras-sociales.astro`, y las dos se veían en la misma tarjeta una debajo de la otra: cambiar una
+sola la dejaba contradiciéndose. Ahora la página lee `aranceles.precioParticulares` y el texto lo
+interpola.
+
+---
+
 ### Publicar
 
 Desde el 7-sep-2026 el push a `main` **no** dispara el deploy (la integración con GitHub quedó
