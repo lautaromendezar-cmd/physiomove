@@ -61,6 +61,11 @@ const MARCOS_MAP = {
   'fisioterapia-invasiva':  'fisioterapia-invasiva.jfif',
   // 13/9/2026: la foto del equipo completo que pidio el PDF (los seis).
   'equipo-completo':        'equipo-completo.webp',
+  /* 18/9/2026: el cliente mando una foto propia para Readaptacion (03), que
+     hasta ahora pedia prestada hero-entrenamiento. Es la carrera resistida con
+     banda en la cancha, al aire libre: rompe con el resto de las cabeceras
+     interiores, todas puertas adentro. */
+  'readaptacion-deportiva': 'readaptacion-deportiva.jpg',
 };
 
 /*

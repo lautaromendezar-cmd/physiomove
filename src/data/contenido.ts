@@ -206,9 +206,14 @@ export const servicios: Servicio[] = [
     ],
     metaDescription:
       'Readaptación deportiva en Río Gallegos: la transición entre la rehabilitación y la vuelta al entrenamiento y la competencia, progresiva y planificada.',
-    foto: 'hero-entrenamiento',
+    foto: 'readaptacion-deportiva',
     fotoAlt:
-      'Deportista haciendo una sentadilla con banda elástica sobre la pista azul del gimnasio de PhysioMove',
+      'Dos personas entrenando con banda elástica en una cancha de césped sintético: una avanza contra la resistencia y la otra la sostiene',
+    /* Es vertical (1200x1600) y entra en el marco 5:4 de las cabeceras, 3:2 en
+       mobile: casi la mitad del alto se recorta. Con el 32% de siempre el
+       encuadre se come los pies en mobile, y bajando hasta el 85% pierde la
+       cabeza del de atras. El 70% deja a los dos enteros y saca cielo muerto. */
+    fotoPosicion: '50% 70%',
     bloques: [],
   },
   {

@@ -12,5 +12,7 @@ fotos-marcos/
 .vercel
 .env*
 
-# Material fuente del cliente (PDF de textos, etc.): no viaja en el repo
-modificaciones-*/
+# Material fuente del cliente (PDF de textos, fotos nuevas): no viaja en el repo.
+# Sin guion despues de "modificaciones": la carpeta del 18-09-2026 vino con un
+# espacio y el patron viejo no la agarraba.
+modificaciones*/
