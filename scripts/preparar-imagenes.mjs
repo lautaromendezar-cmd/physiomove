@@ -77,8 +77,10 @@ const MARCOS_MAP = {
      que arriba: ejercicio-adaptado sigue mapeado desde _work/full. */
   'ejercicio-fisico-adaptado': 'ejercicio-fisico-adaptado.jpg',
   /* 18/9/2026: foto propia para Nutricion (06): una antropometria, que habla
-     del servicio, en vez del retrato de la nutricionista que habia. Llego en
-     PNG y CHICA (529x711): es lo unico que mando el cliente, ver README. */
+     del servicio, en vez del retrato de la nutricionista que habia.
+     19/9/2026: reemplazada por la version del Drive, la misma toma menos
+     recortada y de 960x1280. La primera era un recorte de 529x711 y Astro no
+     podia generar las variantes grandes: se veia blanda. Ver README. */
   'nutricion-antropometria': 'nutricion-antropometria.jpg',
 };
 

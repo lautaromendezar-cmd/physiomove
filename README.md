@@ -222,7 +222,6 @@ ficha de la nutricionista **no** están en esta lista: son una decisión tomada,
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
 | **Logos de 4 obras sociales**    | OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. **OSPE salió de esta lista el 13-sep**, cuando el cliente mandó el archivo. Detalle en `src/assets/logos/ORIGEN.md`. |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
-| **Original de la foto de nutrición** | La que mandó el 18-sep es un **recorte**: PNG de 529×711, contra los 1200×1600 de las otras tres. El `<Picture>` de las cabeceras pide hasta 1100w y el srcset se queda en **529w**, así que en un teléfono (390 CSS × 3) la página necesita 1170 px y tiene 529: se ve blanda. Hay que pedirle la original sin recortar; cuando llegue, es reemplazar `fotos-marcos/nutricion-antropometria.jpg` y correr `npm run assets`. |
 | **Foto del salto en la banda**   | `evaluacion-plataforma` es la más floja de las siete del hero: el original ya viene con la cabeza fuera de cuadro. Sirve, pero es la primera a reemplazar cuando el cliente mande fotos nuevas. |
 
 ---
@@ -321,7 +320,16 @@ manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, as
   | --- | --- | --- |
   | 03 Readaptación | `50% 70%` | A 55% mobile corta los pies; a 85% se pierde la cabeza del de atrás. |
   | 04 Evaluaciones | `50% 65%` | **El original ya trae la cabeza del saltarín fuera de cuadro**: no hay encuadre que lo muestre entero, así que se lo corta a la altura del short, que lee como recorte y no como cabeza cortada. A 75% mobile le come la cabeza a la kinesióloga, a 60% PC lo corta en el pecho. Ahí entran además las dos plataformas IVOLUTION del piso, que son el tema. |
+  | 06 Nutrición | `50% 45%` | Con el 32% de siempre lo primero que se ve es el short de la paciente y no la medición. A 60% desktop mejora un poco más pero mobile ya le corta la cabeza a la nutricionista. |
   | 07 Ejercicio adaptado | `50% 40%` | Los dos están enteros pero de pies a cabeza no entran: se corta abajo, debajo de las rodillas. A 60% se pierde la cabeza del señor en las dos medidas; a 20% sobra techo. |
+
+- **La de nutrición (06) vino dos veces.** Primero un recorte en PNG de **529×711**: con eso Astro no
+  podía generar las variantes grandes y el srcset se quedaba en `520w 529w`, cuando en un teléfono
+  (390 CSS × 3) la página pide 1170 px. Se veía blanda. La segunda, bajada del Drive el 19-sep, es
+  la misma toma menos recortada y mide **960×1280**: el srcset pasa a `520w 800w 960w`, el
+  estiramiento baja de 2,1× a **1,3×** en una notebook retina y de 2,2× a **1,2×** en un teléfono, y
+  a 1x no se estira nada. No llega a los 1200×1600 de las otras tres, pero a 1,3× no se nota.
+  **Si alguna vez hace falta más, el archivo del Drive tampoco es el original del celular.**
 
 - **El servicio 09 vuelve a llamarse "Fisioterapia Invasiva"** (sin el MEP del nombre original).
   El slug lo acompaña, así que esta página cambió de URL **dos veces en una semana**:
