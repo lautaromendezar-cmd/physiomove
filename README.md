@@ -222,6 +222,7 @@ ficha de la nutricionista **no** están en esta lista: son una decisión tomada,
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
 | **Logos de 4 obras sociales**    | OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. **OSPE salió de esta lista el 13-sep**, cuando el cliente mandó el archivo. Detalle en `src/assets/logos/ORIGEN.md`. |
 | **Dominio**                      | A confirmar (ver arriba).                                                                                           |
+| **Original de la foto de nutrición** | La que mandó el 18-sep es un **recorte**: PNG de 529×711, contra los 1200×1600 de las otras tres. El `<Picture>` de las cabeceras pide hasta 1100w y el srcset se queda en **529w**, así que en un teléfono (390 CSS × 3) la página necesita 1170 px y tiene 529: se ve blanda. Hay que pedirle la original sin recortar; cuando llegue, es reemplazar `fotos-marcos/nutricion-antropometria.jpg` y correr `npm run assets`. |
 | **Foto del salto en la banda**   | `evaluacion-plataforma` es la más floja de las siete del hero: el original ya viene con la cabeza fuera de cuadro. Sirve, pero es la primera a reemplazar cuando el cliente mande fotos nuevas. |
 
 ---

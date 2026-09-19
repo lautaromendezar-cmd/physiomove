@@ -299,8 +299,14 @@ export const servicios: Servicio[] = [
     ],
     metaDescription:
       'Nutrición deportiva en Río Gallegos: evaluación y acompañamiento nutricional adaptado a las necesidades, objetivos y contexto de cada persona.',
-    foto: 'nutricion-deportiva',
-    fotoAlt: 'Lucía Fernández, licenciada en Nutrición de PhysioMove, en el gimnasio del centro',
+    foto: 'nutricion-antropometria',
+    /* Con el 32% de siempre, lo primero que se ve es el short de la paciente y
+       no la medicion. El 45% lo deja afuera y centra lo que importa -la cinta
+       en la pierna y la cara de la nutricionista-, con la cabeza entera en las
+       dos medidas. A 60% desktop mejora un poco mas pero en mobile ya la corta. */
+    fotoPosicion: '50% 45%',
+    fotoAlt:
+      'Medición antropométrica con cinta métrica en la pierna de una paciente, tomada por la nutricionista de PhysioMove',
     bloques: [],
   },
   {

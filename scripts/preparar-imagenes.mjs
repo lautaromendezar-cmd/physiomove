@@ -76,6 +76,10 @@ const MARCOS_MAP = {
      adulto mayor, que es a quien apunta el servicio. Nombre nuevo por lo mismo
      que arriba: ejercicio-adaptado sigue mapeado desde _work/full. */
   'ejercicio-fisico-adaptado': 'ejercicio-fisico-adaptado.jpg',
+  /* 18/9/2026: foto propia para Nutricion (06): una antropometria, que habla
+     del servicio, en vez del retrato de la nutricionista que habia. Llego en
+     PNG y CHICA (529x711): es lo unico que mando el cliente, ver README. */
+  'nutricion-antropometria': 'nutricion-antropometria.jpg',
 };
 
 /*
