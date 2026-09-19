@@ -217,7 +217,7 @@ ficha de la nutricionista **no** están en esta lista: son una decisión tomada,
 
 | Qué                              | Estado                                                                                                            |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Ficha de Nicolás Ovando**      | Está en la grilla del equipo con retrato (2-sep) y como "Profe." en el servicio infanto-juvenil, pero no hay título, especialidad ni bio: la ficha extendida no se emite ni se inventa. |
+| **Ficha de Nicolás Ovando**      | Está en la grilla del equipo con retrato (2-sep). **El 18-sep el cliente mandó el título: es "Preparador físico", no "Profesor"**, y con eso se corrigió también el "Profe." del servicio infanto-juvenil, que salía del mismo dato. Siguen faltando especialidad y bio: la ficha extendida no se emite ni se inventa. |
 | **Sección de videos**            | Punto 6 del documento sin definir. No se construyó; queda el comentario en `PieDePagina.astro`.                     |
 | **Convenios y alianzas**         | Catexis y Play Inside Basketball Camp figuran sin descripción ni logos. No se construyó.                            |
 | **Logos de 4 obras sociales**    | OSPTV, OSPSA y Dasuten son siglas que comparten varias entidades distintas; Poder Judicial es de Santa Cruz y no tiene logo web usable. Se muestran en texto. **OSPE salió de esta lista el 13-sep**, cuando el cliente mandó el archivo. Detalle en `src/assets/logos/ORIGEN.md`. |

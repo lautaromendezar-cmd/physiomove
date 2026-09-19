@@ -285,7 +285,7 @@ export const servicios: Servicio[] = [
         ],
       },
     ],
-    atiende: 'Profe. Nicolás Ovando',
+    atiende: 'Preparador físico Nicolás Ovando',
   },
   {
     slug: 'nutricion-deportiva',
@@ -477,14 +477,21 @@ export const profesionales: Profesional[] = [
     matricula: 'MP 204',
     fichaCompleta: false,
   },
-  // Sumado el 2/9/2026 a pedido del cliente. La bio todavia no llego:
-  // cuando la mande, se completan los campos y pasa a fichaCompleta.
+  /*
+    Sumado el 2/9/2026 a pedido del cliente. La bio todavia no llego: cuando la
+    mande, se completan los campos y pasa a fichaCompleta.
+
+    18/9/2026: el cliente corrige el titulo, que era "Profesor". El "Profe." con
+    el que figuraba en el servicio infanto-juvenil salia de este mismo titulo, y
+    se cambio junto con este: si no, el sitio decia dos cosas distintas de la
+    misma persona.
+  */
   {
     nombre: 'Nicolás Ovando',
     ancla: 'nicolas-ovando',
     iniciales: 'NO',
     retrato: 'retrato-nicolas',
-    titulo: 'Profesor',
+    titulo: 'Preparador físico',
     fichaCompleta: false,
   },
 ];
