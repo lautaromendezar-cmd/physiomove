@@ -82,6 +82,10 @@ const MARCOS_MAP = {
      recortada y de 960x1280. La primera era un recorte de 529x711 y Astro no
      podia generar las variantes grandes: se veia blanda. Ver README. */
   'nutricion-antropometria': 'nutricion-antropometria.jpg',
+  /* 19/9/2026: la 06 de la galeria de la home, "En sesion". Reemplaza a
+     espacio-pasillo, que era el pasillo vacio. 1200x1600 = 3:4 exacto, que es
+     el aspect de las tarjetas de la galeria: entra entera, sin recorte. */
+  'en-sesion':              'en-sesion.jpg',
 };
 
 /*

@@ -299,7 +299,7 @@ Decisiones que no están en el PDF:
 
 ---
 
-## Cambios del 18-09-2026
+## Cambios del 18 y 19-09-2026
 
 El cliente dejó material nuevo en `modificaciones 18-09-2026/` (gitignoreada, como todo lo que
 manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, así que el patrón del
@@ -330,6 +330,13 @@ manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, as
   estiramiento baja de 2,1× a **1,3×** en una notebook retina y de 2,2× a **1,2×** en un teléfono, y
   a 1x no se estira nada. No llega a los 1200×1600 de las otras tres, pero a 1,3× no se nota.
   **Si alguna vez hace falta más, el archivo del Drive tampoco es el original del celular.**
+
+- **La foto 06 de la galería de la home, "En sesión"**, pasa de `espacio-pasillo` —el pasillo del
+  centro— a `en-sesion`: una sentadilla profunda con bastón sobre la pista, con el mural
+  Performance de fondo. Acá **no hace falta `fotoPosicion`**: las tarjetas de la galería son
+  `aspect-ratio: 3/4` y la foto mide 1200×1600, que es 3:4 exacto, así que entra entera y no se
+  recorta nada. El alt se reescribió porque el viejo decía "con supervisión" y en esta foto la
+  persona está sola.
 
 - **El servicio 09 vuelve a llamarse "Fisioterapia Invasiva"** (sin el MEP del nombre original).
   El slug lo acompaña, así que esta página cambió de URL **dos veces en una semana**:

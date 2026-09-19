@@ -573,7 +573,7 @@ export const galeria = [
   { foto: 'espacio-pista', titulo: 'La pista', alt: 'Pasillo central del centro con la pista de 4 metros y el mural de hexágonos' },
   { foto: 'espacio-fuerza', titulo: 'Sector de fuerza', alt: 'Sector de fuerza con barra, discos, mancuernas y el lema Medir para mejorar en la pared' },
   { foto: 'evaluacion-cancha', titulo: 'Evaluaciones', alt: 'Evaluación de rendimiento a una deportista en un gimnasio deportivo' },
-  { foto: 'espacio-pasillo', titulo: 'En sesión', alt: 'Paciente entrenando con supervisión sobre la pista azul del centro' },
+  { foto: 'en-sesion', titulo: 'En sesión', alt: 'Sentadilla profunda con bastón por encima de la cabeza sobre la pista azul del centro, con el mural Performance de fondo' },
   { foto: 'equipo-hexagonos', titulo: 'El equipo', alt: 'Profesional de PhysioMove frente al mural con las etapas de la rehabilitación' },
   { foto: 'ninos-evaluacion', titulo: 'En el club', alt: 'Kinesiólogo registrando los datos de la evaluación de un chico durante un camp deportivo' },
 ];
