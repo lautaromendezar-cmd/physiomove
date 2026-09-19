@@ -356,11 +356,17 @@ export const servicios: Servicio[] = [
   /*
     12/9/2026: el PDF pide reemplazar "Fisioterapia invasiva / Terapias
     alternativas" por "Técnicas complementarias". Era "Fisioterapia Invasiva MEP".
+
+    18/9/2026: el cliente lo vuelve atrás y pide "Fisioterapia Invasiva", sin el
+    MEP del nombre viejo. El slug lo acompaña, asi que esta pagina cambio de URL
+    dos veces en una semana: las dos anteriores redirigen DIRECTO aca desde
+    vercel.json, ninguna encadenada. El bloque de tecnicas queda igual, con MEP
+    Sport adentro.
   */
   {
-    slug: 'tecnicas-complementarias',
-    nombre: 'Técnicas Complementarias',
-    corto: 'Técnicas complementarias',
+    slug: 'fisioterapia-invasiva',
+    nombre: 'Fisioterapia Invasiva',
+    corto: 'Fisioterapia invasiva',
     numero: '09',
     resumen:
       'Herramientas terapéuticas que se suman como complemento dentro de un proceso de rehabilitación: MEP Sport, punción seca y acupuntura deportiva.',
@@ -368,7 +374,7 @@ export const servicios: Servicio[] = [
       'Herramientas terapéuticas que pueden incorporarse como complemento dentro de un proceso de rehabilitación, según la evaluación y las necesidades de cada persona.',
     ],
     metaDescription:
-      'Técnicas complementarias en PhysioMove, Río Gallegos: MEP Sport, punción seca y acupuntura deportiva como complemento dentro de un proceso de rehabilitación.',
+      'Fisioterapia invasiva en PhysioMove, Río Gallegos: MEP Sport, punción seca y acupuntura deportiva como complemento dentro de un proceso de rehabilitación.',
     foto: 'fisioterapia-invasiva',
     fotoAlt:
       'Primer plano de una aguja de punción seca aplicada en la rodilla de un paciente, en un box de PhysioMove',

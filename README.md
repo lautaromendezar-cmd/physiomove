@@ -237,7 +237,7 @@ material fuente). Lo que cambió y cómo se mapeó cada punto del documento:
 | --- | --- |
 | 01 Cómo nació | Sección de origen de la home (`centro.origen`, ahora dos párrafos: se suma Agustín a fines de 2023). |
 | 02 ¿Qué nos diferencia? | Sección oscura de la home: título "Una mirada integral, basada en evidencia", `centro.diferencial`, claves `pacientes` y `postura`. **El párrafo del PDF quedó viejo: el 13-sep el cliente mandó otra reescritura por WhatsApp y esa es la que vale** (ver abajo). |
-| 03 Servicios | Pasan de 6 a **9**: se suman Readaptación, Nutrición y Ejercicio físico adaptado; "Fisioterapia invasiva MEP" pasa a "Técnicas complementarias". |
+| 03 Servicios | Pasan de 6 a **9**: se suman Readaptación, Nutrición y Ejercicio físico adaptado; "Fisioterapia invasiva MEP" pasa a "Técnicas complementarias". **El 18-sep el cliente vuelve atrás ese último: se llama "Fisioterapia Invasiva", sin MEP** (ver abajo). |
 | 04 Nuestra forma de trabajar | **Sección nueva de la home**, oscura, después de Servicios: texto (`centro.formaDeTrabajar`) y el lema en tres palabras grandes numeradas (`centro.pasos`). |
 | 05 Evaluaciones deportivas | **Sección nueva de la home**, crema: texto (`centro.evaluaciones`) y los cuatro tipos como lista numerada (`centro.evaluacionesTipos`), con link al servicio. |
 | 06 Tecnología IVOLUTION | **Sección nueva de la home**, blanca, con la foto sangrando al borde como en las cabeceras interiores (`centro.tecnologia`). El PDF pide una foto real de la sede con IVOLUTION: se usó la del test con dinamómetro y la app en la laptop (`evaluacion-dinamometro`). La página del servicio lleva la de la plataforma (`evaluacion-ivolution`). |
@@ -296,6 +296,38 @@ Decisiones que no están en el PDF:
   documento viejo. El orden bueno es el del consolidado, 01 a 09.
 - En la clave "Nuestra forma de trabajar" el PDF trae una línea ("Se cree en el movimiento como
   herramienta para transformar") que está en el texto pero **no se ve en la página**: se omitió.
+
+---
+
+## Cambios del 18-09-2026
+
+El cliente dejó material nuevo en `modificaciones 18-09-2026/` (gitignoreada, como todo lo que
+manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, así que el patrón del
+`.gitignore` pasó a `modificaciones*/` para que agarre las dos formas.
+
+- **Tres servicios tienen por fin foto propia**: Readaptación (03), Evaluaciones (04) y Ejercicio
+  físico adaptado (07). Cada una entró con **nombre semántico nuevo** y sin pisar el jpg que
+  reemplaza, a propósito: los originales de las viejas siguen mapeados desde `_work/full` en
+  `preparar-imagenes.mjs`, así que sobrescribirlas habría hecho que un `npm run assets` en una
+  máquina con esa carpeta devolviera la foto vieja sin que nadie se entere. Por eso quedan sin uso
+  `hero-entrenamiento`, `evaluacion-ivolution` y `ejercicio-adaptado`: el glob de `fotos.ts` es
+  eager y las sigue emitiendo a `dist/`, aunque ningún HTML las pida.
+- **Las tres vienen verticales (1200×1600) y el marco de las cabeceras es apaisado** (5:4 en PC,
+  3:2 en mobile): se recorta cerca de la mitad del alto y el `50% 32%` del CSS no sirve para
+  ninguna. Cada una lleva su `fotoPosicion`, medida mirando las dos medidas, no a ojo:
+
+  | Servicio | Valor | Por qué ese y no otro |
+  | --- | --- | --- |
+  | 03 Readaptación | `50% 70%` | A 55% mobile corta los pies; a 85% se pierde la cabeza del de atrás. |
+  | 04 Evaluaciones | `50% 65%` | **El original ya trae la cabeza del saltarín fuera de cuadro**: no hay encuadre que lo muestre entero, así que se lo corta a la altura del short, que lee como recorte y no como cabeza cortada. A 75% mobile le come la cabeza a la kinesióloga, a 60% PC lo corta en el pecho. Ahí entran además las dos plataformas IVOLUTION del piso, que son el tema. |
+  | 07 Ejercicio adaptado | `50% 40%` | Los dos están enteros pero de pies a cabeza no entran: se corta abajo, debajo de las rodillas. A 60% se pierde la cabeza del señor en las dos medidas; a 20% sobra techo. |
+
+- **El servicio 09 vuelve a llamarse "Fisioterapia Invasiva"** (sin el MEP del nombre original).
+  El slug lo acompaña, así que esta página cambió de URL **dos veces en una semana**:
+  `fisioterapia-invasiva-mep` → `tecnicas-complementarias` → `fisioterapia-invasiva`. Las dos
+  viejas redirigen **directo** a la nueva en `vercel.json`: el primer redirect se reapuntó en vez
+  de dejarlo saltando a la segunda, para no encadenar dos saltos. El bloque de técnicas queda
+  igual, con MEP Sport adentro.
 
 ### Publicar
 

@@ -22,12 +22,17 @@
     },
     {
       "source": "/servicios/fisioterapia-invasiva-mep",
-      "destination": "/servicios/tecnicas-complementarias",
+      "destination": "/servicios/fisioterapia-invasiva",
       "permanent": true
     },
     {
       "source": "/servicios/recovery-post-competencia",
       "destination": "/servicios/recovery-y-recuperacion-deportiva",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/tecnicas-complementarias",
+      "destination": "/servicios/fisioterapia-invasiva",
       "permanent": true
     }
   ]
