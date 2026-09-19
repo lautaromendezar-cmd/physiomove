@@ -566,15 +566,34 @@ export const aranceles = {
     'Cuando se requiere autorización, el trámite queda a cargo del paciente.',
 };
 
+export type FotoGaleria = {
+  foto: string;
+  titulo: string;
+  alt: string;
+  /**
+   * object-position, SOLO cuando el recorte centrado no sirve. Las tarjetas son
+   * 3:4 en todas las pantallas (el media query cambia el ancho, no el aspect),
+   * asi que un unico valor vale para PC y mobile: no hace falta medir dos veces
+   * como en las cabeceras de servicio, que son 5:4 y 3:2.
+   */
+  pos?: string;
+};
+
 /** Fotos reales del centro para la galería horizontal de la home. */
-export const galeria = [
+export const galeria: FotoGaleria[] = [
   { foto: 'espacio-recepcion', titulo: 'Recepción', alt: 'Recepción de PhysioMove con la alfombra del logo PM en el piso' },
   { foto: 'espacio-gimnasio', titulo: 'Gimnasio', alt: 'Gimnasio de uso exclusivo para pacientes, con la pista azul y el cartel PHYSIOMOVE' },
   { foto: 'espacio-pista', titulo: 'La pista', alt: 'Pasillo central del centro con la pista de 4 metros y el mural de hexágonos' },
   { foto: 'espacio-fuerza', titulo: 'Sector de fuerza', alt: 'Sector de fuerza con barra, discos, mancuernas y el lema Medir para mejorar en la pared' },
   { foto: 'evaluacion-cancha', titulo: 'Evaluaciones', alt: 'Evaluación de rendimiento a una deportista en un gimnasio deportivo' },
   { foto: 'en-sesion', titulo: 'En sesión', alt: 'Sentadilla profunda con bastón por encima de la cabeza sobre la pista azul del centro, con el mural Performance de fondo' },
-  { foto: 'equipo-hexagonos', titulo: 'El equipo', alt: 'Profesional de PhysioMove frente al mural con las etapas de la rehabilitación' },
+  /*
+    19/9/2026: la foto es un test de fuerza, no el equipo, pero el casillero se
+    sigue llamando "El equipo": decision de Lautaro. Es la unica de la galeria
+    que no viene en 3:4 -mide 719x1140, ratio 0.63-, asi que se recorta un 16%
+    del alto y centrada le corta el rodete. Con 15% entra entera y sobra aire.
+  */
+  { foto: 'test-fuerza', titulo: 'El equipo', pos: '50% 15%', alt: 'Deportista sosteniendo el manijón de un test de fuerza con dinamómetro en el gimnasio del centro' },
   { foto: 'ninos-evaluacion', titulo: 'En el club', alt: 'Kinesiólogo registrando los datos de la evaluación de un chico durante un camp deportivo' },
 ];
 

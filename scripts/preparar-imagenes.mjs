@@ -86,6 +86,11 @@ const MARCOS_MAP = {
      espacio-pasillo, que era el pasillo vacio. 1200x1600 = 3:4 exacto, que es
      el aspect de las tarjetas de la galeria: entra entera, sin recorte. */
   'en-sesion':              'en-sesion.jpg',
+  /* 19/9/2026: la 07 de la galeria de la home. El casillero se sigue llamando
+     "El equipo" por decision de Lautaro, pero la foto es un test de fuerza a
+     una deportista: el nombre del archivo describe la FOTO, no el casillero.
+     Viene 719x1140 (ratio 0.63) y las tarjetas son 3:4, asi que se recorta. */
+  'test-fuerza':            'test-fuerza.jpg',
 };
 
 /*

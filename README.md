@@ -338,6 +338,15 @@ manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, as
   recorta nada. El alt se reescribió porque el viejo decía "con supervisión" y en esta foto la
   persona está sola.
 
+- **La foto 07 de la galería, "El equipo"**, pasa de `equipo-hexagonos` a `test-fuerza`. **El
+  casillero se sigue llamando "El equipo" aunque la foto sea un test de fuerza a una deportista**:
+  es una decisión tomada, no un descuido. Es la única de las ocho que **no** viene en 3:4 —mide
+  719×1140, ratio 0,63—, así que se le recorta un 16% del alto y con el centrado por defecto le
+  cortaba el rodete. Para eso se le agregó a `galeria` un campo **`pos`** opcional (mismo gesto
+  que `fotoPosicion` en los servicios): esta lleva `50% 15%` y las otras siete siguen centradas.
+  Acá **un solo valor alcanza para PC y mobile**, porque las tarjetas son 3:4 en las dos —el
+  media query cambia el ancho, no el aspect—, a diferencia de las cabeceras de servicio.
+
 - **El servicio 09 vuelve a llamarse "Fisioterapia Invasiva"** (sin el MEP del nombre original).
   El slug lo acompaña, así que esta página cambió de URL **dos veces en una semana**:
   `fisioterapia-invasiva-mep` → `tecnicas-complementarias` → `fisioterapia-invasiva`. Las dos

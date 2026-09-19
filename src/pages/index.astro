@@ -385,6 +385,7 @@ const evaluaciones = servicios.find((s) => s.slug === 'evaluaciones-deportivas')
               sizes="(max-width: 1000px) 74vw, 30vw"
               alt={g.alt}
               loading="lazy"
+              style={g.pos ? `object-position:${g.pos}` : undefined}
             />
             <figcaption>{String(i + 1).padStart(2, '0')} — {g.titulo}</figcaption>
           </figure>
