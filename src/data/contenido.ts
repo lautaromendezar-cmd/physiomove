@@ -228,10 +228,17 @@ export const servicios: Servicio[] = [
     ],
     metaDescription:
       'Evaluaciones deportivas en Río Gallegos con tecnología IVOLUTION: rendimiento, prevención, seguimiento y alta deportiva, con datos objetivos sobre las capacidades físicas.',
-    foto: 'evaluacion-ivolution',
-    fotoPosicion: '50% 12%',
+    foto: 'evaluaciones-deportivas',
+    /* El original ya viene con la cabeza del saltarin fuera de cuadro, asi que
+       no hay encuadre que lo muestre entero: la salida es cortarlo a la altura
+       del short, que lee como recorte y no como cabeza cortada. Ese corte y la
+       kinesiologa entera piden valores distintos en cada marco (5:4 en PC, 3:2
+       en mobile): a 75% mobile le come la cabeza a ella, a 60% PC corta al
+       saltarin en el pecho. El 65% es el unico que sirve en los dos, y de paso
+       entran las dos plataformas IVOLUTION del piso, que son el tema de la foto. */
+    fotoPosicion: '50% 65%',
     fotoAlt:
-      'Deportista sobre la plataforma de fuerza IVOLUTION mientras una kinesióloga de PhysioMove registra los datos en la laptop, bajo el lema Medir para mejorar',
+      'Deportista en el aire durante un test de salto sobre las plataformas de fuerza IVOLUTION, mientras una kinesióloga de PhysioMove sigue los datos en la laptop',
     bloques: [
       {
         titulo: 'Qué incluye',

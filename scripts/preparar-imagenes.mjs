@@ -66,6 +66,11 @@ const MARCOS_MAP = {
      banda en la cancha, al aire libre: rompe con el resto de las cabeceras
      interiores, todas puertas adentro. */
   'readaptacion-deportiva': 'readaptacion-deportiva.jpg',
+  /* 18/9/2026: foto propia para Evaluaciones (04), que hasta ahora usaba
+     evaluacion-ivolution. Nombre nuevo a proposito y no pisar ese jpg: su
+     original sigue mapeado desde _work/full mas arriba, asi que un
+     "npm run assets" en una maquina que lo tenga volveria a la foto vieja. */
+  'evaluaciones-deportivas': 'evaluaciones-deportivas.jpg',
 };
 
 /*
