@@ -583,7 +583,7 @@ export type FotoGaleria = {
 export const galeria: FotoGaleria[] = [
   { foto: 'espacio-recepcion', titulo: 'Recepción', alt: 'Recepción de PhysioMove con la alfombra del logo PM en el piso' },
   { foto: 'espacio-gimnasio', titulo: 'Gimnasio', alt: 'Gimnasio de uso exclusivo para pacientes, con la pista azul y el cartel PHYSIOMOVE' },
-  { foto: 'espacio-pista', titulo: 'La pista', alt: 'Pasillo central del centro con la pista de 4 metros y el mural de hexágonos' },
+  { foto: 'entrenamiento-pista', titulo: 'La pista', alt: 'Adolescente haciendo un press de hombro con mancuerna, arrodillado sobre la pista azul del centro' },
   { foto: 'espacio-fuerza', titulo: 'Sector de fuerza', alt: 'Sector de fuerza con barra, discos, mancuernas y el lema Medir para mejorar en la pared' },
   { foto: 'evaluacion-cancha', titulo: 'Evaluaciones', alt: 'Evaluación de rendimiento a una deportista en un gimnasio deportivo' },
   { foto: 'en-sesion', titulo: 'En sesión', alt: 'Sentadilla profunda con bastón por encima de la cabeza sobre la pista azul del centro, con el mural Performance de fondo' },

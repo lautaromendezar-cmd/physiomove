@@ -91,6 +91,9 @@ const MARCOS_MAP = {
      una deportista: el nombre del archivo describe la FOTO, no el casillero.
      Viene 719x1140 (ratio 0.63) y las tarjetas son 3:4, asi que se recorta. */
   'test-fuerza':            'test-fuerza.jpg',
+  /* 19/9/2026: la 03 de la galeria, "La pista". Reemplaza a espacio-pista, que
+     era la pista vacia. 1200x1600 = 3:4 exacto: entra entera, sin `pos`. */
+  'entrenamiento-pista':    'entrenamiento-pista.jpg',
 };
 
 /*

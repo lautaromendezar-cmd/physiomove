@@ -331,6 +331,10 @@ manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, as
   a 1x no se estira nada. No llega a los 1200×1600 de las otras tres, pero a 1,3× no se nota.
   **Si alguna vez hace falta más, el archivo del Drive tampoco es el original del celular.**
 
+- **La foto 03 de la galería, "La pista"**, pasa de `espacio-pista` —el pasillo vacío— a
+  `entrenamiento-pista`: un adolescente haciendo press de hombro arrodillado sobre la pista, con
+  el logo PHYSIOMOVE del piso a la vista. 1200×1600 = 3:4 exacto, entra entera y no lleva `pos`.
+
 - **La foto 06 de la galería de la home, "En sesión"**, pasa de `espacio-pasillo` —el pasillo del
   centro— a `en-sesion`: una sentadilla profunda con bastón sobre la pista, con el mural
   Performance de fondo. Acá **no hace falta `fotoPosicion`**: las tarjetas de la galería son
