@@ -2906,6 +2906,16 @@ html.pm-cargando body {
   aspect-ratio: 3 / 2;
 }
 
+/* 19/9/2026: la version retocada del cliente -los seis recortados sobre el
+   fondo desenfocado- viene en 1.63 y no en el 1.49 del original, asi que en
+   este marco se recorta el 19% del ancho y no el 12% de antes. Centrada le
+   corta el brazo al de la izquierda, y pegada a la izquierda se lo corta a la
+   de la derecha: el 25% es el unico punto donde entran los seis. El 32%
+   vertical es el de todas las cabeceras, no se toca. */
+.cabecera__marco--grupo img {
+  object-position: 25% 32%;
+}
+
 /* ---------- 13/9/2026: del equipo de la home a la ficha de cada uno ---------- */
 
 /* La tarjeta de la home pasa a ser un link. Mismo gesto que las de servicios:

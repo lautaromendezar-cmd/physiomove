@@ -331,6 +331,18 @@ manda). Ojo que esa carpeta la escribió **con un espacio** en vez del guion, as
   a 1x no se estira nada. No llega a los 1200×1600 de las otras tres, pero a 1,3× no se nota.
   **Si alguna vez hace falta más, el archivo del Drive tampoco es el original del celular.**
 
+- **La cabecera de `/equipo` pasa a la versión retocada del cliente**: los seis recortados sobre
+  el fondo desenfocado, 2000×1229 contra los 1280×859 del original. El asset se sigue llamando
+  `equipo-completo`; lo que cambia es el origen en `preparar-imagenes.mjs`, y el original sin
+  retocar queda en `fotos-marcos/equipo-completo.webp` por si hay que volver.
+  **Trae un problema de encuadre**: viene en ratio 1,63 y no en el 1,49 del original, así que en
+  el marco 3:2 se le recorta el **19,2% del ancho** en vez del 11,7% de antes. Centrada le corta
+  el brazo al de la izquierda; pegada a la izquierda, a la de la derecha. El **25%** es el único
+  punto donde entran los seis, y va como `object-position` en `.cabecera__marco--grupo img`
+  (medido de 1920 a 390: el recorte es el mismo 19,2% en todos los anchos, así que un valor basta).
+  **Pendiente del lado del cliente**: en el retoque, el cartel "DONDE VOLVÉS AL DEPORTE" del fondo
+  quedó desenfocado pero todavía legible como letras, y se lee como texto roto.
+
 - **La foto 03 de la galería, "La pista"**, pasa de `espacio-pista` —el pasillo vacío— a
   `entrenamiento-pista`: un adolescente haciendo press de hombro arrodillado sobre la pista, con
   el logo PHYSIOMOVE del piso a la vista. 1200×1600 = 3:4 exacto, entra entera y no lleva `pos`.

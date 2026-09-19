@@ -59,8 +59,13 @@ const MARCOS_MAP = {
   'infanto-juvenil':        'infanto.jfif',
   'kinesiologia-deportiva': 'kinesiologia-deportiva.jfif',
   'fisioterapia-invasiva':  'fisioterapia-invasiva.jfif',
-  // 13/9/2026: la foto del equipo completo que pidio el PDF (los seis).
-  'equipo-completo':        'equipo-completo.webp',
+  /* 13/9/2026: la foto del equipo completo que pidio el PDF (los seis).
+     19/9/2026: el cliente mando una version RETOCADA -los seis recortados sobre
+     el fondo desenfocado-, 2000x1229 contra los 1280x859 del original. Cambia
+     el origen, no el nombre: el asset sigue siendo equipo-completo. El original
+     sin retocar queda en fotos-marcos/equipo-completo.webp por si hay que
+     volver. */
+  'equipo-completo':        'equipo-completo-editada.webp',
   /* 18/9/2026: el cliente mando una foto propia para Readaptacion (03), que
      hasta ahora pedia prestada hero-entrenamiento. Es la carrera resistida con
      banda en la cancha, al aire libre: rompe con el resto de las cabeceras
