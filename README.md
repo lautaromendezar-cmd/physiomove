@@ -30,9 +30,13 @@ Netlify o un FTP). Sin variables de entorno obligatorias.
 
 ### Dominio
 
-El dominio definitivo todavía no está confirmado. `astro.config.mjs` usa
-`https://physiomove.com.ar` por defecto, y de ahí salen el `canonical`, el `og:url` y el
-`sitemap`. **Antes de publicar hay que confirmarlo**, y si es otro alcanza con:
+El sitio vive en **`https://www.physiomove.com.ar`** (el apex redirige a www). Ese es el valor
+por defecto de `astro.config.mjs`, y de ahí salen el `canonical`, el `og:url`, el JSON-LD, el
+`sitemap` y la línea `Sitemap:` de `robots.txt` (que se genera en `src/pages/robots.txt.ts`).
+Tiene que ser **con www**: si apunta al apex, cada URL del sitemap queda siendo una redirección.
+Las URL van **sin barra final** — `trailingSlash: 'never'` en Astro y `"trailingSlash": false`
+en `vercel.json`, que es lo que hace que `/servicios/` redirija a `/servicios` en vez de servir
+las dos. Si alguna vez cambia el dominio alcanza con:
 
 ```bash
 SITE_URL=https://eldominioreal.com.ar npm run build

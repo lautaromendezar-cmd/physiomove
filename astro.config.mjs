@@ -2,13 +2,13 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// El dominio definitivo todavia no esta confirmado por el cliente.
+// El sitio vive en www: el apex redirige a www, asi que el canonical va con www.
 // Se puede sobreescribir sin tocar codigo: SITE_URL=https://... npm run build
-const site = (process.env.SITE_URL || '').trim() || 'https://physiomove.com.ar';
+const site = (process.env.SITE_URL || '').trim() || 'https://www.physiomove.com.ar';
 
 export default defineConfig({
   site,
-  trailingSlash: 'ignore',
+  trailingSlash: 'never',
   integrations: [sitemap()],
   build: { inlineStylesheets: 'auto' },
   image: {
