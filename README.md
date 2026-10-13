@@ -506,3 +506,17 @@ npm run build && node scripts/verificar.mjs
 
 Confirmar con el cliente: dominio, y que el valor de $19.500 por sesión siga vigente
 (está en `src/data/contenido.ts` → `aranceles.particulares`).
+
+---
+
+## Cambios del 13-10-2026
+
+El cliente dejó cinco fotos en `modificaciones 13-10-2026/` (gitignoreada) y las va pidiendo de a una.
+
+- **"Cómo nació PhysioMove" (01 de la home)** pasa de `como-inicio` —los dos con el mate entre el
+  público— a `congreso-akd-2024`: tres del equipo junto a las letras AKD2024 del XIV Congreso
+  Argentino de Kinesiología del Deporte. 960×1280. Nombre nuevo y `como-inicio` sin pisar, por lo
+  de siempre. **No lleva posición**: el marco es 4:5 en PC y en mobile (el `aspect-ratio: 3/2` de
+  `.origen__figura img` no gana, porque la imagen va absoluta dentro del marco), y con el
+  centrado entran las tres caras y las letras. El alt **no nombra a nadie**: no está confirmado
+  quién es quién.

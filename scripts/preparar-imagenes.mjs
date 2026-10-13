@@ -99,6 +99,11 @@ const MARCOS_MAP = {
   /* 19/9/2026: la 03 de la galeria, "La pista". Reemplaza a espacio-pista, que
      era la pista vacia. 1200x1600 = 3:4 exacto: entra entera, sin `pos`. */
   'entrenamiento-pista':    'entrenamiento-pista.jpg',
+  /* 13/10/2026: la figura de "Como nacio PhysioMove". Reemplaza a como-inicio
+     (los dos con el mate entre el publico): tres del equipo junto a las letras
+     AKD2024 del XIV Congreso Argentino de Kinesiologia del Deporte. Nombre
+     nuevo por lo de siempre: como-inicio sigue mapeado arriba. 960x1280. */
+  'congreso-akd-2024':      'congreso-akd-2024.jpg',
 };
 
 /*
