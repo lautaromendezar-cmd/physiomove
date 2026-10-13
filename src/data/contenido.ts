@@ -135,6 +135,8 @@ export type Servicio = {
   fotoAlt: string;
   /** object-position de la foto cuando el encuadre centrado corta algo (ej. una cabeza). */
   fotoPosicion?: string;
+  /** Para placas con texto que no se pueden recortar: va entera y el sobrante se pinta de este color. */
+  fotoFondo?: string;
   bloques: Bloque[];
   atiende?: string;
 };
@@ -229,17 +231,15 @@ export const servicios: Servicio[] = [
     ],
     metaDescription:
       'Evaluaciones deportivas en Río Gallegos con tecnología IVOLUTION: rendimiento, prevención, seguimiento y alta deportiva, con datos objetivos sobre las capacidades físicas.',
-    foto: 'evaluaciones-deportivas',
-    /* El original ya viene con la cabeza del saltarin fuera de cuadro, asi que
-       no hay encuadre que lo muestre entero: la salida es cortarlo a la altura
-       del short, que lee como recorte y no como cabeza cortada. Ese corte y la
-       kinesiologa entera piden valores distintos en cada marco (5:4 en PC, 3:2
-       en mobile): a 75% mobile le come la cabeza a ella, a 60% PC corta al
-       saltarin en el pecho. El 65% es el unico que sirve en los dos, y de paso
-       entran las dos plataformas IVOLUTION del piso, que son el tema de la foto. */
-    fotoPosicion: '50% 65%',
+    /* 13/10/2026: una placa armada por el cliente, no una foto: cinco atletas
+       evaluados con su nombre y su deporte escritos debajo, sobre un fondo liso
+       #0A131C, en 1500x1080. Recortada perdia nombres en el marco cuadrado de la
+       home, asi que va entera (contain) y el sobrante se pinta del mismo color
+       del fondo de la placa: no se ve el borde. */
+    foto: 'evaluaciones-atletas',
+    fotoFondo: '#0a131c',
     fotoAlt:
-      'Deportista en el aire durante un test de salto sobre las plataformas de fuerza IVOLUTION, mientras una kinesióloga de PhysioMove sigue los datos en la laptop',
+      'Cinco atletas evaluados por PhysioMove: Gonzalo Torres, básquet profesional; rugby de República Dominicana; Santiago Guidetti, Selección Argentina de atletismo; Dana García, Selección Argentina de natación; y judo de Estados Unidos',
     bloques: [
       {
         titulo: 'Qué incluye',
@@ -590,12 +590,12 @@ export const galeria: FotoGaleria[] = [
   { foto: 'evaluacion-cancha', titulo: 'Evaluaciones', alt: 'Evaluación de rendimiento a una deportista en un gimnasio deportivo' },
   { foto: 'en-sesion', titulo: 'En sesión', alt: 'Sentadilla profunda con bastón por encima de la cabeza sobre la pista azul del centro, con el mural Performance de fondo' },
   /*
-    19/9/2026: la foto es un test de fuerza, no el equipo, pero el casillero se
-    sigue llamando "El equipo": decision de Lautaro. Es la unica de la galeria
-    que no viene en 3:4 -mide 719x1140, ratio 0.63-, asi que se recorta un 16%
-    del alto y centrada le corta el rodete. Con 15% entra entera y sobra aire.
+    13/10/2026: el casillero "El equipo" por fin tiene al equipo: el afiche del
+    cliente con los seis delante del logo (1080x1350, 4:5). Reemplaza a
+    test-fuerza. Contra el 3:4 de la tarjeta pierde un 6% del ancho, que sale
+    de los hombros de las puntas: centrada sirve.
   */
-  { foto: 'test-fuerza', titulo: 'El equipo', pos: '50% 15%', alt: 'Deportista sosteniendo el manijón de un test de fuerza con dinamómetro en el gimnasio del centro' },
+  { foto: 'equipo-afiche', titulo: 'El equipo', alt: 'Los seis profesionales de PhysioMove con la remera del centro, posando debajo del logo' },
   { foto: 'ninos-evaluacion', titulo: 'En el club', alt: 'Kinesiólogo registrando los datos de la evaluación de un chico durante un camp deportivo' },
 ];
 
@@ -669,3 +669,11 @@ export const bandaHero = [
     alt: 'El equipo de PhysioMove junto a una delegación deportiva tras una jornada de evaluaciones en el gimnasio',
   },
 ];
+
+/** style de la foto de un servicio: encuadre a mano o, para las placas con texto, entera sobre su color. */
+export function estiloFoto(s: Servicio): string | undefined {
+  // top y height pisan el sobrante del parallax: una placa no se desplaza (ver [slug].astro)
+  if (s.fotoFondo) return `object-fit:contain;background:${s.fotoFondo};top:0;height:100%`;
+  if (s.fotoPosicion) return `object-position:${s.fotoPosicion}`;
+  return undefined;
+}

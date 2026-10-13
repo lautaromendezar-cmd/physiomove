@@ -535,3 +535,21 @@ El cliente dejó cinco fotos en `modificaciones 13-10-2026/` (gitignoreada) y la
   **`fotoPosicion: '0% 50%'`** deja entero el panel de la izquierda y lo que pierde es el borde
   derecho de los otros dos (sobre todo la señora con el celular del fondo). Con 50% se cortaban
   los dos lados; con 100% se perdía medio profe en el cuadrado de la home.
+- **Evaluaciones deportivas (04)** pasa de `evaluaciones-deportivas` (el salto sobre las IVOLUTION)
+  a `evaluaciones-atletas` ("EVALUACIONES ATLETAS"). **Es una placa, no una foto**: cinco atletas
+  con nombre y deporte escritos debajo, sobre un fondo liso `#0A131C`, en 1500×1080. Recortada,
+  perdía nombres en el cuadrado de la home, así que se sumó a `Servicio` el campo opcional
+  **`fotoFondo`**: la foto va entera (`object-fit: contain`) y el sobrante se pinta de ese color,
+  que es el mismo del fondo de la placa, así que el borde no se ve. El `style` de las tres vistas
+  sale ahora de **`estiloFoto()`** en `contenido.ts`, que elige entre `fotoFondo` y `fotoPosicion`.
+  **Una placa no lleva parallax en la cabecera**: el parallax estira la imagen al 114% del marco y
+  con `contain` eso cortaba arriba y abajo en mobile. `[slug].astro` no emite `data-parallax`
+  cuando hay `fotoFondo` (ojo: con `data-parallax={false}` Astro escribe `="false"` y el selector
+  igual lo agarra; por eso va con spread) y `estiloFoto` le pisa `top`/`height` al 0/100%.
+- **La 07 de la galería, "El equipo"**, pasa de `test-fuerza` a `equipo-afiche` ("EQUIPO PM"): el
+  afiche del cliente con los seis delante del logo, 1080×1350. El casillero por fin muestra al
+  equipo. Contra el 3:4 de la tarjeta pierde un 6% del ancho, de los hombros de las puntas:
+  centrada sirve y se le sacó el `pos`.
+- **Pendiente: la 06 de la galería, "En sesión"**. El cliente pidió cambiarla por una vertical del
+  pasillo de entrada (cartel PHYSIOMOVE, un chico sobre la pista azul) que **no está** en la carpeta
+  del 13-10: falta que la mande.

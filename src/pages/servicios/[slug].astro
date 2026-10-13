@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Deco from '../../components/Deco.astro';
 import Cierre from '../../components/Cierre.astro';
 import { foto } from '../../data/fotos';
-import { servicios, centro, contacto } from '../../data/contenido';
+import { servicios, centro, contacto, estiloFoto } from '../../data/contenido';
 
 export function getStaticPaths() {
   return servicios.map((servicio) => ({
@@ -50,7 +50,7 @@ const parrafos = (t: string | string[]) => (Array.isArray(t) ? t : [t]);
         <figure class="cabecera__figura" data-hero-figura>
           <Picture
             pictureAttributes={{ class: 'cabecera__marco marco-foto' }}
-            data-parallax
+            {...(servicio.fotoFondo ? {} : { 'data-parallax': true })}
             src={foto(servicio.foto)}
             formats={['avif', 'webp']}
             widths={[520, 800, 1100]}
@@ -59,7 +59,7 @@ const parrafos = (t: string | string[]) => (Array.isArray(t) ? t : [t]);
             loading="eager"
             fetchpriority="high"
             data-hero-img
-            style={servicio.fotoPosicion ? `object-position:${servicio.fotoPosicion}` : undefined}
+            style={estiloFoto(servicio)}
           />
         </figure>
       </div>

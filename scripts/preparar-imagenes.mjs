@@ -114,6 +114,13 @@ const MARCOS_MAP = {
      infanto-juvenil. Es un COLLAGE del cliente ("PM INFANTO"), tres paneles en
      1600x1000: la unica apaisada. Va con fotoPosicion 0% 50%, ver README. */
   'infanto-collage':        'infanto-collage.jpg',
+  /* 13/10/2026: Evaluaciones (04) pasa a una PLACA del cliente ("EVALUACIONES
+     ATLETAS"): cinco atletas con nombre y deporte escritos, sobre fondo liso
+     #0A131C, 1500x1080. Va entera con fotoFondo, ver README. */
+  'evaluaciones-atletas':   'evaluaciones-atletas.jpg',
+  /* 13/10/2026: la 07 de la galeria, "El equipo", pasa a ser el equipo: el
+     afiche del cliente ("EQUIPO PM"), 1080x1350. Reemplaza a test-fuerza. */
+  'equipo-afiche':          'equipo-afiche.jpg',
 };
 
 /*

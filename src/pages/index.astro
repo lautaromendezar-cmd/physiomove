@@ -17,6 +17,7 @@ import {
   galeria,
   bandaHero,
   metricas,
+  estiloFoto,
 } from '../data/contenido';
 
 const evaluaciones = servicios.find((s) => s.slug === 'evaluaciones-deportivas');
@@ -232,7 +233,7 @@ const evaluaciones = servicios.find((s) => s.slug === 'evaluaciones-deportivas')
                     sizes="(max-width: 640px) 100vw, 26vw"
                     alt={s.fotoAlt}
                     loading="lazy"
-                    style={s.fotoPosicion ? `object-position:${s.fotoPosicion}` : undefined}
+                    style={estiloFoto(s)}
                   />
                 </figure>
                 <div class="svc__card__cuerpo">
