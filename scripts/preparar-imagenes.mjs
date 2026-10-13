@@ -104,6 +104,12 @@ const MARCOS_MAP = {
      AKD2024 del XIV Congreso Argentino de Kinesiologia del Deporte. Nombre
      nuevo por lo de siempre: como-inicio sigue mapeado arriba. 960x1280. */
   'congreso-akd-2024':      'congreso-akd-2024.jpg',
+  /* 13/10/2026: foto propia para Kinesiologia deportiva (02). Reemplaza a
+     kinesiologia-deportiva (el equipo con un plantel de basquet): un
+     deportista recibiendo pelotas en la pista, bajo el cartel "Donde volves
+     al deporte". En el material del cliente se llama "YUTHI KINESIO".
+     960x1280; kinesiologia-deportiva sigue mapeada arriba. */
+  'kinesiologia-pases':     'kinesiologia-pases.jpg',
 };
 
 /*

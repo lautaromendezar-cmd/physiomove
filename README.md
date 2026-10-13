@@ -520,3 +520,10 @@ El cliente dejó cinco fotos en `modificaciones 13-10-2026/` (gitignoreada) y la
   `.origen__figura img` no gana, porque la imagen va absoluta dentro del marco), y con el
   centrado entran las tres caras y las letras. El alt **no nombra a nadie**: no está confirmado
   quién es quién.
+- **Kinesiología deportiva (02)** pasa de `kinesiologia-deportiva` —el equipo con un plantel de
+  básquet bajo el cartel— a `kinesiologia-pases` (en el material del cliente, "YUTHI KINESIO"): un
+  deportista descalzo atrapando pelotas sobre la pista. 960×1280, y sale en tres lugares: la
+  tarjeta de la home (cuadrada en PC, 3:2 en mobile), la de `/servicios` y la cabecera. Lleva
+  **`fotoPosicion: '50% 65%'`**: con el valor por defecto los marcos 3:2 lo cortaban en las
+  rodillas. Con el 65 entra de la pelota a los pies en las seis medidas, y en el cuadrado de la
+  home se ve también el cartel "Donde volvés al deporte".

@@ -177,9 +177,10 @@ export const servicios: Servicio[] = [
     ],
     metaDescription:
       'Kinesiología deportiva y traumatológica en Río Gallegos: rehabilitación activa e individualizada para volver a la vida diaria, al entrenamiento o al deporte.',
-    foto: 'kinesiologia-deportiva',
+    foto: 'kinesiologia-pases',
+    fotoPosicion: '50% 65%',
     fotoAlt:
-      'El equipo de PhysioMove junto a un plantel de básquet bajo el cartel Kinesiología Deportiva del centro',
+      'Un deportista descalzo atrapa las pelotas que le lanza un kinesiólogo sobre la pista del centro',
     bloques: [
       {
         titulo: 'Cómo es una sesión',
