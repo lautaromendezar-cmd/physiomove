@@ -110,6 +110,10 @@ const MARCOS_MAP = {
      al deporte". En el material del cliente se llama "YUTHI KINESIO".
      960x1280; kinesiologia-deportiva sigue mapeada arriba. */
   'kinesiologia-pases':     'kinesiologia-pases.jpg',
+  /* 13/10/2026: Desarrollo fisico y fuerza infanto-juvenil (05). Reemplaza a
+     infanto-juvenil. Es un COLLAGE del cliente ("PM INFANTO"), tres paneles en
+     1600x1000: la unica apaisada. Va con fotoPosicion 0% 50%, ver README. */
+  'infanto-collage':        'infanto-collage.jpg',
 };
 
 /*

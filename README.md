@@ -527,3 +527,11 @@ El cliente dejó cinco fotos en `modificaciones 13-10-2026/` (gitignoreada) y la
   **`fotoPosicion: '50% 65%'`**: con el valor por defecto los marcos 3:2 lo cortaban en las
   rodillas. Con el 65 entra de la pelota a los pies en las seis medidas, y en el cuadrado de la
   home se ve también el cartel "Donde volvés al deporte".
+- **Desarrollo físico y fuerza infanto-juvenil (05)** pasa de `infanto-juvenil` —el profe con tres
+  chicos sentados— a `infanto-collage` ("PM INFANTO"). **Es un collage armado por el cliente, no una
+  foto**: tres paneles en 1600×1000, el del profe con el chico de la camiseta de Messi a la
+  izquierda a todo el alto y dos apilados a la derecha. Es la única apaisada, así que en los marcos
+  cuadrados y 5:4 algún panel se corta sí o sí. Se probaron 0%, 50% y 100% en las seis medidas:
+  **`fotoPosicion: '0% 50%'`** deja entero el panel de la izquierda y lo que pierde es el borde
+  derecho de los otros dos (sobre todo la señora con el celular del fondo). Con 50% se cortaban
+  los dos lados; con 100% se perdía medio profe en el cuadrado de la home.

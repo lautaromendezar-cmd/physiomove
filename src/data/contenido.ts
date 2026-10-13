@@ -271,9 +271,10 @@ export const servicios: Servicio[] = [
     ],
     metaDescription:
       'Desarrollo físico y entrenamiento de fuerza infanto-juvenil en Río Gallegos: fuerza, coordinación, movilidad y control motor adaptados a la edad y la etapa de crecimiento.',
-    foto: 'infanto-juvenil',
+    foto: 'infanto-collage',
+    fotoPosicion: '0% 50%',
     fotoAlt:
-      'El profe hablando con tres chicos sentados sobre la pista de césped del gimnasio de PhysioMove',
+      'Tres momentos del entrenamiento infanto-juvenil: el profe muestra un ejercicio con un bastón, chicos estirando sobre la pista y adolescentes entrenando con pesas',
     bloques: [
       { titulo: 'Cuántas clases al mes', texto: 'Habitualmente son ocho clases por mes.' },
       {
