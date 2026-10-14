@@ -550,6 +550,8 @@ El cliente dejó cinco fotos en `modificaciones 13-10-2026/` (gitignoreada) y la
   afiche del cliente con los seis delante del logo, 1080×1350. El casillero por fin muestra al
   equipo. Contra el 3:4 de la tarjeta pierde un 6% del ancho, de los hombros de las puntas:
   centrada sirve y se le sacó el `pos`.
-- **Pendiente: la 06 de la galería, "En sesión"**. El cliente pidió cambiarla por una vertical del
-  pasillo de entrada (cartel PHYSIOMOVE, un chico sobre la pista azul) que **no está** en la carpeta
-  del 13-10: falta que la mande.
+- **La 06 de la galería, "En sesión"**, pasa de `en-sesion` (la sentadilla con bastón) a
+  `en-sesion-pasillo`: el centro visto desde la entrada, bajo los tres carteles, con un deportista
+  sobre la pista. **Es una captura de 576×720 que sacó Lautaro, no el archivo original**: la
+  tarjeta mide hasta 420 px CSS, así que en retina se estira 1,5×. Se ve un poco blanda pero se
+  lee. Si el cliente manda el archivo grande, se reemplaza el origen en `preparar-imagenes.mjs`.

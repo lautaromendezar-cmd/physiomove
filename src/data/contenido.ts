@@ -588,7 +588,12 @@ export const galeria: FotoGaleria[] = [
   { foto: 'entrenamiento-pista', titulo: 'La pista', alt: 'Adolescente haciendo un press de hombro con mancuerna, arrodillado sobre la pista azul del centro' },
   { foto: 'espacio-fuerza', titulo: 'Sector de fuerza', alt: 'Sector de fuerza con barra, discos, mancuernas y el lema Medir para mejorar en la pared' },
   { foto: 'evaluacion-cancha', titulo: 'Evaluaciones', alt: 'Evaluación de rendimiento a una deportista en un gimnasio deportivo' },
-  { foto: 'en-sesion', titulo: 'En sesión', alt: 'Sentadilla profunda con bastón por encima de la cabeza sobre la pista azul del centro, con el mural Performance de fondo' },
+  /*
+    13/10/2026: pasa de en-sesion (la sentadilla con baston) a la vista del
+    pasillo desde la entrada, con los tres carteles. Es una CAPTURA de 576x720
+    que saco Lautaro, no el archivo original: en retina se estira 1,5x.
+  */
+  { foto: 'en-sesion-pasillo', titulo: 'En sesión', alt: 'El centro visto desde la entrada, bajo los carteles PhysioMove, Kinesiología deportiva y Donde volvés al deporte, con un deportista haciendo un ejercicio sobre la pista azul' },
   /*
     13/10/2026: el casillero "El equipo" por fin tiene al equipo: el afiche del
     cliente con los seis delante del logo (1080x1350, 4:5). Reemplaza a

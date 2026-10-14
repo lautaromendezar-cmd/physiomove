@@ -121,6 +121,10 @@ const MARCOS_MAP = {
   /* 13/10/2026: la 07 de la galeria, "El equipo", pasa a ser el equipo: el
      afiche del cliente ("EQUIPO PM"), 1080x1350. Reemplaza a test-fuerza. */
   'equipo-afiche':          'equipo-afiche.jpg',
+  /* 13/10/2026: la 06 de la galeria, "En sesion": el pasillo desde la entrada.
+     Es una CAPTURA de 576x720 (PNG), no el original: si llega el archivo
+     grande, reemplazarlo aca. en-sesion sigue mapeada arriba. */
+  'en-sesion-pasillo':      'en-sesion-pasillo.png',
 };
 
 /*
